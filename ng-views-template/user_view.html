@@ -1,0 +1,378 @@
+ <style>
+    
+    #pagewrap{
+        background-color:  rgb(37, 102, 65);
+        padding-right:5vw;
+        padding-left: 5vw;
+        background-color: rgb(46, 121, 75);
+        height: -webkit-fill-available;
+    }
+    #upper-div{
+        background-color:rgb(74, 141, 230);
+    }
+    #middle-div{
+       
+        height: 625px;
+        padding-left: 2px;
+        
+        
+        
+    }
+    .lower-div{
+       
+        color: oldlace;
+        font-size: xx-large;
+        height: 35px;
+        padding-top: 10 px;
+    }
+    .left-div{
+       
+        height: 550px;
+        
+    }
+    .right-div{
+        height: 550px;
+        text-align: center;
+        
+    }
+    .table td{
+            border: 1px solid black;
+            padding: 2px;
+            height: 30px;
+            
+
+    }
+    /* .table{
+         height: 1000px;
+         padding-top: 4px;
+    } */
+    .td{
+        /* height: 90px;
+        width: px; */
+        text-align: center;
+        color:black;
+        background-color: rgb(235 216 150);
+    }
+    .sm-div{
+        height: 20px;
+        width: 50px;
+        border-radius: 15%;
+        padding-right: 2px;
+        padding-left: 2px;
+        padding-bottom: 0px;
+        background-color: white;
+        font-size: large;
+    }
+    .last-td{
+        background-color: limegreen;
+    }
+    #time-div{
+        padding-left: 10 px;
+        padding-right: 10 px;
+        padding-top: 10 px;
+        padding-bottom: 10 px;
+        
+    }
+    .left-col{
+        padding-left: 30px;
+        background-color: black;
+        
+        border: 2px solid white;
+        text-align: center;
+    }
+    .right-col{
+        padding-right: 30px;
+        background-color:  black;
+        height: 100px;
+        width: 50px;
+        border: 2px solid white;
+        text-align: center;
+    }
+    .no-col{
+        padding-right: 30 px;
+        padding-left: 70 px;
+        height: 100px;
+        width: 200px;
+        color:white;
+    }
+    .long-table{
+        border: 1px solid white;
+    }
+    .long-table1{
+        border: 1px solid white;
+        background-color: rgb(17, 104, 202);
+    }
+    .long-table2{
+        border: 1px solid white;
+        background-color: rgb(151, 25, 25);
+    }
+    #lt{
+        max-height: 600px;
+        overflow-y: scroll;
+    }
+    .big{
+        height: 60px;
+         width: 100px;
+        background-color: rgb(46, 46, 199);
+        border: 1px solid white;
+        font-size: 20px;
+        font-weight: bolder;
+        color: white;
+    }
+    .small{
+        height: 60px;
+        width: 65px;
+        background-color: brown;
+        font-size: 30px;
+        font-weight: bolder;
+        color: white;
+        border: 1px solid white;
+
+    }
+    #tab{
+        max-height: 450px;
+        overflow-y: scroll;
+        
+        
+    }
+    .new{
+        border: 1px solid rgb(211, 163, 5);
+    }
+    .header-content{
+        width: 120px; text-align: center;
+        color: #ffd363;font-weight: 700;
+    }
+    .btn{
+        /* font-size: xx-large; */
+    }
+    .single-input-box{
+        height: 30px;
+        width: 40px;
+        /* padding-right: 2px; */
+        /* padding-left: 2px; */
+        padding-top: 10px ;
+        padding-bottom: 0px;
+        background-color: white;
+        font-size: large;
+    }
+    
+</style>
+
+    <a href="#!" data-ng-show="users.person_category_id==0"><h1>Please Login</h1></a>
+    <div id="pagewrap"  data-ng-show="users.person_category_id==3" ng-init="showReport=false"> 
+        <div class="cotainer" style="background-color:  rgb(208, 212, 182);" data-ng-init="displayJodi=true;displaySingle=false">
+            <div class="d-flex " id="upper-div">
+                <!-- <div class="col-2 " id="upper-div" style="color: burlywood; text-align: right; padding-top: 10px;"><h4><b>Rajesri 10</b></h4></div>
+                <div class="col-3" id="upper-div" style="color: cornsilk; padding-top: 10px;"><b>Today : {{today | date}} {{hour +':'+ minute + ':'+ second}}</b> </div>
+                <div class="col-2 " id="upper-div"><a href="#!resultChart" type="button" target="_blank" class="m-10" style="height: 30px; width: 150px; background-color: rgb(207, 184, 55); border: 1px solid white; margin-top: 6px; color: #000; text-align: center;">Result Chart</a></div>
+                <div class="col-2 " id="upper-div">Balance<input type="text" style="height: 30px; width: 150px; background-color: rgb(106, 228, 69); border: 1px solid black; margin-top: 6px;" ng-value="loggedInTerminalBalance.current_balance" ng-disabled="true"></div>
+                <div class="col-3" id="upper-div"><button type="button" class="btn-warning btn-sm mt-1" ng-click="logoutUserWithConfirmation($event);">Logout</button> </div> -->
+                <div class="col-10">
+                    <div>
+                        <table >
+                            <tr>
+                                <td style="width: 120px; text-align: center; color: white;  font-size: small;">UserName</td>
+                                <td style="width: 120px; text-align: center; color: white;  font-size: small;">Balance</td>
+                                <td style="width: 120px; text-align: center; color: white;  font-size: small;">Today Date</td>
+                                <td style="width: 120px; text-align: center; color: white;  font-size: small;">Now Time</td>
+                                <td style="width: 120px; text-align: center; color: white; font-size: x-small;">Next Draw Time</td>
+                                <td style="width: 120px; text-align: center; color: white;  font-size: small;">Time to Draw</td>
+                                <td style="width: 120px; text-align: center; color: white;  font-size: small;">MoreDraw</td>
+                                <td style="width: 120px; text-align: center; color: white;  font-size: small;">MoreHands</td>
+                            </tr>
+                            <tr>
+                                <td class="new header-content">{{users.userLoginid}}</td>
+                                <td class="new header-content">{{loggedInTerminalBalance.current_balance}}</td>
+                                <td  class="new header-content">{{today | date}}</td>
+                                <td class="new header-content">{{hour +':'+ minute + ':'+ second}}</td>
+                                <td class="new header-content">{{drawTimeList.end_time}}</td>
+                                <td class="new header-content">{{ leftHour + ':' + leftMinute + ':' + leftsecond}}</td>
+                                <td class="new" style="width: 120px; text-align: center;">
+                                    <select ng-model="selectAdvanceDraw.drawId" ng-change="getTotalBuyTicket(playInput)" class="m-10" style="height: 30px; width: 100px; background-color: white; border: 1px solid black; margin-top: 6px;color: red;font-weight: bold;">
+                                        <option style="font-weight: bold;" ng-repeat="option in advanceDrawTimeList" value="{{option.id}}">{{option.end_time |limitTo:5}}</option>
+                                        <option style="font-weight: bold;" value="all">ALL</option>
+                                        <option style="font-weight: bold;" value="now">NOW</option>
+                                    </select>
+                                </td>
+                                <td class="new" style="width: 120px; text-align: center;"><input type="tel" class="sm-div" ng-model="MoreHands" ng-click="onTextClick($event)" maxlength="3" ></td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+                <div class="col-2" style="padding:10px; padding-right: 90px;">
+                    <input type="button" value="Logout" style="height: 10 px; font-weight: bold;background-color: #d0a11e; padding: 5px;border-radius: 20%;" ng-click="logoutUserWithConfirmation($event);">
+                </div>
+            </div>
+            <div class="d-flex" style="padding-top: 5px;">
+                <div class="col-4" style="border: 1px solid black;text-align: center;"><b>TR:1</b></div>
+                <div class="col-4 d-flex" style="border: 1px solid black;text-align: center;">
+                    <div class="6" style="text-align: center; padding-left: 70px;"><button type="button" class="btn btn-light btn-sm mt-1" ng-click="displayJodi=true;displaySingle=false;selectedGame=1" ng-disabled="disableSubmitButton || showReport;" style="border: 1px solid black;">JODI</button></div>
+                    <div class="6" style="padding-left: 70px;"><button type="button" class="btn btn-light btn-sm mt-1" ng-click="displayJodi=false;displaySingle=true;selectedGame=2" ng-disabled="disableSubmitButton || showReport" style="border: 1px solid black;">SINGLE</button></div>
+                </div>
+                <div class="col-4" style="border: 1px solid black;text-align: center;"><b>WR:90</b></div>
+            </div>
+            <div  id="middle-div" ng-show="!showReport">
+                <div class="d-flex">
+                    <div class="col-9 left-div" style="width: 300px;padding-top: 5px;">
+                         <!-- JODI -->
+                        <table class=" table" ng-show="displayJodi">
+                            <tr ng-repeat="r in getRow(row) track by $index" ng-init="rowIndex = $index">
+                                <td class="td" ng-repeat="c in getCol(coloumn) track by $index" ng-init="columnIndex = $index">
+                                    <b style="font-weight: 900; font-size: large;">{{columnIndex==10 ? 'All-A' : rowIndex+''+columnIndex}}</b>
+                                    
+                                    <br><input type="tel" class="sm-div" ng-model="playInput[rowIndex][$index]" ng-keyup="verticallyHorizontallyPushValue(rowIndex,$index)" ng-click="onTextClick($event)" maxlength="3" ></td>
+                            </tr>
+                            
+                            <tr class="last-td">
+                                <td style="text-align: center;" ng-repeat="c in getCol(coloumn) track by $index">
+                                    <b style="font-weight: 900;">{{$index!=10?'All-B': 'LP'}}</b><br>
+                                    <input type="tel" ng-if="$index!=10" class="sm-div" ng-click="onTextClick($event)" ng-model="playInput[10][$index]" ng-keyup="verticallyHorizontallyPushValue(10,$index)" maxlength="3" >
+
+                                    <input type="tel" class="sm-div" ng-if="$index==10" ng-click="onTextClick($event)" data-ng-model="lpValue.lp" ng-change="generateNumberByLp(lpValue.lp)" maxlength="3" >
+                                </td>
+                            </tr>                     
+                        </table>
+
+
+                        <!-- single -->
+
+                        <table class="table" style="background-color: rgb(223, 213, 172);" ng-show="displaySingle">
+                            <tr>
+                                <td><br><br><h3>Aandar</h3></td>
+                                <td style="text-align: center; font-size: xx-large; font-weight: bold;">0<br><input type="tel" class="single-input-box" ng-click="onTextClick($event)" ng-model="secondLast[0]" maxlength="3" ></td>
+                                <td style="text-align: center; font-size: xx-large; font-weight: bold;">1<br><input type="tel" class="single-input-box" ng-click="onTextClick($event)" ng-model="secondLast[1]" maxlength="3" ></td>
+                                <td style="text-align: center; font-size: xx-large; font-weight: bold;">2<br><input type="tel" class="single-input-box" ng-click="onTextClick($event)" ng-model="secondLast[2]" maxlength="3" ></td>
+                                <td style="text-align: center; font-size: xx-large; font-weight: bold;">3<br><input type="tel" class="single-input-box" ng-click="onTextClick($event)"ng-model="secondLast[3]" maxlength="3" ></td>
+                                <td style="text-align: center; font-size: xx-large; font-weight: bold;">4<br><input type="tel" class="single-input-box" ng-click="onTextClick($event)" ng-model="secondLast[4]" maxlength="3" ></td>
+                                <td style="text-align: center; font-size: xx-large; font-weight: bold;">5<br><input type="tel" class="single-input-box" ng-click="onTextClick($event)" ng-model="secondLast[5]" maxlength="3" ></td>
+                                <td style="text-align: center; font-size: xx-large; font-weight: bold;">6<br><input type="tel" class="single-input-box" ng-click="onTextClick($event)" ng-model="secondLast[6]" maxlength="3" ></td>
+                                <td style="text-align: center; font-size: xx-large; font-weight: bold;">7<br><input type="tel" class="single-input-box" ng-click="onTextClick($event)" ng-model="secondLast[7]" maxlength="3" ></td>
+                                <td style="text-align: center; font-size: xx-large; font-weight: bold;">8<br><input type="tel" class="single-input-box" ng-click="onTextClick($event)" ng-model="secondLast[8]" maxlength="3" ></td>
+                                <td style="text-align: center; font-size: xx-large; font-weight: bold;">9<br><input type="tel" class="single-input-box" ng-click="onTextClick($event)" ng-model="secondLast[9]" maxlength="3" ></td>
+                            </tr>
+                            <tr>
+                                <td style="padding-top: 20px; padding-bottom: 20px;"><h3>Bahar </h3></td>
+                                <td style="text-align: center; padding-top: 20px; padding-bottom: 20px;"><input type="tel" class="single-input-box" ng-click="onTextClick($event)" ng-model="last[0]"  maxlength="3" ></td>
+                                <td style="text-align: center; padding-top: 20px; padding-bottom: 20px;"><input type="tel" class="single-input-box" ng-click="onTextClick($event)" ng-model="last[1]"  maxlength="3" ></td>
+                                <td style="text-align: center; padding-top: 20px; padding-bottom: 20px;"><input type="tel" class="single-input-box" ng-click="onTextClick($event)" ng-model="last[2]"  maxlength="3" ></td>
+                                <td style="text-align: center; padding-top: 20px; padding-bottom: 20px;"><input type="tel" class="single-input-box" ng-click="onTextClick($event)" ng-model="last[3]" maxlength="3" ></td>
+                                <td style="text-align: center; padding-top: 20px; padding-bottom: 20px;"><input type="tel" class="single-input-box" ng-click="onTextClick($event)" ng-model="last[4]" maxlength="3" ></td>
+                                <td style="text-align: center; padding-top: 20px; padding-bottom: 20px;"><input type="tel" class="single-input-box" ng-click="onTextClick($event)" ng-model="last[5]" maxlength="3" ></td>
+                                <td style="text-align: center; padding-top: 20px; padding-bottom: 20px;"><input type="tel" class="single-input-box" ng-click="onTextClick($event)" ng-model="last[6]"  maxlength="3" ></td>
+                                <td style="text-align: center; padding-top: 20px; padding-bottom: 20px;"><input type="tel" class="single-input-box" ng-click="onTextClick($event)" ng-model="last[7]" maxlength="3" ></td>
+                                <td style="text-align: center; padding-top: 20px; padding-bottom: 20px;"><input type="tel" class="single-input-box" ng-click="onTextClick($event)" ng-model="last[8]" maxlength="3" ></td>
+                                <td style="text-align: center; padding-top: 20px; padding-bottom: 20px;"><input type="tel" class="single-input-box" ng-click="onTextClick($event)" ng-model="last[9]" maxlength="3" ></td>
+                            </tr>
+                        </table>
+                        
+                    </div>
+                    <div class="col-3 right-div" style="padding-left: 0px; padding-right: 1px;">
+                        <div style="padding-top: 2px;">   
+                            <div class="d-flex">
+                                <div class="col-6" style="border: 1px solid black;"><b>Qty.</b></div>
+                                <div class="col-6" style="border: 1px solid black;"><b>Amount</b></div>
+                            </div>
+                            <div class="d-flex">
+                                <div class="col-6" style="border: 1px solid black;"><b>{{totalBoxSum}} &nbsp</b></div>
+                                <div class="col-6" style="border: 1px solid black;"><b>{{totalTicketBuy}}</b></div>
+                                
+                            </div> 
+                            <div id="time-div">
+                                <h3>{{winningValue.end_time|| 'XX'}}</h3>
+                            </div>
+
+                            <div class="d-flex pr-10">
+                                <div class="col">
+                                    <!-- <odometer value=winningValue.result_row>XX</odometer>
+                                    <odometer value=winningValue.result_col>XX</odometer> -->
+                                    <img ng-if="rollUpResult" src="img/rollup/roll_default.gif" height="80px" width="80px" alt="">
+                                    <img ng-if="rollUpResult" src="img/rollup/roll_default.gif" height="80px" width="80px" alt="">
+                                    <img ng-if="!rollUpResult" ng-src="img/rollup/{{winningValue.result_row}}.PNG" height="80px" width="80px" alt="">
+                                    <img ng-if="!rollUpResult" ng-src="img/rollup/{{winningValue.result_col}}.PNG" height="80px" width="80px" alt="">
+                                </div>
+                            </div>
+                            
+                            <div id="tab" style="padding-top: 10px;">
+                                <table>
+                                    <tr ng-repeat="r in getRow(resultTableRow) track by $index" ng-init="rowIndex = $index">
+                                        <td class="big">{{(todayResult[rowIndex*2].end_time |limitTo:5)}}</td>
+                                        <td class="small">{{todayResult[rowIndex*2].result_row!=null? (todayResult[rowIndex*2].result_row +''+ todayResult[rowIndex*2].result_col):' '}}</td>
+                                        <td class="big">{{(todayResult[rowIndex*2+1].end_time |limitTo:5)}}</td>
+                                        <td class="small">{{todayResult[rowIndex*2+1].result_row!=null? (todayResult[rowIndex*2+1].result_row +''+ todayResult[rowIndex*2+1].result_col) : ' '}}</td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>    
+                    </div>
+                </div>
+            </div>
+
+            <div style="padding-top: 3px; text-align: center;">
+                <div ng-include="'ng-views-template/report_terminal.html'" ng-show="showReport"></div>
+
+                <div class="d-flex lower-div" fxLayout="row" fxLayoutAlign="space-around start" style="height: 35px; padding-left: 170px;" >
+                    <input type="checkbox" style="height:20px;width:20px" ng-model="allowPrint">&nbsp;<img src="img/printer.png" width="28px" height="30px" alt="Print">
+                    <div style="padding-right:5px ;"><button type="button" class="btn btn-light btn-sm mt-1" ng-click="submitGameValues(playInput)" ng-disabled="disableSubmitButton || showReport" style="border: 2px solid black;height: 45px; width: 160px; padding-top: 5px; background-color: gold; color: #000; font-size: large; font-weight: bold;border-radius: 10%;">Submit</button></div>
+                    <div style="padding-right: 5px;"><button type="button" class="btn btn-light btn-sm mt-1"  ng-click="clearInputBox()" ng-disabled="showReport" style="border: 2px solid black;height: 45px; width: 160px; padding-top: 5px;background-color: rgb(173, 147, 29);  color: #000; font-size: large; font-weight: bold;border-radius: 10%;">Clear</button></div>
+                    <div style="padding-right: 5px;"><button type="button" class="btn btn-light btn-sm mt-1" ng-show="!showReport" ng-click="showReport=true" style="height: 45px; width: 160px;border: 2px solid black; padding-top: 5px; color: #000; font-size: large; font-weight: bold;border-radius: 10%;background-color: turquoise;">Report</button></div>
+                    <div style="padding-right: 5px;"><button type="button" class="btn btn-light btn-sm mt-1" ng-show="showReport" ng-click="showReport=false" style="height: 45px; width: 160px; padding-top: 5px;border: 2px solid black;color: #000;font-size: large;font-weight: bold;border-radius: 10%;background-color: palevioletred; ">Home</button></div>
+                    <div style="padding-right: 5px;"><a href="#!resultChart" type="button" target="_blank" class="btn btn-light btn-sm mt-1" style="border: 2px solid black;height: 45px; width: 160px; padding-top: px;color: #000;font-size: large;font-weight: bold;border-radius: 10%; background-color: palevioletred;">Chart</a></div>
+                </div>
+            </div>
+            <div style="height: 50px;"></div>
+
+            <div class="container" id="receipt-div" ng-show="false">
+                
+                <div id="print-div" style="font-weight: 700;font-size: smaller;width: 500px;">
+                    <h4 class="text-center">Rajshree</h4>
+                    
+                    <div class="d-flex flex-column bd-highlight">
+                        <div class="">Game Name: {{selectedGame==1? 'Jodi' : 'Single'}}</div>
+                        <div class="">Terminal: {{users.userLoginid}}</div>
+                        <div class="">Ticket id: <b>{{reportArray.barcode}} </b></div>
+                        <div class="">Draw Time: {{drawTimeList.end_time}}</div>
+                        <div class="">Ticket time {{reportArray.purchase_time}}</div>
+                        <div class="">Total point: {{totalPoint}}</div>
+                      </div>
+
+                    <hr style="border-top: dotted 1px;" />                                
+
+                    <div class="d-flex flex-wrap align-content-start" ng-if="inputDetails.length>0 && inputDetails[0].play_series_id==1">
+                        <div class="" ng-repeat="x in inputDetails">
+                            <u>{{x.row_num + '' + x.col_num + '-'}}</u>{{x.game_value}}&nbsp;
+                            
+                        </div>
+                    </div>  
+                    
+                    <div class="d-flex flex-wrap align-content-start" ng-if="inputDetails.length>0 && inputDetails[0].play_series_id==2">
+                            <h5 ng-if="inputDetails[0].val_one">Aandar</h5><br>
+                        <div class="" ng-repeat="x in inputDetails">
+                            <u>{{x.row_num + '-'}}</u>{{x.val_one}}&nbsp;
+                            
+                        </div>
+                        <br><br>
+
+                        <h4 ng-if="inputDetails[0].val_two">Bahar</h4><br>
+                        <div class="" ng-repeat="x in inputDetails">
+                            <u>{{x.col_num + '-'}}</u>{{x.val_two}}&nbsp;
+                            
+                        </div>
+                    </div>                        
+                    
+                    <hr style="border-top: dotted 1px;" />                       
+
+                    <div class="d-flex col-12">
+                        <angular-barcode ng-model="reportArray.barcode" bc-options="barcodeOilBill" bc-class="barcode" bc-type="img"></angular-barcode>
+                    </div>
+                    
+                </div>
+    
+
+        </div>
+        </div>
+
+
+        <div class="d-flex font-weight-bold" style="background-color:#ee315a;font-size:30px;color:white"> <marquee style="font-weight:1000">{{scrollingMsg.message}}</marquee></div>
+            </div>
+
+    </div>
