@@ -158,13 +158,13 @@
     
 </style>
 
-    <a href="#!" data-ng-show="users.person_category_id==0"><h1>Please Login</h1></a>
-    <div id="pagewrap"  data-ng-show="users.person_category_id==3" ng-init="showReport=false"> 
+    
+    <div id="pagewrap"  ng-init="showReport=false"> 
         <div class="cotainer" style="background-color:  rgb(208, 212, 182);" data-ng-init="displayJodi=true;displaySingle=false">
             <div class="d-flex " id="upper-div">
                 <!-- <div class="col-2 " id="upper-div" style="color: burlywood; text-align: right; padding-top: 10px;"><h4><b>Rajesri 10</b></h4></div>
                 <div class="col-3" id="upper-div" style="color: cornsilk; padding-top: 10px;"><b>Today : {{today | date}} {{hour +':'+ minute + ':'+ second}}</b> </div>
-                <div class="col-2 " id="upper-div"><a href="#!resultChart" type="button" target="_blank" class="m-10" style="height: 30px; width: 150px; background-color: rgb(207, 184, 55); border: 1px solid white; margin-top: 6px; color: #000; text-align: center;">Result Chart</a></div>
+                <div class="col-2 " id="upper-div"><a href="#!user" type="button" target="_blank" class="m-10" style="height: 30px; width: 150px; background-color: rgb(207, 184, 55); border: 1px solid white; margin-top: 6px; color: #000; text-align: center;">Result Chart</a></div>
                 <div class="col-2 " id="upper-div">Balance<input type="text" style="height: 30px; width: 150px; background-color: rgb(106, 228, 69); border: 1px solid black; margin-top: 6px;" ng-value="loggedInTerminalBalance.current_balance" ng-disabled="true"></div>
                 <div class="col-3" id="upper-div"><button type="button" class="btn-warning btn-sm mt-1" ng-click="logoutUserWithConfirmation($event);">Logout</button> </div> -->
                 <div class="col-10">
@@ -316,7 +316,7 @@
                     <div style="padding-right: 5px;"><button type="button" class="btn btn-light btn-sm mt-1"  ng-click="clearInputBox()" ng-disabled="showReport" style="border: 2px solid black;height: 45px; width: 160px; padding-top: 5px;background-color: rgb(173, 147, 29);  color: #000; font-size: large; font-weight: bold;border-radius: 10%;">Clear</button></div>
                     <div style="padding-right: 5px;"><button type="button" class="btn btn-light btn-sm mt-1" ng-show="!showReport" ng-click="showReport=true" style="height: 45px; width: 160px;border: 2px solid black; padding-top: 5px; color: #000; font-size: large; font-weight: bold;border-radius: 10%;background-color: turquoise;">Report</button></div>
                     <div style="padding-right: 5px;"><button type="button" class="btn btn-light btn-sm mt-1" ng-show="showReport" ng-click="showReport=false" style="height: 45px; width: 160px; padding-top: 5px;border: 2px solid black;color: #000;font-size: large;font-weight: bold;border-radius: 10%;background-color: palevioletred; ">Home</button></div>
-                    <div style="padding-right: 5px;"><a href="#!resultChart" type="button" target="_blank" class="btn btn-light btn-sm mt-1" style="border: 2px solid black;height: 45px; width: 160px; padding-top: px;color: #000;font-size: large;font-weight: bold;border-radius: 10%; background-color: palevioletred;">Chart</a></div>
+                    <div style="padding-right: 5px;"><a href="#!user" type="button" target="_blank" class="btn btn-light btn-sm mt-1" style="border: 2px solid black;height: 45px; width: 160px; padding-top: px;color: #000;font-size: large;font-weight: bold;border-radius: 10%; background-color: palevioletred;">Chart</a></div>
                 </div>
             </div>
             <div style="height: 50px;"></div>

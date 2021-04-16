@@ -5,10 +5,7 @@ app.config(function($routeProvider){
         templateUrl : "ng-views-template/front.html",
         controller: "PlayController"
     }).when("/user",{
-        templateUrl : "ng-views-template/user_view.html",
-        controller: "PlayController",
-    }).when("/resultChart",{
-        templateUrl : "ng-views-template/result_view.html"
+        templateUrl : "ng-views-template/user_view.html"
     }).when("/admin",{
         templateUrl : "ng-views-template/admin.html",
         controller: "adminController"
