@@ -20,7 +20,7 @@ app.controller("PayoutSettingCtrl", function ($scope,$http,$filter,$rootScope,da
         var tdp=angular.copy(twoDigitPayOut);
         var request = $http({
             method: "post",
-            url: api_url+"/v1/setGamePayout",
+            url: api_url+"/setGamePayout",
             dataType:JSON,
             data: {
                 twoDigitPayOut: tdp
@@ -44,7 +44,7 @@ app.controller("PayoutSettingCtrl", function ($scope,$http,$filter,$rootScope,da
     $scope.TwoDigitPayOut = [];
     var request = $http({
         method: "get",
-        url: api_url+"/v1/getPlaySeries",
+        url: api_url+"/getPlaySeries",
         dataType:JSON,
         data: {}
         ,headers: { 'Content-Type': 'application/x-www-form-urlencoded' }

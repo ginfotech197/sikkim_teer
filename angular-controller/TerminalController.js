@@ -22,7 +22,7 @@ app.controller("TerminalCtrl", function ($scope,$http,$filter,$rootScope,dateFil
 
     var request = $http({
         method: "get",
-        url: api_url+"/v1/getAllTerminals",
+        url: api_url+"/getAllTerminals",
         dataType:JSON,
         data: {}
         ,headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
@@ -45,7 +45,7 @@ app.controller("TerminalCtrl", function ($scope,$http,$filter,$rootScope,dateFil
         var stockist_id= terminal.stockist.id;
         var request = $http({
             method: "post",
-            url: api_url+"/v1/saveNewTerminal",
+            url: api_url+"/saveNewTerminal",
             dataType:JSON,
             data: {
                 terminal: master
@@ -111,7 +111,7 @@ app.controller("TerminalCtrl", function ($scope,$http,$filter,$rootScope,dateFil
     $scope.getInforcedStockist=function(){
         var request = $http({
             method: "get",
-            url: api_url+"/v1/getAllStockists",
+            url: api_url+"/getAllStockists",
             dataType:JSON,
             data: {}
             ,headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
@@ -147,7 +147,7 @@ app.controller("TerminalCtrl", function ($scope,$http,$filter,$rootScope,dateFil
         var master = terminal;
         var request = $http({
             method: "post",
-            url: api_url+"/v1/updateTerminalDetails",
+            url: api_url+"/updateTerminalDetails",
             dataType:JSON,
             data: {
                 terminal: master
@@ -180,7 +180,7 @@ app.controller("TerminalCtrl", function ($scope,$http,$filter,$rootScope,dateFil
     $scope.getNextUserId=function (serialNo,stockistId) {
         var request = $http({
             method: "post",
-            url: api_url+"/v1/selectNextTerminalId",
+            url: api_url+"/selectNextTerminalId",
             dataType:JSON,
             data: {
                 serialNo: serialNo
@@ -197,7 +197,7 @@ app.controller("TerminalCtrl", function ($scope,$http,$filter,$rootScope,dateFil
     $scope.getActiveTerminalList=function(){
         var request = $http({
             method: "get",
-            url: api_url+"/v1/getActiveTerminal",
+            url: api_url+"/getActiveTerminal",
             dataType:JSON,
             data: {}
             ,headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
@@ -219,7 +219,7 @@ app.controller("TerminalCtrl", function ($scope,$http,$filter,$rootScope,dateFil
         $mdDialog.show(confirm).then(function() {
             var request = $http({
                 method: "put",
-                url: api_url+"/v1/terminalForceLogout",
+                url: api_url+"/terminalForceLogout",
                 dataType:JSON,
                 data: {
                     id: terminal.id

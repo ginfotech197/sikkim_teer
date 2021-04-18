@@ -20,7 +20,7 @@ app.controller("HelpTerminalCtrl", function ($scope,$http,$filter,$rootScope,dat
       $scope.getTerminalList=function () {
         var request = $http({
             method: "get",
-            url: api_url+"/v1/getAllTerminals",
+            url: api_url+"/getAllTerminals",
             dataType:JSON,
             data: {}
             ,headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
@@ -35,7 +35,7 @@ app.controller("HelpTerminalCtrl", function ($scope,$http,$filter,$rootScope,dat
     $scope.getTime=function () {
         var request = $http({
             method: "get",
-            url: api_url+"/v1/selectMissedOutDrawTime",
+            url: api_url+"/selectMissedOutDrawTime",
             dataType:JSON,
             data: {}
             ,headers: { 'Content-Type': 'application/x-www-form-urlencoded' }

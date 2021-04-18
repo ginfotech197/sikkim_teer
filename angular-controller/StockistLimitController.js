@@ -21,7 +21,7 @@ app.controller("StockistLimitCtrl", function ($scope,$http,$filter,$rootScope,da
         var recharge_master_id = $scope.users.userId;
         var request = $http({
             method: "post",
-            url: api_url+"/v1/saveStockistRechargeData",
+            url: api_url+"/saveStockistRechargeData",
             dataType:JSON,
             data: {
                 stockist_id: stockist_id
@@ -53,7 +53,7 @@ app.controller("StockistLimitCtrl", function ($scope,$http,$filter,$rootScope,da
 
     var request = $http({
         method: "get",
-        url: api_url+"/v1/getAllStockists",
+        url: api_url+"/getAllStockists",
         dataType:JSON,
         data: {}
         ,headers: { 'Content-Type': 'application/x-www-form-urlencoded' }

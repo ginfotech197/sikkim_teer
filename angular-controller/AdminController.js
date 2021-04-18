@@ -4,7 +4,7 @@ app.controller('adminController', function($cookies,$scope,$q,md5,$mdDialog,$tim
     $scope.resetPassword=function(resetData){
         var request = $http({
             method: "post",
-            url: api_url+"/v1/resetAdminPassword",
+            url: api_url+"/resetAdminPassword",
             dataType:JSON,
             data: {
                 userId: $scope.users.userId,

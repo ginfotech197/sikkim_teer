@@ -47,7 +47,7 @@ app.controller('MainController', function($cookies,$scope,$q,$mdDialog,$timeout,
     $scope.getActiveTerminalBalance = function(terminalId){
         $http({
             method: 'post',
-            url: api_url+"/v1/getTerminalBalance",
+            url: api_url+"/getTerminalBalance",
             dataType:JSON,
             data: {
                 terminal_id: terminalId
@@ -109,7 +109,7 @@ app.controller('MainController', function($cookies,$scope,$q,$mdDialog,$timeout,
     $scope.getCurrentDrawTime = function(){
         $http({
             method: 'GET',
-            url: api_url+"/v1/getActiveDraw",
+            url: api_url+"/getActiveDraw",
             dataType:JSON,
             data: {},
             headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
@@ -161,7 +161,7 @@ app.controller('MainController', function($cookies,$scope,$q,$mdDialog,$timeout,
         $scope.testNew = $q.defer();
         $.ajax({
             type: "POST",
-            url: api_url+"/v1/generateToken",
+            url: api_url+"/generateToken",
             data: x,
             async:true,
             crossDomain: true,
@@ -187,7 +187,7 @@ app.controller('MainController', function($cookies,$scope,$q,$mdDialog,$timeout,
 
         $http({
             method: 'POST',
-            url: api_url+"/v1/login",
+            url: api_url+"/login",
             dataType: 'json',
             data: $scope.loginData,
             headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
@@ -274,7 +274,7 @@ app.controller('MainController', function($cookies,$scope,$q,$mdDialog,$timeout,
 
             var request = $http({
                 method: 'POST',
-                url: api_url+"/v1/logout",
+                url: api_url+"/logout",
                 dataType:JSON,
                 data: {
                     uid: $scope.users.userId,
@@ -305,7 +305,7 @@ app.controller('MainController', function($cookies,$scope,$q,$mdDialog,$timeout,
         $scope.getCurrentDrawTime();
         $http({
             method: 'GET',
-            url: api_url+"/v1/getServerTime",
+            url: api_url+"/getServerTime",
             dataType:JSON,
             data: {},
             headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
@@ -392,7 +392,7 @@ app.controller('MainController', function($cookies,$scope,$q,$mdDialog,$timeout,
     $scope.getResultOfToday = function(){
         $http({
             method: 'get',
-            url: api_url+"/v1/getTodayResult",
+            url: api_url+"/getTodayResult",
             dataType:JSON,
             data: {},
             headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
@@ -410,7 +410,7 @@ app.controller('MainController', function($cookies,$scope,$q,$mdDialog,$timeout,
         $scope.advanceDrawTimeList = [];
         $http({
             method: 'GET',
-            url: api_url+"/v1/getAdvanceDraws",
+            url: api_url+"/getAdvanceDraws",
             dataType:JSON,
             data: {},
             headers: { 'Content-Type': 'application/x-www-form-urlencoded' }

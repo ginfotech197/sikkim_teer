@@ -41,7 +41,7 @@ app.controller("EmergencyResultCtrl", function ($scope,$http,$filter,$rootScope,
     $scope.drawTimeList=function(){
         var request = $http({
             method: "get",
-            url: api_url+"/v1/selectMissedOutDrawTime",
+            url: api_url+"/selectMissedOutDrawTime",
             dataType:JSON,
             data: {}
             ,headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
@@ -72,7 +72,7 @@ app.controller("EmergencyResultCtrl", function ($scope,$http,$filter,$rootScope,
 
            var request = $http({
                method: "post",
-               url: api_url+"/v1/insertMissedOutResult",
+               url: api_url+"/insertMissedOutResult",
                dataType:JSON,
                data: {
                    drawId: draw_id
@@ -105,7 +105,7 @@ app.controller("EmergencyResultCtrl", function ($scope,$http,$filter,$rootScope,
 
         var request = $http({
             method: "post",
-            url: api_url+"/v1/activateCurrentDrawManually",
+            url: api_url+"/activateCurrentDrawManually",
             dataType:JSON,
             data: {
                 drawId: draw_id

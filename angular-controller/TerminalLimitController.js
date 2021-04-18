@@ -19,7 +19,7 @@ app.controller("TerminalLimitCtrl", function ($scope,$http,$filter,$rootScope,da
     $scope.getTerminalList=function () {
         var request = $http({
             method: "get",
-            url: api_url+"/v1/getAllTerminals",
+            url: api_url+"/getAllTerminals",
             dataType:JSON,
             data: {}
             ,headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
@@ -51,7 +51,7 @@ app.controller("TerminalLimitCtrl", function ($scope,$http,$filter,$rootScope,da
         var stockist_id=limit.terminal.stockist_id;
         var request = $http({
             method: "post",
-            url: api_url+"/v1/saveTerminalRechargeData",
+            url: api_url+"/saveTerminalRechargeData",
             dataType:JSON,
             data: {
                 terminal_id: terminal_id

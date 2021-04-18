@@ -162,46 +162,58 @@
     <div id="pagewrap"  ng-init="showReport=false"> 
         <div class="cotainer" style="background-color:  rgb(208, 212, 182);" data-ng-init="displayJodi=true;displaySingle=false">
             <div class="d-flex " id="upper-div">
-                <!-- <div class="col-2 " id="upper-div" style="color: burlywood; text-align: right; padding-top: 10px;"><h4><b>Rajesri 10</b></h4></div>
-                <div class="col-3" id="upper-div" style="color: cornsilk; padding-top: 10px;"><b>Today : {{today | date}} {{hour +':'+ minute + ':'+ second}}</b> </div>
-                <div class="col-2 " id="upper-div"><a href="#!user" type="button" target="_blank" class="m-10" style="height: 30px; width: 150px; background-color: rgb(207, 184, 55); border: 1px solid white; margin-top: 6px; color: #000; text-align: center;">Result Chart</a></div>
-                <div class="col-2 " id="upper-div">Balance<input type="text" style="height: 30px; width: 150px; background-color: rgb(106, 228, 69); border: 1px solid black; margin-top: 6px;" ng-value="loggedInTerminalBalance.current_balance" ng-disabled="true"></div>
-                <div class="col-3" id="upper-div"><button type="button" class="btn-warning btn-sm mt-1" ng-click="logoutUserWithConfirmation($event);">Logout</button> </div> -->
                 <div class="col-10">
                     <div>
                         <table >
                             <tr>
-                                <td style="width: 120px; text-align: center; color: white;  font-size: small;">UserName</td>
-                                <td style="width: 120px; text-align: center; color: white;  font-size: small;">Balance</td>
+                                <td style="width: 120px; text-align: center; color: white;  font-size: small;" colspan="2">sikkimteer.com</td>
                                 <td style="width: 120px; text-align: center; color: white;  font-size: small;">Today Date</td>
                                 <td style="width: 120px; text-align: center; color: white;  font-size: small;">Now Time</td>
                                 <td style="width: 120px; text-align: center; color: white; font-size: x-small;">Next Draw Time</td>
                                 <td style="width: 120px; text-align: center; color: white;  font-size: small;">Time to Draw</td>
-                                <td style="width: 120px; text-align: center; color: white;  font-size: small;">MoreDraw</td>
-                                <td style="width: 120px; text-align: center; color: white;  font-size: small;">MoreHands</td>
+                                <td style="width: 120px; text-align: center; color: white;  font-size: small;">CardNo & Pin</td>
+                                <td></td>
                             </tr>
                             <tr>
-                                <td class="new header-content">{{users.userLoginid}}</td>
-                                <td class="new header-content">{{loggedInTerminalBalance.current_balance}}</td>
+                                <td class="new header-content">
+                                    <div class="input-group input-group-sm">
+                                        <div class="input-group-prepend">
+                                          <span class="input-group-text">F/R</span>
+                                       </div>
+                                       <input type="text" class="form-control">
+                                    </div>
+                                </td>
+                                <td class="new header-content">
+                                    <div class="input-group input-group-sm">
+                                        <div class="input-group-prepend">
+                                          <span class="input-group-text">S/R</span>
+                                       </div>
+                                       <input type="text" class="form-control">
+                                    </div>
+                                </td>
                                 <td  class="new header-content">{{today | date}}</td>
                                 <td class="new header-content">{{hour +':'+ minute + ':'+ second}}</td>
                                 <td class="new header-content">{{drawTimeList.end_time}}</td>
                                 <td class="new header-content">{{ leftHour + ':' + leftMinute + ':' + leftsecond}}</td>
-                                <td class="new" style="width: 120px; text-align: center;">
-                                    <select ng-model="selectAdvanceDraw.drawId" ng-change="getTotalBuyTicket(playInput)" class="m-10" style="height: 30px; width: 100px; background-color: white; border: 1px solid black; margin-top: 6px;color: red;font-weight: bold;">
-                                        <option style="font-weight: bold;" ng-repeat="option in advanceDrawTimeList" value="{{option.id}}">{{option.end_time |limitTo:5}}</option>
-                                        <option style="font-weight: bold;" value="all">ALL</option>
-                                        <option style="font-weight: bold;" value="now">NOW</option>
-                                    </select>
+                                <td class="new" style="width: 400px;">
+                                    <div class="input-group" ng-show="true">
+                                        <input type="text" class="form-control" placeholder="Card no" ng-model="loginData.userId"  ng-click="onTextClick($event)">
+                                        <input type="password" class="form-control" placeholder="Pin" ng-model="loginData.password" ng-click="onTextClick($event)">
+                                        <div class="input-group-prepend">
+                                          <button class="btn btn-success" type="button" ng-click="validateUser()">Login</button>  
+                                        </div>
+                                    </div>
+                                    <div ng-show="false">
+                                        <input type="text" placeholder="Slip no">
+                                        <button class="btn btn-success" type="button" ng-click="logoutUserWithConfirmation($event);">Logout</button>
+                                    </div>
+
                                 </td>
-                                <td class="new" style="width: 120px; text-align: center;"><input type="tel" class="sm-div" ng-model="MoreHands" ng-click="onTextClick($event)" maxlength="3" ></td>
                             </tr>
                         </table>
                     </div>
                 </div>
-                <div class="col-2" style="padding:10px; padding-right: 90px;">
-                    <input type="button" value="Logout" style="height: 10 px; font-weight: bold;background-color: #d0a11e; padding: 5px;border-radius: 20%;" ng-click="logoutUserWithConfirmation($event);">
-                </div>
+
             </div>
             <div class="d-flex" style="padding-top: 5px;">
                 <div class="col-4" style="border: 1px solid black;text-align: center;"><b>TR:1</b></div>
@@ -211,9 +223,9 @@
                 </div>
                 <div class="col-4" style="border: 1px solid black;text-align: center;"><b>WR:90</b></div>
             </div>
-            <div  id="middle-div" ng-show="!showReport">
+            <div  id="middle-div">
                 <div class="d-flex">
-                    <div class="col-9 left-div" style="width: 300px;padding-top: 5px;">
+                    <div class="col left-div" style="width: 300px;padding-top: 5px;">
                          <!-- JODI -->
                         <table class=" table" ng-show="displayJodi">
                             <tr ng-repeat="r in getRow(row) track by $index" ng-init="rowIndex = $index">
@@ -265,44 +277,6 @@
                             </tr>
                         </table>
                         
-                    </div>
-                    <div class="col-3 right-div" style="padding-left: 0px; padding-right: 1px;">
-                        <div style="padding-top: 2px;">   
-                            <div class="d-flex">
-                                <div class="col-6" style="border: 1px solid black;"><b>Qty.</b></div>
-                                <div class="col-6" style="border: 1px solid black;"><b>Amount</b></div>
-                            </div>
-                            <div class="d-flex">
-                                <div class="col-6" style="border: 1px solid black;"><b>{{totalBoxSum}} &nbsp</b></div>
-                                <div class="col-6" style="border: 1px solid black;"><b>{{totalTicketBuy}}</b></div>
-                                
-                            </div> 
-                            <div id="time-div">
-                                <h3>{{winningValue.end_time|| 'XX'}}</h3>
-                            </div>
-
-                            <div class="d-flex pr-10">
-                                <div class="col">
-                                    <!-- <odometer value=winningValue.result_row>XX</odometer>
-                                    <odometer value=winningValue.result_col>XX</odometer> -->
-                                    <img ng-if="rollUpResult" src="img/rollup/roll_default.gif" height="80px" width="80px" alt="">
-                                    <img ng-if="rollUpResult" src="img/rollup/roll_default.gif" height="80px" width="80px" alt="">
-                                    <img ng-if="!rollUpResult" ng-src="img/rollup/{{winningValue.result_row}}.PNG" height="80px" width="80px" alt="">
-                                    <img ng-if="!rollUpResult" ng-src="img/rollup/{{winningValue.result_col}}.PNG" height="80px" width="80px" alt="">
-                                </div>
-                            </div>
-                            
-                            <div id="tab" style="padding-top: 10px;">
-                                <table>
-                                    <tr ng-repeat="r in getRow(resultTableRow) track by $index" ng-init="rowIndex = $index">
-                                        <td class="big">{{(todayResult[rowIndex*2].end_time |limitTo:5)}}</td>
-                                        <td class="small">{{todayResult[rowIndex*2].result_row!=null? (todayResult[rowIndex*2].result_row +''+ todayResult[rowIndex*2].result_col):' '}}</td>
-                                        <td class="big">{{(todayResult[rowIndex*2+1].end_time |limitTo:5)}}</td>
-                                        <td class="small">{{todayResult[rowIndex*2+1].result_row!=null? (todayResult[rowIndex*2+1].result_row +''+ todayResult[rowIndex*2+1].result_col) : ' '}}</td>
-                                    </tr>
-                                </table>
-                            </div>
-                        </div>    
                     </div>
                 </div>
             </div>

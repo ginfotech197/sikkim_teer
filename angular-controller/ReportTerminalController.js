@@ -50,7 +50,7 @@ app.controller("ReportTerminalCtrl", function ($scope,$http,$filter,$rootScope,d
 
         var request = $http({
             method: "post",
-            url: api_url+"/v1/terminalReportDetails",
+            url: api_url+"/terminalReportDetails",
             dataType:JSON,
             data: {
                 start_date: start_date
@@ -93,7 +93,7 @@ app.controller("ReportTerminalCtrl", function ($scope,$http,$filter,$rootScope,d
         if(gameNo==1){
             var request = $http({
                 method: "get",
-                url: api_url+"/v1/getAllDrawTimes",
+                url: api_url+"/getAllDrawTimes",
                 dataType:JSON,
                 data: {}
                 ,headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
@@ -104,7 +104,7 @@ app.controller("ReportTerminalCtrl", function ($scope,$http,$filter,$rootScope,d
         if(gameNo==2){
             var request = $http({
                 method: "post",
-                url: api_url+"/v1/get_card_draw_time",
+                url: api_url+"/get_card_draw_time",
                 data: {}
                 ,headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
             }).then(function(response){
@@ -135,7 +135,7 @@ app.controller("ReportTerminalCtrl", function ($scope,$http,$filter,$rootScope,d
         
         var request = $http({
             method: "post",
-            url: api_url+"/v1/barcodeReportFromTerminal",
+            url: api_url+"/barcodeReportFromTerminal",
             dataType:JSON,
             data: {
                 terminalId: $scope.users.userId
@@ -178,7 +178,7 @@ app.controller("ReportTerminalCtrl", function ($scope,$http,$filter,$rootScope,d
         $scope.target=target;
         var request = $http({
             method: "post",
-            url: api_url+"/v1/getBarcodeInputDetails",
+            url: api_url+"/getBarcodeInputDetails",
             data: {
                 barcode: barcode
             }
@@ -200,7 +200,7 @@ app.controller("ReportTerminalCtrl", function ($scope,$http,$filter,$rootScope,d
         var request = $http({
             method: "post",
             dataType:JSON,
-            url: api_url+"/v1/claimBarcodeManually",
+            url: api_url+"/claimBarcodeManually",
             data: {
                 playMasterId: barcodeDetails.play_master_id
                 ,gameId:game_id
@@ -224,7 +224,7 @@ app.controller("ReportTerminalCtrl", function ($scope,$http,$filter,$rootScope,d
         var request = $http({
             method: "patch",
             dataType:JSON,
-            url: api_url+"/v1/cancelTicket",
+            url: api_url+"/cancelTicket",
             data: {
                 ticketId:  cancelTicketId
             }

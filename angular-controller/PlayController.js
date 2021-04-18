@@ -91,7 +91,7 @@ app.controller('PlayController', function($cookies,$scope,$rootScope,$q,md5,$mdD
     $scope.getAllSeriesName = function(){
         $http({
             method: 'GET',
-            url: api_url+"/v1/getPlaySeries",
+            url: api_url+"/getPlaySeries",
             dataType:JSON,
             data: {},
             headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
@@ -105,7 +105,7 @@ app.controller('PlayController', function($cookies,$scope,$rootScope,$q,md5,$mdD
         $scope.rollUpResult = true;
         $http({
             method: 'GET',
-            url: api_url+"/v1/getPreviousResult",
+            url: api_url+"/getPreviousResult",
             dataType:JSON,
             data: {},
             headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
@@ -127,7 +127,7 @@ app.controller('PlayController', function($cookies,$scope,$rootScope,$q,md5,$mdD
         var dt=$scope.changeDateFormat(searchDate);
         $http({
             method: 'post',
-            url: api_url+"/v1/getResultsByDate",
+            url: api_url+"/getResultsByDate",
             dataType:JSON,
             data: {
                 result_date: dt
@@ -174,7 +174,7 @@ app.controller('PlayController', function($cookies,$scope,$rootScope,$q,md5,$mdD
     $scope.getScrollingMessage = function(){
         $http({
             method: 'GET',
-            url: api_url+"/v1/getMessage",
+            url: api_url+"/getMessage",
             dataType:JSON,
             data: {},
             headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
@@ -189,7 +189,7 @@ app.controller('PlayController', function($cookies,$scope,$rootScope,$q,md5,$mdD
     $scope.getNewDraw = function(){
         $http({
             method: 'GET',
-            url: api_url+"/v1/getNextDrawNumber",
+            url: api_url+"/getNextDrawNumber",
             dataType:JSON,
             data: {},
             headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
@@ -395,7 +395,7 @@ app.controller('PlayController', function($cookies,$scope,$rootScope,$q,md5,$mdD
         
         var request = $http({
             method: 'POST',
-            url: api_url+"/v1/saveGameInputDetails",
+            url: api_url+"/saveGameInputDetails",
             dataType:JSON,
             data: {
                 userId: userId,

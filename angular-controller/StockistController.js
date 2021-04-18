@@ -18,7 +18,7 @@ app.controller("StockistCtrl", function ($scope,$http,$filter,$rootScope,dateFil
 
     var request = $http({
         method: 'get',
-        url: api_url+"/v1/getAllStockists",
+        url: api_url+"/getAllStockists",
         dataType:JSON,
         data: {}
         ,headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
@@ -30,7 +30,7 @@ app.controller("StockistCtrl", function ($scope,$http,$filter,$rootScope,dateFil
     $scope.saveStockistData=function (stockist) {
         var request = $http({
             method: 'POST',
-            url: api_url+"/v1/saveNewStockist",
+            url: api_url+"/saveNewStockist",
             dataType:JSON,
             data: {
                 stockist: stockist
@@ -103,7 +103,7 @@ app.controller("StockistCtrl", function ($scope,$http,$filter,$rootScope,dateFil
         $scope.master.id = id;
         var request = $http({
             method: 'POST',
-            url: api_url+"/v1/updateStockistDetails",
+            url: api_url+"/updateStockistDetails",
             dataType:JSON,
             data: {
                 stockist: $scope.master
@@ -134,7 +134,7 @@ app.controller("StockistCtrl", function ($scope,$http,$filter,$rootScope,dateFil
     $scope.getNextUserId=function () {
         var request = $http({
             method: 'get',
-            url: api_url+"/v1/selectNextStockistId",
+            url: api_url+"/selectNextStockistId",
             dataType:JSON,
             data: {}
             ,headers: { 'Content-Type': 'application/x-www-form-urlencoded' }

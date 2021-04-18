@@ -3,9 +3,10 @@ app.config(function($routeProvider){
     $routeProvider.
     when("/",{
         templateUrl : "ng-views-template/front.html",
-        controller: "PlayController"
+        controller: "MainController"
     }).when("/user",{
-        templateUrl : "ng-views-template/user_view.html"
+        templateUrl : "ng-views-template/user_view.html",
+        controller: "PlayController"
     }).when("/admin",{
         templateUrl : "ng-views-template/admin.html",
         controller: "adminController"

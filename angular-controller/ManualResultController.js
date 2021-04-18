@@ -24,7 +24,7 @@ app.controller("ManualResultCtrl", function ($scope,$http,$filter,$rootScope,dat
     $scope.getPlaySeries=function () {
         var request = $http({
             method: "get",
-            url: api_url+"/v1/getPlaySeries",
+            url: api_url+"/getPlaySeries",
             dataType:JSON,
             data: {}
             ,headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
@@ -39,7 +39,7 @@ app.controller("ManualResultCtrl", function ($scope,$http,$filter,$rootScope,dat
         var request = $http({
             method: "get",
             dataType:JSON,
-            url: api_url+"/v1/getAllDrawTimes",
+            url: api_url+"/getAllDrawTimes",
             data: {}
             ,headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
         }).then(function(response){
@@ -51,7 +51,7 @@ app.controller("ManualResultCtrl", function ($scope,$http,$filter,$rootScope,dat
     $scope.getDigitDrawTime=function () {
         var request = $http({
             method: "get",
-            url: api_url+"/v1/getDrawTimeForManualResult",
+            url: api_url+"/getDrawTimeForManualResult",
             dataType:JSON,
             data: {}
             ,headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
@@ -67,7 +67,7 @@ app.controller("ManualResultCtrl", function ($scope,$http,$filter,$rootScope,dat
     $scope.getEditableManual=function () {
         var request = $http({
             method: "get",
-            url: api_url+"/v1/getLastInsertedManualResult",
+            url: api_url+"/getLastInsertedManualResult",
             dataType:JSON,
             data: {}
             ,headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
@@ -111,7 +111,7 @@ app.controller("ManualResultCtrl", function ($scope,$http,$filter,$rootScope,dat
        
         var request = $http({
             method: "post",
-            url: api_url+"/v1/saveManualResult",
+            url: api_url+"/saveManualResult",
             dataType:JSON,
             data: {
                 master: master
@@ -165,7 +165,7 @@ app.controller("ManualResultCtrl", function ($scope,$http,$filter,$rootScope,dat
        
         var request = $http({
             method: "post",
-            url: api_url+"/v1/updateCurrentManual",
+            url: api_url+"/updateCurrentManual",
             dataType:JSON,
             data: {
                 master: master
@@ -193,7 +193,7 @@ app.controller("ManualResultCtrl", function ($scope,$http,$filter,$rootScope,dat
     $scope.getInputTotalDrawAndGameWise=function(drawId){
         var request = $http({
             method: "post",
-            url: api_url+"/v1/getTotalBoxInput",
+            url: api_url+"/getTotalBoxInput",
             dataType:JSON,
             data: {
                   draw_id: drawId

@@ -24,7 +24,7 @@ app.controller("BarcodeReportCtrl", function ($scope,$http,$filter,$rootScope,da
         var request = $http({
             method: "get",
             dataType:JSON,
-            url: api_url+"/v1/getAllTerminals",
+            url: api_url+"/getAllTerminals",
             data: {}
             ,headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
         }).then(function(response){
@@ -74,7 +74,7 @@ app.controller("BarcodeReportCtrl", function ($scope,$http,$filter,$rootScope,da
                 var request = $http({
                     method: "get",
                     dataType:JSON,
-                    url: api_url+"/v1/getAllDrawTimes",
+                    url: api_url+"/getAllDrawTimes",
                     data: {}
                     ,headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
                 }).then(function(response){
@@ -104,7 +104,7 @@ app.controller("BarcodeReportCtrl", function ($scope,$http,$filter,$rootScope,da
         var request = $http({
             method: "post",
             dataType:JSON,
-            url: api_url+"/v1/getAllBarcodeReportByDate",
+            url: api_url+"/getAllBarcodeReportByDate",
             data: {
                 start_date: start_date
             }
@@ -135,7 +135,7 @@ app.controller("BarcodeReportCtrl", function ($scope,$http,$filter,$rootScope,da
         $scope.target=target;
         var request = $http({
             method: "post",
-            url: api_url+"/v1/getBarcodeInputDetails",
+            url: api_url+"/getBarcodeInputDetails",
             data: {
                 barcode: barcode
             }
@@ -158,7 +158,7 @@ app.controller("BarcodeReportCtrl", function ($scope,$http,$filter,$rootScope,da
         var request = $http({
             method: "post",
             dataType:JSON,
-            url: api_url+"/v1/claimBarcodeManually",
+            url: api_url+"/claimBarcodeManually",
             data: {
                 playMasterId: barcodeDetails.play_master_id
                 ,gameId:game_id

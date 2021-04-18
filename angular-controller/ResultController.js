@@ -25,7 +25,7 @@ app.controller("ResultCtrl", function ($scope,$http,$filter,$rootScope,dateFilte
     $scope.getPlaySeriesList=function(){
         var request = $http({
             method: "get",
-            url: api_url+"/v1/getPlaySeries",
+            url: api_url+"/getPlaySeries",
             dataType:JSON,
             data: {},
             headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
@@ -44,7 +44,7 @@ app.controller("ResultCtrl", function ($scope,$http,$filter,$rootScope,dateFilte
 		var dt=$scope.changeDateFormat(searchDate);
         var request = $http({
             method: "post",
-            url: api_url+"/v1/getResultsByDate",
+            url: api_url+"/getResultsByDate",
             dataType:JSON,
             data: {
             	result_date: dt
@@ -65,7 +65,7 @@ app.controller("ResultCtrl", function ($scope,$http,$filter,$rootScope,dateFilte
     $scope.submitNewMessage=function(message){
         var request = $http({
             method: "post",
-            url: api_url+"/v1/addNewMessage",
+            url: api_url+"/addNewMessage",
             dataType:JSON,
             data: {
                 msg: message

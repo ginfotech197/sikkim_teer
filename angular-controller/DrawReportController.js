@@ -29,7 +29,7 @@ app.controller("DrawReportCtrl", function ($scope,$http,$filter,$rootScope,dateF
         var request = $http({
             method: "get",
             dataType:JSON,
-            url: api_url+"/v1/getPlaySeries",
+            url: api_url+"/getPlaySeries",
             data: {}
             ,headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
         }).then(function(response){
@@ -51,7 +51,7 @@ app.controller("DrawReportCtrl", function ($scope,$http,$filter,$rootScope,dateF
         var request = $http({
             method: "post",
             dataType:JSON,
-            url: api_url+"/v1/drawWiseReport",
+            url: api_url+"/drawWiseReport",
             data: {
                 start_date: start_date,
                 series_id: select_game

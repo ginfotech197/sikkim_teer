@@ -54,7 +54,7 @@ app.controller("CustomerSaleReportCtrl", function ($scope,$http,$filter,$rootSco
         }
         var request = $http({
             method: "post",
-            url: api_url+"/v1/getTerminalTotalSaleReport",
+            url: api_url+"/getTerminalTotalSaleReport",
             dataType:JSON,
             data: {
                 start_date: start_date
@@ -134,7 +134,7 @@ app.controller("CustomerSaleReportCtrl", function ($scope,$http,$filter,$rootSco
         var request = $http({
             method: "post",
             dataType:JSON,
-            url: api_url+"/v1/insert_claimed_barcode_details",
+            url: api_url+"/insert_claimed_barcode_details",
             data: {
                 barcode: barcodeDetails.barcode
                 ,game_id:game_id
@@ -155,7 +155,7 @@ app.controller("CustomerSaleReportCtrl", function ($scope,$http,$filter,$rootSco
         var request = $http({
             method: "get",
             dataType:JSON,
-            url: api_url+"/v1/getAllTerminals",
+            url: api_url+"/getAllTerminals",
             data: {}
             ,headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
         }).then(function(response){
@@ -178,7 +178,7 @@ app.controller("CustomerSaleReportCtrl", function ($scope,$http,$filter,$rootSco
     $scope.getStockistList=function () {
         var request = $http({
             method: "get",
-            url: api_url+"/v1/getAllStockists",
+            url: api_url+"/getAllStockists",
             dataType:JSON,
             data: {}
             ,headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
