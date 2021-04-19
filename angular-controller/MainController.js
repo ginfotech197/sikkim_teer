@@ -9,14 +9,16 @@ app.controller('MainController', function($cookies,$scope,$q,$mdDialog,$timeout,
     $scope.loggedInTerminalBalance = {};
 
     $scope.loginDetails={};
-    $scope.loginDetails.person={};
+    $scope.loginDetails.data={};
+    $scope.loginDetails.userType={};
+    $scope.loginDetails.userType.typeID=0;
     $scope.loginDetails.isLoggedIn=false;
 
     $scope.setUserData = function(data){
         $scope.users.person_name = data.person.people_name;
         $scope.users.uuid = data.person.uuid;
         $scope.users.person_category_id = data.person.person_category_id;
-        $scope.users.userId = data.person.id;
+        $scope.users.userID = data.person.id;
         $scope.users.userLoginid = data.person.user_id;
     };
 
@@ -25,7 +27,7 @@ app.controller('MainController', function($cookies,$scope,$q,$mdDialog,$timeout,
         $scope.users.person_name="";
         $scope.users.uuid="";
         $scope.users.person_category_id=0;
-        $scope.users.userId=0;
+        $scope.users.userID=0;
         $scope.users.userLoginid= '';
     
         $scope.loginDetails={};
@@ -63,11 +65,27 @@ app.controller('MainController', function($cookies,$scope,$q,$mdDialog,$timeout,
 
     //using local storage
      $scope.users={};
-     $scope.users.person_name=$scope.loginDetails.person.people_name || '';
-     $scope.users.uuid=$scope.loginDetails.person.uuid || '';
-     $scope.users.person_category_id=$scope.loginDetails.person.person_category_id || 0;
-     $scope.users.userId=$scope.loginDetails.person.id || 0;
-     $scope.users.userLoginid = $scope.loginDetails.person.user_id || '';
+     // $scope.users.person_name=$scope.loginDetails.person.people_name || '';
+     // $scope.users.uuid=$scope.loginDetails.person.uuid || '';
+     // $scope.users.person_category_id=$scope.loginDetails.person.person_category_id || 0;
+     // $scope.users.userID=$scope.loginDetails.person.id || 0;
+     // $scope.users.userLoginid = $scope.loginDetails.person.user_id || '';
+
+    // $scope.users.person_name=$scope.loginDetails.data.userName || '';
+    // $scope.users.user_type_id = $scope.loginDetails.data.userType.typeID || 0;
+    // $scope.users.userID = $scope.loginDetails.ID || 0;
+    // $scope.users.userLoginid= $scope.loginDetails.userID || '';
+
+     console.log('login details', $scope.loginDetails);
+     console.log(localStorageService.get('loginData'));
+     if(localStorageService.get('loginData')){
+         $scope.loginDetails = localStorageService.get('loginData').data;
+         $scope.users.person_name=$scope.loginDetails.user.userName || '';
+         $scope.users.user_type_id = $scope.loginDetails.user.userType.typeID || 0;
+         $scope.users.userID = $scope.loginDetails.user.ID || 0;
+         $scope.users.userLoginid= $scope.loginDetails.user.userID || '';
+     }
+
 
      try {
         $scope.loginDetails=localStorageService.get('loginData') || $scope.loginDetails;
@@ -116,6 +134,7 @@ app.controller('MainController', function($cookies,$scope,$q,$mdDialog,$timeout,
         }).then(function (response){
             $scope.drawTimeList = response.data;
             $scope.drawTimeObj = {};
+            console.log('draw time', $scope.drawTimeList);
 
             // CONVERT DRAW TIME TO MILLISECOND//
             $scope.dateArray = $scope.drawTimeList.end_time.split(":");
@@ -180,7 +199,10 @@ app.controller('MainController', function($cookies,$scope,$q,$mdDialog,$timeout,
 
 
     //function for validating  a user after login
-
+    // console.log('localData Storage',localStorageService.get('loginData'));
+    // console.log('loginDetails',$scope.loginDetails );
+    // $auth.setToken($scope.loginDetails.token);
+    // authFact.setAccessToken($scope.loginDetails.token);
     $scope.validateUser = function(){
         $scope.loginDefer = $q.defer(); // This also creates an instance of promise
         //$scope.publish(); // This is our async function call
@@ -189,21 +211,39 @@ app.controller('MainController', function($cookies,$scope,$q,$mdDialog,$timeout,
             method: 'POST',
             url: api_url+"/login",
             dataType: 'json',
-            // data: $scope.loginData,
-            data: {userId : '510501',password : '12345'},
-            headers: { 'Content-Type': 'application/x-www-form-urlencoded','X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content') }
+            data: $scope.loginData,
+            // data: {userID : '510501',password : '12345'},
+            // headers: { 'Content-Type': 'application/x-www-form-urlencoded','X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content') }
         }).then(function (response){
-            if(response.data.success==true){
+            if(response.status === 200 && response.data.success === 1){
                 $scope.loginDefer.resolve(response.data);
+                $scope.loginDetails = response.data.data.user;
+                localStorageService.remove('loginData');
+                console.log('loginDetails', response);
+
+                $scope.users.person_name=$scope.loginDetails.userName;
+                $scope.users.user_type_id = $scope.loginDetails.userType.typeID;
+                $scope.users.userID = $scope.loginDetails.ID;
+                $scope.users.userLoginid= $scope.loginDetails.userID;
+
+                console.log($scope.users);
+                // authFact.setAccessToken($scope.token);
+                $auth.setToken(response.data.data.token);
+                authFact.setAccessToken(response.data.data.token);
+                localStorageService.set('loginData', $scope.loginDetails);
                 $scope.loginError="";
+                console.log('response', response);
+                console.log('login data', $scope.loginDetails);
+
+                $scope.loggedInTerminalBalance = response.data.StockistToTerminal;
             }else{
                 toaster.pop('warning',response.data.msg);
                 $scope.users.person_name="";
                 $scope.users.uuid="";
                 $scope.users.person_category_id = 0;
-                $scope.users.userId = 0;
+                $scope.users.userID = 0;
                 $scope.users.userLoginid= '';
-                localStorageService.set('loginData', ' ');
+                localStorageService.set('loginData', null);
             }
         },function (error){
 
@@ -212,6 +252,7 @@ app.controller('MainController', function($cookies,$scope,$q,$mdDialog,$timeout,
             localStorageService.set('loginData', data);
             $scope.setUserData(data);
             $scope.loginDetails=data;
+            console.log($scope.data);
             $scope.token = $scope.loginDetails.person.uuid;
             $auth.setToken($scope.token);
             authFact.setAccessToken($scope.token);
@@ -264,6 +305,8 @@ app.controller('MainController', function($cookies,$scope,$q,$mdDialog,$timeout,
 
 
     $scope.logoutUserWithConfirmation = function(event) {
+
+        // localStorageService.remove('loginData');
         var confirm = $mdDialog.confirm()
             .title('Are you sure to Logout?')
             .textContent('Record will be deleted permanently.')
@@ -272,19 +315,21 @@ app.controller('MainController', function($cookies,$scope,$q,$mdDialog,$timeout,
             .ok('Yes')
             .cancel('No');
         $mdDialog.show(confirm).then(function() {
+            $scope.loginDetails = null;
 
             var request = $http({
                 method: 'POST',
                 url: api_url+"/logout",
                 dataType:JSON,
                 data: {
-                    uid: $scope.users.userId,
+                    uid: $scope.users.userID,
                     userCategoryId: $scope.users.person_category_id
                 },
                 headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
             }).then(function(response){
                 $scope.unsetUserData();                
                 authFact.unsetAccessToken();
+                localStorageService.remove('loginData');
              });
           
         }, function() {

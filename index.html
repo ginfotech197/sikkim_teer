@@ -34,8 +34,8 @@
 <body ng-app="myApp">
 <div ng-controller="MainController">
   <section class="menu cid-rbmbAelA8q" once="menu" id="menu1-0"> 
-    <div ng-include="'ng-menus/admin_menu.html'" ng-show="loginDetails.isLoggedIn==true && loginDetails.person.person_category_id==1"></div>
-    <div ng-include="'ng-menus/stockist_menu.html'" ng-show="loginDetails.isLoggedIn==true && loginDetails.person.person_category_id==4"></div>
+<!--    <div ng-include="'ng-menus/admin_menu.html'" ng-show="loginDetails.userID!=null && loginDetails.userType.typeID==1"></div>-->
+<!--    <div ng-include="'ng-menus/stockist_menu.html'" ng-show="loginDetails.userID!=null && loginDetails.userType.typeID==3"></div>-->
   </section>
 
     <toaster-container toaster-options="{'time-out': 5000}"></toaster-container>

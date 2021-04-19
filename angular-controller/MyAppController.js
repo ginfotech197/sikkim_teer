@@ -24,7 +24,7 @@ app.config(['$httpProvider', function($httpProvider) {
 //local storage configuration
 app.config(function (localStorageServiceProvider) {
     localStorageServiceProvider
-        .setPrefix('rajshree10');
+        .setPrefix('sikkimTeer');
 });
 
 

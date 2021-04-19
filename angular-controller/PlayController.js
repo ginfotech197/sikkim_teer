@@ -274,6 +274,7 @@ app.controller('PlayController', function($cookies,$scope,$rootScope,$q,md5,$mdD
 
             $scope.totalBoxSum=sum;
             $scope.totalTicketBuy=$scope.totalBoxSum * $scope.ticketPrice;
+            console.log('selected game 1');
 
         }else if($scope.selectedGame==2){
             // single
@@ -294,6 +295,7 @@ app.controller('PlayController', function($cookies,$scope,$rootScope,$q,md5,$mdD
             }
             $scope.totalBoxSum=sum;
             $scope.totalTicketBuy=$scope.totalBoxSum * $scope.ticketPrice;
+            console.log('selected game 2');
         }
         if($scope.selectAdvanceDraw.drawId =='all'){
             $scope.totalBoxSum = $scope.totalBoxSum * ($scope.advanceDrawTimeList.length);
@@ -324,7 +326,7 @@ app.controller('PlayController', function($cookies,$scope,$rootScope,$q,md5,$mdD
             drawToPlay.push($scope.drawTimeList);
         }
         $scope.disableSubmitButton = true;
-        var userId = $scope.users.userId;
+        var userId = $scope.users.userID;
         if($scope.drawTimeList!= undefined){
             var drawId  = $scope.drawTimeList.id;
         }else{
@@ -332,15 +334,16 @@ app.controller('PlayController', function($cookies,$scope,$rootScope,$q,md5,$mdD
             $scope.disableSubmitButton = false;
             return;
         }
-        if(!$scope.users.userId){
+        if(!$scope.users.userID){
             var alertTitle = 'Please login';
             var alertDescription ="";
             $scope.showAlert(this.ev,alertTitle,alertDescription);
             $scope.disableSubmitButton = false;
+            console.log('userID', userID);
             return;
         }
         var masterData=[];
-        if($scope.selectedGame == 1){
+        if($scope.selectedGame === 1){
             for(var i=0;i<10;i++){
                 for(var j=0;j<10;j++){
                     if($scope.playInput[i][j]!=undefined){
@@ -348,7 +351,8 @@ app.controller('PlayController', function($cookies,$scope,$rootScope,$q,md5,$mdD
                     }
                 }
             }
-        }else if($scope.selectedGame == 2){  
+            console.log('selected game 1 crossed');
+        }else if($scope.selectedGame === 2){
             var valOne=0,valTwo=0,row,col;
             for(var i=0;i<10;i++){
                 row = i;col = i;
@@ -365,10 +369,13 @@ app.controller('PlayController', function($cookies,$scope,$rootScope,$q,md5,$mdD
                 }                   
             }
         }
+        // console.log('selected game crossed');
         
         if(masterData.length == 0){
+            // console.log('masterData');
             var alertTitle = 'Input is not valid';
             var alertDescription ="";
+            console.log('error on masterData');
             $scope.showAlert(this.ev,alertTitle,alertDescription);
             $scope.disableSubmitButton = false;
             return;
@@ -376,11 +383,12 @@ app.controller('PlayController', function($cookies,$scope,$rootScope,$q,md5,$mdD
         if($scope.leftHour==0 && $scope.leftMinute==0 && $scope.leftsecond<=30){
             var alertTitle = 'Draw closed';
             var alertDescription ="";
+            console.log('error on draw closed');
             $scope.showAlert(this.ev,alertTitle,alertDescription);
             $scope.disableSubmitButton = false;
             return;
         }
-               
+               console.log($scope.loggedInTerminalBalance);
         var balance=$scope.loggedInTerminalBalance.current_balance;
         
         var purchasedTicket=$rootScope.roundNumber($scope.totalTicketBuy,2);
