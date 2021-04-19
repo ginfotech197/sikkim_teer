@@ -189,8 +189,9 @@ app.controller('MainController', function($cookies,$scope,$q,$mdDialog,$timeout,
             method: 'POST',
             url: api_url+"/login",
             dataType: 'json',
-            data: $scope.loginData,
-            headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
+            // data: $scope.loginData,
+            data: {userId : '510501',password : '12345'},
+            headers: { 'Content-Type': 'application/x-www-form-urlencoded','X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content') }
         }).then(function (response){
             if(response.data.success==true){
                 $scope.loginDefer.resolve(response.data);
