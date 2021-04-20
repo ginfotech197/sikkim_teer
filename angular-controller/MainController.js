@@ -18,7 +18,7 @@ app.controller('MainController', function($cookies,$scope,$q,$mdDialog,$timeout,
         console.log('setUserData',data);
         $scope.users.user_name = data.user_name;
         $scope.users.user_type_id = data.user_type.type_id;
-        $scope.users.id = data.ID;
+        $scope.users.id = data.id;
         $scope.users.userId = data.user_id;
     };
 
@@ -227,11 +227,12 @@ app.controller('MainController', function($cookies,$scope,$q,$mdDialog,$timeout,
 
         });
         $scope.loginDefer.promise.then(function(data){
-            console.log('data',data);
+            console.log('data',data.data.token);
             localStorageService.set('loginData', data);
             $scope.setUserData(data.data.user);
             $scope.loginDetails=data;
-            $scope.token = data.token;
+            console.log($scope.users);
+            $scope.token = data.data.token;
             $auth.setToken($scope.token);
             authFact.setAccessToken($scope.token);
             // $scope.getActiveTerminalBalance($scope.loginDetails.person.id);

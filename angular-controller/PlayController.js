@@ -311,7 +311,19 @@ app.controller('PlayController', function($cookies,$scope,$rootScope,$q,md5,$mdD
     $scope.selectAdvanceDraw = {'drawId':'now'};
 
     $scope.allowPrint = false;
+    $scope.slip_no = null;
+
+    // $scope.setSlipNumber = function(data){
+    //     // console.log('function working',test);
+    //     $scope.slip_no = data;
+    // }
     $scope.submitGameValues=function () {
+        if($scope.slip_no === null){
+            var alertTitle = 'Please enter slip number';
+            var alertDescription ="";
+            $scope.showAlert(this.ev,alertTitle,alertDescription);
+            return;
+        }
         var drawToPlay = [];
         if($scope.selectAdvanceDraw.drawId!=''){
             if($scope.selectAdvanceDraw.drawId =='all'){
@@ -326,7 +338,7 @@ app.controller('PlayController', function($cookies,$scope,$rootScope,$q,md5,$mdD
             drawToPlay.push($scope.drawTimeList);
         }
         $scope.disableSubmitButton = true;
-        var userId = $scope.users.userID;
+        var user_id = $scope.users.id;
         if($scope.drawTimeList!= undefined){
             var drawId  = $scope.drawTimeList.id;
         }else{
@@ -334,12 +346,12 @@ app.controller('PlayController', function($cookies,$scope,$rootScope,$q,md5,$mdD
             $scope.disableSubmitButton = false;
             return;
         }
-        if(!$scope.users.userID){
+        if(!$scope.users.user_id){
             var alertTitle = 'Please login';
             var alertDescription ="";
             $scope.showAlert(this.ev,alertTitle,alertDescription);
             $scope.disableSubmitButton = false;
-            console.log('userID', userID);
+            console.log('user_id', user_id);
             return;
         }
         var masterData=[];
@@ -351,7 +363,6 @@ app.controller('PlayController', function($cookies,$scope,$rootScope,$q,md5,$mdD
                     }
                 }
             }
-            console.log('selected game 1 crossed');
         }else if($scope.selectedGame === 2){
             var valOne=0,valTwo=0,row,col;
             for(var i=0;i<10;i++){
@@ -406,7 +417,8 @@ app.controller('PlayController', function($cookies,$scope,$rootScope,$q,md5,$mdD
             url: api_url+"/saveGameInputDetails",
             dataType:JSON,
             data: {
-                userId: userId,
+                user_id: user_id,
+                slip_no: $scope.slip_no,
                 playDetails: masterData
                 ,drawId: drawToPlay
                 ,purchasedTicket: purchasedTicket
@@ -428,6 +440,7 @@ app.controller('PlayController', function($cookies,$scope,$rootScope,$q,md5,$mdD
                 }
                 else{
                     $scope.showAlert(this.ev,"Ticket purchased!",'');
+                    $scope.slip_no = null;
                 }
                 // $rootScope.huiPrintDiv('receipt-div','',1);
                 // $scope.showAlert(this.ev,"Print done",'');
