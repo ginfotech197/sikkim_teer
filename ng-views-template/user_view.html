@@ -182,7 +182,7 @@
 
     
     <div id="pagewrap"  ng-init="showReport=false"> 
-        <div class="cotainer" style="background-color:  rgb(208, 212, 182);" data-ng-init="displayJodi=true;displaySingle=false">
+        <div class="cotainer" style="background-color:  rgb(208, 212, 182);" data-ng-init="displayJodi=true">
             <div class="d-flex " id="upper-div">
                 <div class="col-10">
                     <div>
@@ -218,15 +218,15 @@
                                 <td class="new header-content">{{drawTimeList.end_time}}</td>
                                 <td class="new header-content">{{ leftHour + ':' + leftMinute + ':' + leftsecond}}</td>
                                 <td class="new" style="width: 400px;">
-                                    <div class="input-group" ng-show="loginDetails.data.user.userID == null">
+                                    <div class="input-group" ng-show="!loginDetails.data.user.id">
                                         <input type="text" class="form-control" placeholder="Card no" ng-model="loginData.userId"  ng-click="onTextClick($event)">
                                         <input type="password" class="form-control" placeholder="Pin" ng-model="loginData.password" ng-click="onTextClick($event)">
                                         <div class="input-group-prepend">
                                           <button class="btn btn-success" type="button" ng-click="validateUser()">Login</button>
-<!--                                            <pre>{{loginDetails | json}}</pre>-->
+                                           
                                         </div>
                                     </div>
-                                    <div ng-show="loginDetails.data.user.userID!=null">
+                                    <div ng-show="loginDetails.data.user.id">
                                         <input type="text" placeholder="Slip no">
                                         <button class="btn btn-success" type="button" ng-click="logoutUserWithConfirmation($event);">Logout</button>
 <!--                                        <pre>{{loginDetails | json}}</pre>-->
@@ -544,38 +544,6 @@
                                     <input type="tel" class="sm-div" ng-if="$index==10" ng-click="onTextClick($event)" data-ng-model="lpValue.lp" ng-change="generateNumberByLp(lpValue.lp)" maxlength="3" >
                                 </td>
                             </tr>                     
-                        </table>
-
-
-                        <!-- single -->
-
-                        <table class="table" style="background-color: rgb(223, 213, 172);" ng-show="displaySingle">
-                            <tr>
-                                <td><br><br><h3>Aandar</h3></td>
-                                <td style="text-align: center; font-size: xx-large; font-weight: bold;">0<br><input type="tel" class="single-input-box" ng-click="onTextClick($event)" ng-model="secondLast[0]" maxlength="3" ></td>
-                                <td style="text-align: center; font-size: xx-large; font-weight: bold;">1<br><input type="tel" class="single-input-box" ng-click="onTextClick($event)" ng-model="secondLast[1]" maxlength="3" ></td>
-                                <td style="text-align: center; font-size: xx-large; font-weight: bold;">2<br><input type="tel" class="single-input-box" ng-click="onTextClick($event)" ng-model="secondLast[2]" maxlength="3" ></td>
-                                <td style="text-align: center; font-size: xx-large; font-weight: bold;">3<br><input type="tel" class="single-input-box" ng-click="onTextClick($event)"ng-model="secondLast[3]" maxlength="3" ></td>
-                                <td style="text-align: center; font-size: xx-large; font-weight: bold;">4<br><input type="tel" class="single-input-box" ng-click="onTextClick($event)" ng-model="secondLast[4]" maxlength="3" ></td>
-                                <td style="text-align: center; font-size: xx-large; font-weight: bold;">5<br><input type="tel" class="single-input-box" ng-click="onTextClick($event)" ng-model="secondLast[5]" maxlength="3" ></td>
-                                <td style="text-align: center; font-size: xx-large; font-weight: bold;">6<br><input type="tel" class="single-input-box" ng-click="onTextClick($event)" ng-model="secondLast[6]" maxlength="3" ></td>
-                                <td style="text-align: center; font-size: xx-large; font-weight: bold;">7<br><input type="tel" class="single-input-box" ng-click="onTextClick($event)" ng-model="secondLast[7]" maxlength="3" ></td>
-                                <td style="text-align: center; font-size: xx-large; font-weight: bold;">8<br><input type="tel" class="single-input-box" ng-click="onTextClick($event)" ng-model="secondLast[8]" maxlength="3" ></td>
-                                <td style="text-align: center; font-size: xx-large; font-weight: bold;">9<br><input type="tel" class="single-input-box" ng-click="onTextClick($event)" ng-model="secondLast[9]" maxlength="3" ></td>
-                            </tr>
-                            <tr>
-                                <td style="padding-top: 20px; padding-bottom: 20px;"><h3>Bahar </h3></td>
-                                <td style="text-align: center; padding-top: 20px; padding-bottom: 20px;"><input type="tel" class="single-input-box" ng-click="onTextClick($event)" ng-model="last[0]"  maxlength="3" ></td>
-                                <td style="text-align: center; padding-top: 20px; padding-bottom: 20px;"><input type="tel" class="single-input-box" ng-click="onTextClick($event)" ng-model="last[1]"  maxlength="3" ></td>
-                                <td style="text-align: center; padding-top: 20px; padding-bottom: 20px;"><input type="tel" class="single-input-box" ng-click="onTextClick($event)" ng-model="last[2]"  maxlength="3" ></td>
-                                <td style="text-align: center; padding-top: 20px; padding-bottom: 20px;"><input type="tel" class="single-input-box" ng-click="onTextClick($event)" ng-model="last[3]" maxlength="3" ></td>
-                                <td style="text-align: center; padding-top: 20px; padding-bottom: 20px;"><input type="tel" class="single-input-box" ng-click="onTextClick($event)" ng-model="last[4]" maxlength="3" ></td>
-                                <td style="text-align: center; padding-top: 20px; padding-bottom: 20px;"><input type="tel" class="single-input-box" ng-click="onTextClick($event)" ng-model="last[5]" maxlength="3" ></td>
-                                <td style="text-align: center; padding-top: 20px; padding-bottom: 20px;"><input type="tel" class="single-input-box" ng-click="onTextClick($event)" ng-model="last[6]"  maxlength="3" ></td>
-                                <td style="text-align: center; padding-top: 20px; padding-bottom: 20px;"><input type="tel" class="single-input-box" ng-click="onTextClick($event)" ng-model="last[7]" maxlength="3" ></td>
-                                <td style="text-align: center; padding-top: 20px; padding-bottom: 20px;"><input type="tel" class="single-input-box" ng-click="onTextClick($event)" ng-model="last[8]" maxlength="3" ></td>
-                                <td style="text-align: center; padding-top: 20px; padding-bottom: 20px;"><input type="tel" class="single-input-box" ng-click="onTextClick($event)" ng-model="last[9]" maxlength="3" ></td>
-                            </tr>
                         </table>
                         
                     </div>

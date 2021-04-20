@@ -15,20 +15,18 @@ app.controller('MainController', function($cookies,$scope,$q,$mdDialog,$timeout,
     $scope.loginDetails.isLoggedIn=false;
 
     $scope.setUserData = function(data){
-        $scope.users.person_name = data.person.people_name;
-        $scope.users.uuid = data.person.uuid;
-        $scope.users.person_category_id = data.person.person_category_id;
-        $scope.users.userID = data.person.id;
-        $scope.users.userLoginid = data.person.user_id;
+        console.log('setUserData',data);
+        $scope.users.user_name = data.user_name;
+        $scope.users.user_type_id = data.user_type.type_id;
+        $scope.users.id = data.ID;
+        $scope.users.userId = data.user_id;
     };
 
     $scope.unsetUserData = function(){
         $auth.removeToken();
-        $scope.users.person_name="";
-        $scope.users.uuid="";
-        $scope.users.person_category_id=0;
-        $scope.users.userID=0;
-        $scope.users.userLoginid= '';
+        $scope.users.user_name="";
+        $scope.users.user_type_id=0;
+        $scope.users.userId=0;
     
         $scope.loginDetails={};
         $scope.loginDetails.person={};
@@ -80,10 +78,10 @@ app.controller('MainController', function($cookies,$scope,$q,$mdDialog,$timeout,
      console.log(localStorageService.get('loginData'));
      if(localStorageService.get('loginData')){
          $scope.loginDetails = localStorageService.get('loginData').data;
-         $scope.users.person_name=$scope.loginDetails.user.userName || '';
-         $scope.users.user_type_id = $scope.loginDetails.user.userType.typeID || 0;
-         $scope.users.userID = $scope.loginDetails.user.ID || 0;
-         $scope.users.userLoginid= $scope.loginDetails.user.userID || '';
+         $scope.users.user_name=$scope.loginDetails.user.user_name || '';
+         $scope.users.user_type_id = $scope.loginDetails.user.user_type.type_id || 0;
+         $scope.users.id = $scope.loginDetails.user.id || 0;
+         $scope.users.user_id= $scope.loginDetails.user.user_id || '';
      }
 
 
@@ -212,63 +210,51 @@ app.controller('MainController', function($cookies,$scope,$q,$mdDialog,$timeout,
             url: api_url+"/login",
             dataType: 'json',
             data: $scope.loginData,
-            // data: {userID : '510501',password : '12345'},
-            // headers: { 'Content-Type': 'application/x-www-form-urlencoded','X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content') }
         }).then(function (response){
-            if(response.status === 200 && response.data.success === 1){
+            console.log(response.data);
+            if(response.data.success==true){
                 $scope.loginDefer.resolve(response.data);
-                $scope.loginDetails = response.data.data.user;
-                localStorageService.remove('loginData');
-                console.log('loginDetails', response);
-
-                $scope.users.person_name=$scope.loginDetails.userName;
-                $scope.users.user_type_id = $scope.loginDetails.userType.typeID;
-                $scope.users.userID = $scope.loginDetails.ID;
-                $scope.users.userLoginid= $scope.loginDetails.userID;
-
-                console.log($scope.users);
-                // authFact.setAccessToken($scope.token);
-                $auth.setToken(response.data.data.token);
-                authFact.setAccessToken(response.data.data.token);
-                localStorageService.set('loginData', $scope.loginDetails);
                 $scope.loginError="";
-                console.log('response', response);
-                console.log('login data', $scope.loginDetails);
-
-                $scope.loggedInTerminalBalance = response.data.StockistToTerminal;
             }else{
                 toaster.pop('warning',response.data.msg);
-                $scope.users.person_name="";
-                $scope.users.uuid="";
-                $scope.users.person_category_id = 0;
-                $scope.users.userID = 0;
+                $scope.users.user_name="";
+                $scope.users.user_type_id = 0;
+                $scope.users.userId = 0;
                 $scope.users.userLoginid= '';
-                localStorageService.set('loginData', null);
+                localStorageService.set('loginData', ' ');
             }
         },function (error){
 
         });
         $scope.loginDefer.promise.then(function(data){
+            console.log('data',data);
             localStorageService.set('loginData', data);
-            $scope.setUserData(data);
+            $scope.setUserData(data.data.user);
             $scope.loginDetails=data;
-            console.log($scope.data);
-            $scope.token = $scope.loginDetails.person.uuid;
+            $scope.token = data.token;
             $auth.setToken($scope.token);
             authFact.setAccessToken($scope.token);
-            $scope.getActiveTerminalBalance($scope.loginDetails.person.id);
-            if($scope.loginDetails.person.person_category_id == 1) {
+            // $scope.getActiveTerminalBalance($scope.loginDetails.person.id);
+            if($scope.loginDetails.data.user.user_type_id == 1) {
                 $window.location.href = base_url + '#!/admin';
-            }else if($scope.loginDetails.person.person_category_id==3){
+            }else if($scope.loginDetails.data.user.user_type_id==3){
                 $window.location.href = base_url + '#!/user';
-            }else if($scope.loginDetails.person.person_category_id == 4) {
+            }else if($scope.loginDetails.data.user.user_type_id == 4) {
                 $window.location.href = base_url + '#!/stockistPanel';
             }
-            toaster.pop('success',data.msg,' Welcome '+ $scope.users.person_name);
+            toaster.pop('success',data.msg,' Welcome '+ $scope.loginDetails.data.user.user_name);
         });
 
 
     };
+
+
+
+
+
+
+
+
     
 
     $scope.popSuccess = function(msgTitle,msgText){
