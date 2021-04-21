@@ -1,7 +1,7 @@
-app.controller('MainController', function($cookies,$scope,$q,$mdDialog,$timeout,$interval,toaster,$http,UserService,$q,RegistrationService,ParticipantService,$window,proofService,localStorageService,$rootScope,$auth,authFact) {
+app.controller('MainController', function($cookies,$scope,$mdDialog,$timeout,$interval,toaster,$http,UserService,$q,RegistrationService,ParticipantService,$window,proofService,localStorageService,$rootScope,$auth,authFact) {
 
     //for showing developer area, creating a developer mode object
-    $scope.title="Rajsree10";
+    $scope.title="Sikkim teer";
     $scope.developerMode={};
     $scope.developerMode.isEnabled=true;
     $scope.developerMode.isDeveloperDivShowable=$scope.developerMode.isEnabled;
@@ -15,7 +15,6 @@ app.controller('MainController', function($cookies,$scope,$q,$mdDialog,$timeout,
     $scope.loginDetails.isLoggedIn=false;
 
     $scope.setUserData = function(data){
-        console.log('setUserData',data);
         $scope.users.user_name = data.user_name;
         $scope.users.user_type_id = data.user_type.type_id;
         $scope.users.id = data.id;
@@ -74,11 +73,11 @@ app.controller('MainController', function($cookies,$scope,$q,$mdDialog,$timeout,
     // $scope.users.userID = $scope.loginDetails.ID || 0;
     // $scope.users.userLoginid= $scope.loginDetails.userID || '';
 
-     console.log('login details', $scope.loginDetails);
-     console.log(localStorageService.get('loginData'));
+     // console.log('login details', $scope.loginDetails);
+     // console.log(localStorageService.get('loginData'));
      if(localStorageService.get('loginData')){
          $scope.loginDetails = localStorageService.get('loginData').data;
-         console.log($scope.loginDetails);
+         // console.log($scope.loginDetails);
          $scope.users.user_name=$scope.loginDetails.user.user_name || '';
          $scope.users.user_type_id = $scope.loginDetails.user.user_type.type_id || 0;
          $scope.users.id = $scope.loginDetails.user.id || 0;
@@ -95,7 +94,6 @@ app.controller('MainController', function($cookies,$scope,$q,$mdDialog,$timeout,
         if($scope.loginDetails.isLoggedIn && $scope.loginDetails.person.person_category_id == 3){
             $window.location.href = base_url + '#!/user';
             $scope.getActiveTerminalBalance($scope.loginDetails.person.id);
-            
         }
         // else if($scope.loginDetails.isLoggedIn && $scope.loginDetails.person.person_category_id == 4){
         //     $window.location.href = base_url + '#!/stockistPanel';
@@ -228,20 +226,19 @@ app.controller('MainController', function($cookies,$scope,$q,$mdDialog,$timeout,
 
         });
         $scope.loginDefer.promise.then(function(data){
-            console.log('data',data.data.token);
             localStorageService.set('loginData', data);
             $scope.setUserData(data.data.user);
             $scope.loginDetails=data;
-            console.log($scope.users);
+            console.log($scope.loginDetails);
             $scope.token = data.data.token;
             $auth.setToken($scope.token);
             authFact.setAccessToken($scope.token);
             // $scope.getActiveTerminalBalance($scope.loginDetails.person.id);
-            if($scope.loginDetails.data.user.user_type_id == 1) {
+            if($scope.loginDetails.data.user.user_type.type_id === 1) {
                 $window.location.href = base_url + '#!/admin';
-            }else if($scope.loginDetails.data.user.user_type_id==3){
+            }else if($scope.loginDetails.data.user.user_type.type_id === 3){
                 $window.location.href = base_url + '#!/user';
-            }else if($scope.loginDetails.data.user.user_type_id == 4) {
+            }else if($scope.loginDetails.data.user.user_type.type_id === 4) {
                 $window.location.href = base_url + '#!/stockistPanel';
             }
             toaster.pop('success',data.msg,' Welcome '+ $scope.loginDetails.data.user.user_name);

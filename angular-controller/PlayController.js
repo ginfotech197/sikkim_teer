@@ -1,4 +1,7 @@
-app.controller('PlayController', function($cookies,$scope,$rootScope,$q,md5,$mdDialog,$timeout,toaster,$http,$interval,$q,RegistrationService,ParticipantService,$window,proofService,localStorageService,authFact) {
+app.controller('PlayController', function($cookies,$scope,$rootScope,md5,$mdDialog,$timeout,toaster,$http,$interval,$q,RegistrationService,ParticipantService,$window,proofService,localStorageService,authFact) {
+
+    // console.log($window.location.href);
+
     $scope.msg = "This is play controller";
     $scope.disableSubmitButton=false;
     $scope.displayReport = false;
@@ -318,12 +321,7 @@ app.controller('PlayController', function($cookies,$scope,$rootScope,$q,md5,$mdD
     //     $scope.slip_no = data;
     // }
     $scope.submitGameValues=function () {
-        if($scope.slip_no === null){
-            var alertTitle = 'Please enter slip number';
-            var alertDescription ="";
-            $scope.showAlert(this.ev,alertTitle,alertDescription);
-            return;
-        }
+
         var drawToPlay = [];
         if($scope.selectAdvanceDraw.drawId!=''){
             if($scope.selectAdvanceDraw.drawId =='all'){
@@ -352,6 +350,12 @@ app.controller('PlayController', function($cookies,$scope,$rootScope,$q,md5,$mdD
             $scope.showAlert(this.ev,alertTitle,alertDescription);
             $scope.disableSubmitButton = false;
             console.log('user_id', user_id);
+            return;
+        }
+        if($scope.slip_no === null){
+            var alertTitle = 'Please enter slip number';
+            var alertDescription ="";
+            $scope.showAlert(this.ev,alertTitle,alertDescription);
             return;
         }
         var masterData=[];
@@ -444,7 +448,7 @@ app.controller('PlayController', function($cookies,$scope,$rootScope,$q,md5,$mdD
                 }
                 // $rootScope.huiPrintDiv('receipt-div','',1);
                 // $scope.showAlert(this.ev,"Print done",'');
-                $scope.loggedInTerminalBalance.current_balance = $scope.reportArray.current_balance;
+                $scope.loginDetails.StockistToTerminal.current_balance = $scope.reportArray.current_balance;
                 $scope.clearInputBox();
                 $scope.disableSubmitButton=false;
                 $scope.selectAdvanceDraw = {'drawId':''};

@@ -250,17 +250,17 @@
                 </div>
                 <div class="col-4" style="border: 1px solid black;text-align: center;"><b>WR:90</b></div>
             </div>
-            <div  id="middle-div">
+            <div  id="middle-div" ng-show="!showReport">
                 <div class="d-flex">
                     <div class="col left-div table" style="width: 300px;padding-top: 5px;">
                         <table class=" table" ng-show="displayJodi">
                             <tr ng-repeat="r in getRow(row) track by $index" ng-init="rowIndex = $index">
                                 <td class="td" ng-repeat="c in getCol(coloumn) track by $index" ng-init="columnIndex = $index">
                                     <b style="font-weight: 900; font-size: large;">{{columnIndex==10 ? 'All-A' : rowIndex+''+columnIndex}}</b>
-                                    
+
                                     <br><input type="tel" class="sm-div" ng-model="playInput[rowIndex][$index]" ng-keyup="verticallyHorizontallyPushValue(rowIndex,$index)" ng-click="onTextClick($event)" maxlength="3" ></td>
                             </tr>
-                            
+
                             <tr class="last-td">
                                 <td style="text-align: center;" ng-repeat="c in getCol(coloumn) track by $index">
                                     <b style="font-weight: 900;">{{$index!=10?'All-B': 'LP'}}</b><br>
@@ -268,9 +268,9 @@
 
                                     <input type="tel" class="sm-div" ng-if="$index==10" ng-click="onTextClick($event)" data-ng-model="lpValue.lp" ng-change="generateNumberByLp(lpValue.lp)" maxlength="3" >
                                 </td>
-                            </tr>                     
+                            </tr>
                         </table>
-                        
+
                     </div>
                 </div>
             </div>
@@ -341,5 +341,3 @@
 
         <div class="d-flex font-weight-bold" style="background-color:#ee315a;font-size:30px;color:white"> <marquee style="font-weight:1000">{{scrollingMsg.message}}</marquee></div>
             </div>
-
-    </div>

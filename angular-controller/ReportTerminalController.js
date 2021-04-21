@@ -128,6 +128,9 @@ app.controller("ReportTerminalCtrl", function ($scope,$http,$filter,$rootScope,d
     // get terminal report order by barcode
     $scope.showbarcodeReport=[];
     $scope.getAllBarcodeDetailsByDate=function (start_date,end_date,barcode_type,select_draw_time) {
+
+        console.log('report terminal controller', $scope.users.userId);
+
         $scope.isLoading2=true;
         var start_date=$scope.changeDateFormat(start_date);
         var end_date=$scope.changeDateFormat(end_date);
