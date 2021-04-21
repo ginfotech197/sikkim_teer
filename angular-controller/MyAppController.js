@@ -1,5 +1,5 @@
 var authKey="";
-var app = angular.module('myApp', ["ngRoute","angular-md5","ngCookies","xeditable","ngMessages","ngResource","ngMaterial","toaster","chart.js","angular-barcode","monospaced.qrcode","ngImageInputWithPreview","720kb.datepicker","smart-table","LocalStorageModule","satellizer"]);
+var app = angular.module('myApp', ["ngRoute","angular-md5","ngCookies","xeditable","ngMessages","ngResource","ngMaterial","toaster","chart.js","angular-barcode","monospaced.qrcode","ngImageInputWithPreview","720kb.datepicker","smart-table","LocalStorageModule","satellizer","angularjs-dropdown-multiselect"]);
 
 
 
