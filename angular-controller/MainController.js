@@ -78,6 +78,7 @@ app.controller('MainController', function($cookies,$scope,$q,$mdDialog,$timeout,
      console.log(localStorageService.get('loginData'));
      if(localStorageService.get('loginData')){
          $scope.loginDetails = localStorageService.get('loginData').data;
+         console.log($scope.loginDetails);
          $scope.users.user_name=$scope.loginDetails.user.user_name || '';
          $scope.users.user_type_id = $scope.loginDetails.user.user_type.type_id || 0;
          $scope.users.id = $scope.loginDetails.user.id || 0;
