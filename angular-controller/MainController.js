@@ -82,19 +82,21 @@ app.controller('MainController', function($cookies,$scope,$mdDialog,$timeout,$in
          $scope.users.user_type_id = $scope.loginDetails.user.user_type.type_id || 0;
          $scope.users.id = $scope.loginDetails.user.id || 0;
          $scope.users.user_id= $scope.loginDetails.user.user_id || '';
+         $auth.setToken($scope.loginDetails.token);
+         authFact.setAccessToken($scope.loginDetails.token);
      }
 
 
-     try {
-        $scope.loginDetails=localStorageService.get('loginData') || $scope.loginDetails;
-        if($scope.loginDetails.isLoggedIn){
-            authFact.setAccessToken($scope.token);
-            $scope.setUserData($scope.loginDetails);
-        }
-        if($scope.loginDetails.isLoggedIn && $scope.loginDetails.person.person_category_id == 3){
-            $window.location.href = base_url + '#!/user';
-            $scope.getActiveTerminalBalance($scope.loginDetails.person.id);
-        }
+     // try {
+     //    $scope.loginDetails=localStorageService.get('loginData') || $scope.loginDetails;
+     //    if($scope.loginDetails.isLoggedIn){
+     //        authFact.setAccessToken($scope.token);
+     //        $scope.setUserData($scope.loginDetails);
+     //    }
+     //    if($scope.loginDetails.isLoggedIn && $scope.loginDetails.person.person_category_id == 3){
+     //        $window.location.href = base_url + '#!/user';
+     //        $scope.getActiveTerminalBalance($scope.loginDetails.person.id);
+     //    }
         // else if($scope.loginDetails.isLoggedIn && $scope.loginDetails.person.person_category_id == 4){
         //     $window.location.href = base_url + '#!/stockistPanel';
         // }else if($scope.loginDetails.isLoggedIn && $scope.loginDetails.person.person_category_id == 1){
@@ -103,10 +105,10 @@ app.controller('MainController', function($cookies,$scope,$mdDialog,$timeout,$in
         // else{
         //     $window.location.href = base_url + '#!';
         // }
-      }
-      catch(err) {
-        console.log("Error: " + err + ".");
-      }
+      // }
+      // catch(err) {
+      //   console.log("Error: " + err + ".");
+      // }
 
     //function for getting current draw
     $scope.isAuthenticated =false;
@@ -240,18 +242,7 @@ app.controller('MainController', function($cookies,$scope,$mdDialog,$timeout,$in
             }
             toaster.pop('success',data.msg,' Welcome '+ $scope.loginDetails.data.user.user_name);
         });
-
-
     };
-
-
-
-
-
-
-
-
-    
 
     $scope.popSuccess = function(msgTitle,msgText){
         toaster.pop('success', msgTitle, msgText);
@@ -467,10 +458,10 @@ app.controller('MainController', function($cookies,$scope,$mdDialog,$timeout,$in
   
   $scope.example14data = [{
       "label": "F/R",
-          "id": "AL"
+          "id": "1"
   }, {
       "label": "S/R",
-          "id": "AK"
+          "id": "2"
   }];
   $scope.example2settings = {
       displayProp: 'id'

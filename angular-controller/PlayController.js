@@ -8,6 +8,7 @@ app.controller('PlayController', function($cookies,$scope,$rootScope,md5,$mdDial
     $scope.showTerminalReport=function(visibility){
         $scope.displayReport = visibility;
     }
+    $scope.example14dataSelected = [];
     
     $scope.row=10;
     $scope.coloumn=11;
@@ -320,6 +321,7 @@ app.controller('PlayController', function($cookies,$scope,$rootScope,md5,$mdDial
     //     // console.log('function working',test);
     //     $scope.slip_no = data;
     // }
+
     $scope.submitGameValues=function () {
 
         var drawToPlay = [];
@@ -398,12 +400,18 @@ app.controller('PlayController', function($cookies,$scope,$rootScope,md5,$mdDial
         if($scope.leftHour==0 && $scope.leftMinute==0 && $scope.leftsecond<=30){
             var alertTitle = 'Draw closed';
             var alertDescription ="";
-            console.log('error on draw closed');
             $scope.showAlert(this.ev,alertTitle,alertDescription);
             $scope.disableSubmitButton = false;
             return;
         }
-               console.log($scope.loggedInTerminalBalance);
+
+        if($scope.example14dataSelected.length === 0){
+            var alertTitle = 'Please select F/R or S/R';
+            var alertDescription ="";
+            $scope.showAlert(this.ev,alertTitle,alertDescription);
+            return;
+        }
+
         var balance=$scope.loggedInTerminalBalance.current_balance;
         
         var purchasedTicket=$rootScope.roundNumber($scope.totalTicketBuy,2);
@@ -424,7 +432,7 @@ app.controller('PlayController', function($cookies,$scope,$rootScope,md5,$mdDial
                 user_id: user_id,
                 slip_no: $scope.slip_no,
                 playDetails: masterData
-                ,drawId: drawToPlay
+                ,drawId: $scope.example14dataSelected
                 ,purchasedTicket: purchasedTicket
             },
             headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
