@@ -450,4 +450,32 @@ app.controller('MainController', function($cookies,$scope,$mdDialog,$timeout,$in
         });
     };
     $scope.getAdvanceDrawTime();
+
+
+
+    $scope.name = 'World';
+
+  $scope.example14model = [];
+  $scope.setting1 = {
+      scrollableHeight: '200px',
+      scrollable: true,
+      enableSearch: true
+  };
+  
+      $scope.setting2 = {
+      scrollableHeight: '200px',
+      scrollable: true,
+      enableSearch: false
+  };
+  
+  $scope.example14data = [{
+      "label": "F/R",
+          "id": "AL"
+  }, {
+      "label": "S/R",
+          "id": "AK"
+  }];
+  $scope.example2settings = {
+      displayProp: 'id'
+  };
 });

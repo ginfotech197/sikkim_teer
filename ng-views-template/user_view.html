@@ -197,7 +197,10 @@
                                 <td></td>
                             </tr>
                             <tr>
-                                <td class="new header-content">
+                                <td colspan="2">
+                                    <div ng-dropdown-multiselect="" options="example14data" selected-model="example14model" checkboxes="true" extra-settings="setting1"></div>
+                                </td>
+                                <!-- <td class="new header-content">
                                     <div class="input-group input-group-sm">
                                         <div class="input-group-prepend">
                                           <span class="input-group-text">F/R</span>
@@ -212,7 +215,7 @@
                                        </div>
                                        <input type="text" class="form-control">
                                     </div>
-                                </td>
+                                </td> -->
                                 <td  class="new header-content">{{today | date}}</td>
                                 <td class="new header-content">{{hour +':'+ minute + ':'+ second}}</td>
                                 <td class="new header-content">{{drawTimeList.end_time}}</td>
@@ -263,10 +266,10 @@
 
                             <tr class="last-td">
                                 <td style="text-align: center;" ng-repeat="c in getCol(coloumn) track by $index">
-                                    <b style="font-weight: 900;">{{$index!=10?'All-B': 'LP'}}</b><br>
+                                    <b style="font-weight: 900;">{{$index!=10?'All-B': ''}}</b><br>
                                     <input type="tel" ng-if="$index!=10" class="sm-div" ng-click="onTextClick($event)" ng-model="playInput[10][$index]" ng-keyup="verticallyHorizontallyPushValue(10,$index)" maxlength="3" >
 
-                                    <input type="tel" class="sm-div" ng-if="$index==10" ng-click="onTextClick($event)" data-ng-model="lpValue.lp" ng-change="generateNumberByLp(lpValue.lp)" maxlength="3" >
+                                    
                                 </td>
                             </tr>
                         </table>
