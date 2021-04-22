@@ -327,7 +327,6 @@ app.controller("ShowDisplayController",function($scope,$rootScope,$cookies){
 
     $scope.GetCookies = function () {
         $scope.userName=$cookies.get('username');
-        console.log("child controller");
         var x=$cookies.getAll();
     };
     $scope.ClearCookies = function () {
@@ -340,7 +339,6 @@ app.controller("ShowDisplayController",function($scope,$rootScope,$cookies){
         $cookies.remove('token');
         $scope.token="no token";
         var x=$cookies.getAll();
-        console.log(x);
     };
 });
 
@@ -503,7 +501,6 @@ app.controller("ExampleController", function($scope,$rootScope,$cookies) {
     };
     $scope.GetCookies = function () {
         $scope.userName=$cookies.get('username');
-        console.log($scope.userName);
     };
     $scope.ClearCookies = function () {
         $cookies.remove('username');
@@ -515,7 +512,6 @@ app.controller("ExampleController", function($scope,$rootScope,$cookies) {
         $cookies.remove('token');
         $scope.token="no token";
         var x=$cookies.getAll();
-        console.log(x);
     };
 });
 
@@ -525,7 +521,6 @@ app.controller("exampleFileUpload", function($scope, $http, $window) {
     $(".file-select").change(function(e) {
         var fileSize=this.files[0].size/(1024*1024);
         if(this.files[0].size >= 1048576){
-            console.log(this.files[0].size);
             alert("File should be less than 1 MB !, current size is: "+Math.round(fileSize,2)+" MB");
             this.value = "";
             return;
@@ -607,8 +602,6 @@ app.controller("exampleFileUpload", function($scope, $http, $window) {
 
     /*Upload 2*/
     $scope.uploadFileSecond = function(files) {
-        console.log(files);
-
         var fd = new FormData();
         //Take the first selected file
         fd.append("photo", files[0]);
@@ -905,7 +898,6 @@ app.directive('imgUpload', function($http, $compile) {
                             data: obj,
                         });
                     });
-                    console.log(scope.previewData);
                 };
                 reader.readAsDataURL(file);
             }

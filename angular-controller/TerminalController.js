@@ -200,12 +200,11 @@ app.controller("TerminalCtrl", function ($scope,$http,$filter,$rootScope,dateFil
             url: api_url+"/getActiveTerminal",
             dataType:JSON,
             data: {}
-            ,headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
+            ,headers: {'Content-Type': 'application/x-www-form-urlencoded'}
         }).then(function(response){
             $scope.onlineTerminal=response.data;
         });
     };
-
     $scope.getActiveTerminalList();
 
     $scope.forceLogoutActiveTerminal=function(terminal){

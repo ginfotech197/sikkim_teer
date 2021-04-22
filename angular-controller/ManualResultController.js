@@ -96,15 +96,15 @@ app.controller("ManualResultCtrl", function ($scope,$http,$filter,$rootScope,dat
         }
 
 
-        if(typeof manualResult.bahar === 'undefined' || manualResult.bahar==""){
-            master.bahar = -1;
-        }else if(manualResult.bahar>0){
-            master.bahar = parseInt(manualResult.bahar);
-        }else{
-            master.bahar = -1;
-        }
+        // if(typeof manualResult.bahar === 'undefined' || manualResult.bahar==""){
+        //     master.bahar = -1;
+        // }else if(manualResult.bahar>0){
+        //     master.bahar = parseInt(manualResult.bahar);
+        // }else{
+        //     master.bahar = -1;
+        // }
      
-        if( master.aandar== -1 || master.bahar== -1){
+        if(master.aandar== -1){
             alert('input not valid');
             return;
         }

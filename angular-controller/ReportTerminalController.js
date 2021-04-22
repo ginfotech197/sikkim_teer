@@ -99,6 +99,7 @@ app.controller("ReportTerminalCtrl", function ($scope,$http,$filter,$rootScope,d
                 ,headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
             }).then(function(response){
                 $scope.drawTime=response.data;
+                // console.log('getAllDrawTimes',$scope.drawTime);
             });
         }
         if(gameNo==2){
@@ -129,7 +130,7 @@ app.controller("ReportTerminalCtrl", function ($scope,$http,$filter,$rootScope,d
     $scope.showbarcodeReport=[];
     $scope.getAllBarcodeDetailsByDate=function (start_date,end_date,barcode_type,select_draw_time) {
 
-        console.log('report terminal controller', $scope.users.userId);
+        // console.log('report terminal controller', $scope.users.userId);
 
         $scope.isLoading2=true;
         var start_date=$scope.changeDateFormat(start_date);

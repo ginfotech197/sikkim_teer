@@ -1,5 +1,5 @@
-<a href="#!" data-ng-if="users.person_category_id==0"><h1>Please Login</h1></a>
-    <div class="d-flex col-12" data-ng-if="users.person_category_id==1">
+<a href="#!" data-ng-if="users.user_type_id==0"><h1>Please Login</h1></a>
+    <div class="d-flex col-12" data-ng-if="users.user_type_id==1">
     <div class="col-12">
         <!-- Nav tabs -->
         <ul class="nav nav-tabs nav-justified" role="tablist">
@@ -42,8 +42,8 @@
                             <tbody ng-repeat="x in onlineTerminal">
                             <tr>
                                 <td>{{ $index+1}}</td>
-                                <td>{{x.people_name}}</td>
-                                <td>{{x.user_id}}</td>
+                                <td>{{x.user_name}}</td>
+                                <td>{{x.email}}</td>
                                 <td class="text-center" style="color: green;font-size: larger;">&#8226;</td>
                                 <td><button type="button" class="btn btn-secondary" ng-click="forceLogoutActiveTerminal(x)">Force Logout</button></td>
                             </tr>

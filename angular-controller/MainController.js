@@ -31,7 +31,7 @@ app.controller('MainController', function($cookies,$scope,$mdDialog,$timeout,$in
         $scope.loginDetails.person={};
         $scope.loginDetails.isLoggedIn=false;
         localStorageService.set('loginData', null);
-        $window.location.href = '#!';
+        $window.location.href = '#!/user';
         
     };
 
@@ -131,7 +131,6 @@ app.controller('MainController', function($cookies,$scope,$mdDialog,$timeout,$in
         }).then(function (response){
             $scope.drawTimeList = response.data;
             $scope.drawTimeObj = {};
-            console.log('draw time', $scope.drawTimeList);
 
             // CONVERT DRAW TIME TO MILLISECOND//
             $scope.dateArray = $scope.drawTimeList.end_time.split(":");
@@ -210,7 +209,6 @@ app.controller('MainController', function($cookies,$scope,$mdDialog,$timeout,$in
             dataType: 'json',
             data: $scope.loginData,
         }).then(function (response){
-            console.log(response.data);
             if(response.data.success==true){
                 $scope.loginDefer.resolve(response.data);
                 $scope.loginError="";
@@ -229,7 +227,6 @@ app.controller('MainController', function($cookies,$scope,$mdDialog,$timeout,$in
             localStorageService.set('loginData', data);
             $scope.setUserData(data.data.user);
             $scope.loginDetails=data;
-            console.log($scope.loginDetails);
             $scope.token = data.data.token;
             $auth.setToken($scope.token);
             authFact.setAccessToken($scope.token);

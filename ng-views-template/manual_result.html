@@ -1,5 +1,5 @@
-<a href="#!" data-ng-if="users.person_category_id==0"><h1>Please Login</h1></a>
-<div class="d-flex col-12" data-ng-if="users.person_category_id!=0">
+<a href="#!" data-ng-if="users.user_type_id==0"><h1>Please Login</h1></a>
+<div class="d-flex col-12" data-ng-if="users.user_type_id!=0">
     <div class="col-12">
         <!-- Nav tabs -->
         <ul class="nav nav-tabs nav-justified" role="tablist">
@@ -46,11 +46,11 @@
                                 </select>
                             </div>
                             <div class="col">
-                                <input type="text" maxlength="1" ng-model="manualData.aandar" class="form-control text-center font-weight-bold text-success" placeholder="Aandar">
+                                <input type="text" maxlength="2" ng-model="manualData.aandar" class="form-control text-center font-weight-bold text-success" placeholder="Aandar">
                             </div>
-                            <div class="col">
-                                <input type="text" maxlength="1" ng-model="manualData.bahar" class="form-control text-center font-weight-bold text-success" placeholder="Bahar">
-                            </div>
+<!--                            <div class="col">-->
+<!--                                <input type="text" maxlength="1" ng-model="manualData.bahar" class="form-control text-center font-weight-bold text-success" placeholder="Bahar">-->
+<!--                            </div>-->
 
                             <button type="submit" class="btn btn-primary" ng-click="submitManualResult(manualData)">Save</button>
                         </div>
