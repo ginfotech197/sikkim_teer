@@ -18,14 +18,14 @@ app.controller('MainController', function($cookies,$scope,$mdDialog,$timeout,$in
         $scope.users.user_name = data.user_name;
         $scope.users.user_type_id = data.user_type.type_id;
         $scope.users.id = data.id;
-        $scope.users.userId = data.user_id;
+        $scope.users.user_id = data.user_id;
     };
 
     $scope.unsetUserData = function(){
         $auth.removeToken();
         $scope.users.user_name="";
         $scope.users.user_type_id=0;
-        $scope.users.userId=0;
+        $scope.users.user_id=0;
     
         $scope.loginDetails={};
         $scope.loginDetails.person={};
@@ -216,10 +216,10 @@ app.controller('MainController', function($cookies,$scope,$mdDialog,$timeout,$in
                 $scope.loginError="";
             }else{
                 toaster.pop('warning',response.data.msg);
+                $scope.users.id= 0 ;
                 $scope.users.user_name="";
                 $scope.users.user_type_id = 0;
-                $scope.users.userId = 0;
-                $scope.users.userLoginid= '';
+                $scope.users.user_id = 0;
                 localStorageService.set('loginData', ' ');
             }
         },function (error){
@@ -307,8 +307,8 @@ app.controller('MainController', function($cookies,$scope,$mdDialog,$timeout,$in
                 url: api_url+"/logout",
                 dataType:JSON,
                 data: {
-                    uid: $scope.users.userID,
-                    userCategoryId: $scope.users.person_category_id
+                    uid: $scope.users.user_id,
+                    userCategoryId: $scope.users.user_type_id
                 },
                 headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
             }).then(function(response){

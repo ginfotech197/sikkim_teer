@@ -349,13 +349,13 @@ app.controller('PlayController', function($cookies,$scope,$rootScope,md5,$mdDial
             var alertDescription ="";
             $scope.showAlert(this.ev,alertTitle,alertDescription);
             $scope.disableSubmitButton = false;
-            console.log('user_id', user_id);
             return;
         }
         if($scope.slip_no === null){
             var alertTitle = 'Please enter slip number';
             var alertDescription ="";
             $scope.showAlert(this.ev,alertTitle,alertDescription);
+            $scope.disableSubmitButton = false;
             return;
         }
         var masterData=[];
