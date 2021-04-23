@@ -87,28 +87,28 @@ app.controller('MainController', function($cookies,$scope,$mdDialog,$timeout,$in
      }
 
 
-     // try {
-     //    $scope.loginDetails=localStorageService.get('loginData') || $scope.loginDetails;
-     //    if($scope.loginDetails.isLoggedIn){
-     //        authFact.setAccessToken($scope.token);
-     //        $scope.setUserData($scope.loginDetails);
-     //    }
-     //    if($scope.loginDetails.isLoggedIn && $scope.loginDetails.person.person_category_id == 3){
-     //        $window.location.href = base_url + '#!/user';
-     //        $scope.getActiveTerminalBalance($scope.loginDetails.person.id);
-     //    }
+     try {
+        $scope.loginDetails=localStorageService.get('loginData') || $scope.loginDetails;
+        if($scope.loginDetails.isLoggedIn){
+            authFact.setAccessToken($scope.token);
+            $scope.setUserData($scope.loginDetails);
+        }
+        // if($scope.loginDetails.isLoggedIn && $scope.loginDetails.person.person_category_id == 3){
+        //     $window.location.href = base_url + '#!/user';
+        //     $scope.getActiveTerminalBalance($scope.loginDetails.person.id);
+        // }
         // else if($scope.loginDetails.isLoggedIn && $scope.loginDetails.person.person_category_id == 4){
         //     $window.location.href = base_url + '#!/stockistPanel';
         // }else if($scope.loginDetails.isLoggedIn && $scope.loginDetails.person.person_category_id == 1){
-        //     $window.location.href = base_url + '#!/dmin';
+        //     $window.location.href = base_url + '#!/admin';
         // }
         // else{
         //     $window.location.href = base_url + '#!';
         // }
-      // }
-      // catch(err) {
-      //   console.log("Error: " + err + ".");
-      // }
+      }
+      catch(err) {
+        console.log("Error: " + err + ".");
+      }
 
     //function for getting current draw
     $scope.isAuthenticated =false;

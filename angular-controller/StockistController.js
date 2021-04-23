@@ -139,7 +139,7 @@ app.controller("StockistCtrl", function ($scope,$http,$filter,$rootScope,dateFil
             data: {}
             ,headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
         }).then(function(response){
-            $scope.stockist.user_id=response.data;
+            $scope.stockist.user_id= response.data.replace(/^"|"$/g, '');
         });
     };
 
