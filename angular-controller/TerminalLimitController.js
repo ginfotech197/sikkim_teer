@@ -41,8 +41,8 @@ app.controller("TerminalLimitCtrl", function ($scope,$http,$filter,$rootScope,da
         console.log($scope.users);
         var amount=limit.amount;
         var stockist_cur_bal=limit.terminal.stockist_current_balance;
-        var recharge_master_id = $scope.users.userId;
-        var recharge_master_cat_id = $scope.users.person_category_id;
+        var recharge_master_id = $scope.users.id;
+        var recharge_master_cat_id = $scope.users.user_type_id;
         if (amount>stockist_cur_bal){
             alert("Sorry! not enough balance");
             return;

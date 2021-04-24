@@ -18,7 +18,7 @@ app.controller("StockistLimitCtrl", function ($scope,$http,$filter,$rootScope,da
     $scope.saveStockistRechargeData=function (limit) {
         var stockist_id=limit.stockist.id;
         var amount= limit.amount;
-        var recharge_master_id = $scope.users.userId;
+        var recharge_master_id = $scope.users.id;
         var request = $http({
             method: "post",
             url: api_url+"/saveStockistRechargeData",
