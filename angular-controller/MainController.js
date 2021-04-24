@@ -8,12 +8,21 @@ app.controller('MainController', function($cookies,$scope,$mdDialog,$timeout,$in
     $scope.loginData = {};
     $scope.loggedInTerminalBalance = {};
 
-    $scope.loginDetails={};
-    $scope.loginDetails.data={};
-    $scope.loginDetails.userType={};
-    $scope.loginDetails.userType.typeID=0;
-    $scope.loginDetails.isLoggedIn=false;
-
+    $scope.defaultLoginDetails={
+        StockistToTerminal: {},
+        data:{
+            token: '',
+            user:{
+                id:'',user_id:'', user_name:'',
+                user_type: {
+                    type_id: 0,type_name:''
+                }
+            }
+        },
+        message:'',
+        success:0
+    };
+    $scope.loginDetails = $scope.defaultLoginDetails;
     $scope.setUserData = function(data){
         $scope.users.user_name = data.user_name;
         $scope.users.user_type_id = data.user_type.type_id;
@@ -27,9 +36,7 @@ app.controller('MainController', function($cookies,$scope,$mdDialog,$timeout,$in
         $scope.users.user_type_id=0;
         $scope.users.user_id=0;
     
-        $scope.loginDetails={};
-        $scope.loginDetails.person={};
-        $scope.loginDetails.isLoggedIn=false;
+        $scope.loginDetails = $scope.defaultLoginDetails;
         localStorageService.set('loginData', null);
         $window.location.href = '#!/user';
         
