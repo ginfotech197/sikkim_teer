@@ -181,7 +181,6 @@
 </style>
        
     <div id="pagewrap"  ng-init="showReport=false" data-ng-show="loginDetails.data.user.user_type.type_id==0 || loginDetails.data.user.user_type.type_id==3"> 
-    
         <div class="cotainer" style="background-color:  rgb(208, 212, 182);" data-ng-init="displayJodi=true">
             <div class="d-flex " id="upper-div">
                 <div class="col-10">
@@ -217,6 +216,7 @@
                                        <input type="text" class="form-control">
                                     </div>
                                 </td> -->
+
                                 <td  class="new header-content">{{today | date}}</td>
                                 <td class="new header-content">{{hour +':'+ minute + ':'+ second}}</td>
                                 <td class="new header-content">{{drawTimeList.end_time}}</td>
@@ -232,8 +232,7 @@
                                     </div>
                                     <div ng-show="loginDetails.data.user.id">
                                         <input type="text" ng-model="slip_no" placeholder="Slip no">
-                                        <button class="btn btn-success" type="button" ng-click="logoutUserWithConfirmation($event);">Logout</button>
-<!--                                        <pre>{{loginDetails | json}}</pre>-->
+                                        <button class="btn btn-success" type="button" ng-click="logoutUserWithConfirmation($event)">Logout</button>
                                     </div>
 
                                 </td>

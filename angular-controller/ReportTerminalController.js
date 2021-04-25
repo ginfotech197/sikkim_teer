@@ -55,7 +55,7 @@ app.controller("ReportTerminalCtrl", function ($scope,$http,$filter,$rootScope,d
             data: {
                 start_date: start_date
                 ,end_date: end_date
-                ,terminal_id: $scope.users.user_id
+                ,terminal_id: $scope.users.id
             }
             ,headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
         }).then(function(response){
@@ -90,28 +90,16 @@ app.controller("ReportTerminalCtrl", function ($scope,$http,$filter,$rootScope,d
 
     // get two digit draw time list
     $scope.getDrawList=function (gameNo) {
-        if(gameNo==1){
-            var request = $http({
-                method: "get",
-                url: api_url+"/getAllDrawTimes",
-                dataType:JSON,
-                data: {}
-                ,headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
-            }).then(function(response){
-                $scope.drawTime=response.data;
-                // console.log('getAllDrawTimes',$scope.drawTime);
-            });
-        }
-        if(gameNo==2){
-            var request = $http({
-                method: "post",
-                url: api_url+"/get_card_draw_time",
-                data: {}
-                ,headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
-            }).then(function(response){
-                $scope.drawTime=response.data.records;
-            });
-        }
+        var request = $http({
+            method: "get",
+            url: api_url+"/getAllDrawTimes",
+            dataType:JSON,
+            data: {}
+            ,headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
+        }).then(function(response){
+            $scope.drawTime=response.data;
+            // console.log('getAllDrawTimes',$scope.drawTime);
+        });
     };
     $scope.getDrawList($scope.select_game.id);
     $scope.select_draw_time=0;
@@ -142,34 +130,24 @@ app.controller("ReportTerminalCtrl", function ($scope,$http,$filter,$rootScope,d
             url: api_url+"/barcodeReportFromTerminal",
             dataType:JSON,
             data: {
-                terminalId: $scope.users.user_id
+                terminalId: $scope.users.id
                 ,startDate: start_date
                 ,endDate: end_date
             }
             ,headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
         }).then(function(response){
-            $scope.barcodeWiseReport=response.data;
-            $scope.isLoading2=false;
-            
+            $scope.barcodeWiseReport=response.data;            
             if(barcode_type==1){
-                $scope.showbarcodeReport=angular.copy($scope.barcodeWiseReport);
+                $scope.showbarcodeReport = angular.copy($scope.barcodeWiseReport);
             }else{
                 var winBarcodeDetails=alasql('SELECT *  from ?  where prize_value > 0',[$scope.barcodeWiseReport]);
                 $scope.showbarcodeReport=angular.copy(winBarcodeDetails);
-            }
+            }      
 
             if(select_draw_time>0){
-                $scope.x=parseInt($scope.x);
+                $scope.x=parseInt(select_draw_time);
                 $scope.showbarcodeReport=alasql("SELECT *  from ? where draw_master_id=?",[$scope.showbarcodeReport,$scope.x]);
             }
-
-            // checking for data
-            if($scope.showbarcodeReport.length==0){
-                $scope.alertMsg2=true;
-            }else{
-                $scope.alertMsg2=false;
-            }
-
         });
 
     };

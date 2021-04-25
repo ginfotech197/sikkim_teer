@@ -99,15 +99,15 @@
                                             data-ng-options="x as x.type for x in barcodeType">
                                     </select>
                                 </div>
-                                <div class="col-1">
+                                <div class="col-2">
                                     <select ng-model="select_draw_time" class="form-control">
                                         <option value="0" selected="All">All</option>
                                         <option ng-repeat="x in drawTime" value="{{x.draw_master_id}}">
-                                            {{(x.end_time |limitTo: 5) + ' '+ (x.meridiem)}}
+                                            {{(x.end_time |limitTo: 5) + ' '+ (x.meridiem) +' ' + (x.draw_name)}}
                                         </option>
                                     </select>
                                 </div>
-                                <div class="col-3">
+                                <div class="col-2">
                                     <input type="text" class="form-control" ng-model="select_barcode" placeholder="Enter Barcode">
                                 </div>
 
@@ -119,7 +119,7 @@
                             </div>
 
 
-                            <div class="d-flex justify-content-between" ng-show="!isLoading2">
+                            <div class="d-flex justify-content-between">
 
                                 <div class="col">
                                     <table cellpadding="0" cellspacing="0" class="table table-hover report-table  text-justify">
@@ -145,7 +145,7 @@
                                                 <td>{{x.amount |number:2}}</td>
                                                 <td>{{x.prize_value |number:2}}</td>
                                                 <td>
-                                                    <a href="#" type="button" data-toggle="modal" data-target="#flipFlop" ng-click="showParticulars($index,x.barcode_number)">
+                                                    <a href="#" type="button" data-toggle="modal" data-target="#flipFlop" ng-click="showParticulars($index,x.barcode)">
                                                         Click here
                                                     </a>
                                                 </td>
@@ -162,10 +162,7 @@
                                         <div>No records found</div>
                                     </div>
                                 </div>
-
                             </div>
-                            
-
 
                             <!-- The modal -->
                             <div class="modal fade" id="flipFlop" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">

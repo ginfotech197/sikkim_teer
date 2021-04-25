@@ -283,7 +283,7 @@ app.controller('MainController', function($cookies,$scope,$mdDialog,$timeout,$in
     };
 
 
-
+    $scope.showReport = false;
     $scope.logoutUserWithConfirmation = function(event) {
 
         // localStorageService.remove('loginData');
@@ -424,10 +424,6 @@ app.controller('MainController', function($cookies,$scope,$mdDialog,$timeout,$in
             headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
         }).then(function (response){
             $scope.todayResult = response.data;
-            $scope.resultTableRow = Math.floor(($scope.todayResult.length) / 2);
-                if(($scope.todayResult.length) % 2){
-                    $scope.resultTableRow +=1;
-                }
         });
     };
     $scope.getResultOfToday();

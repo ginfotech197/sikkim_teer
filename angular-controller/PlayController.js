@@ -301,10 +301,6 @@ app.controller('PlayController', function($cookies,$scope,$rootScope,md5,$mdDial
             $scope.totalTicketBuy=$scope.totalBoxSum * $scope.ticketPrice;
             console.log('selected game 2');
         }
-        if($scope.selectAdvanceDraw.drawId =='all'){
-            $scope.totalBoxSum = $scope.totalBoxSum * ($scope.advanceDrawTimeList.length);
-            $scope.totalTicketBuy=$scope.totalBoxSum * $scope.ticketPrice;
-        }
         
     };  
 
@@ -312,7 +308,6 @@ app.controller('PlayController', function($cookies,$scope,$rootScope,md5,$mdDial
     $scope.$watch('secondLast', $scope.getTotalBuyTicket, true);
     $scope.$watch('last', $scope.getTotalBuyTicket, true);
 
-    $scope.selectAdvanceDraw = {'drawId':'now'};
 
     $scope.allowPrint = false;
     $scope.slip_no = null;
@@ -323,20 +318,6 @@ app.controller('PlayController', function($cookies,$scope,$rootScope,md5,$mdDial
     // }
 
     $scope.submitGameValues=function () {
-
-        var drawToPlay = [];
-        if($scope.selectAdvanceDraw.drawId!=''){
-            if($scope.selectAdvanceDraw.drawId =='all'){
-                drawToPlay = $scope.advanceDrawTimeList;
-            }else if($scope.selectAdvanceDraw.drawId =='now'){
-                drawToPlay.push($scope.drawTimeList);
-            }else{
-                var idx = $scope.advanceDrawTimeList.findIndex( record => record.id == $scope.selectAdvanceDraw.drawId);
-                drawToPlay.push($scope.advanceDrawTimeList[idx]);
-            }
-        }else{
-            drawToPlay.push($scope.drawTimeList);
-        }
         $scope.disableSubmitButton = true;
         var user_id = $scope.users.id;
         if($scope.drawTimeList!= undefined){
@@ -397,18 +378,12 @@ app.controller('PlayController', function($cookies,$scope,$rootScope,md5,$mdDial
             $scope.disableSubmitButton = false;
             return;
         }
-        if($scope.leftHour==0 && $scope.leftMinute==0 && $scope.leftsecond<=30){
-            var alertTitle = 'Draw closed';
-            var alertDescription ="";
-            $scope.showAlert(this.ev,alertTitle,alertDescription);
-            $scope.disableSubmitButton = false;
-            return;
-        }
 
         if($scope.example14dataSelected.length === 0){
             var alertTitle = 'Please select F/R or S/R';
             var alertDescription ="";
             $scope.showAlert(this.ev,alertTitle,alertDescription);
+            $scope.disableSubmitButton = false;
             return;
         }
 
@@ -461,7 +436,6 @@ app.controller('PlayController', function($cookies,$scope,$rootScope,md5,$mdDial
                 localStorageService.set('loginData', $scope.loginDetails);
                 $scope.clearInputBox();
                 $scope.disableSubmitButton=false;
-                $scope.selectAdvanceDraw = {'drawId':''};
             }
         });
     };
