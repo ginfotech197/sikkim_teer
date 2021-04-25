@@ -49,7 +49,7 @@ app.controller("PayoutSettingCtrl", function ($scope,$http,$filter,$rootScope,da
         data: {}
         ,headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
     }).then(function(response){
-        $scope.TwoDigitPayOut[0]=response.data[1];
+        $scope.TwoDigitPayOut[0]=response.data[0];
     });
 });
 

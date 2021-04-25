@@ -42,10 +42,10 @@ app.controller("ReportTerminalCtrl", function ($scope,$http,$filter,$rootScope,d
         $scope.alertMsgCard=false;
         var start_date=$scope.changeDateFormat(start_date);
         var end_date=$scope.changeDateFormat(end_date);
-        if(start_date > end_date){
-            var temp=start_date;
-            start_date=end_date;
-            end_date=temp;
+        if(start_date > end_date) {
+            var temp = start_date;
+            start_date = end_date;
+            end_date = temp;
         }
 
         var request = $http({
@@ -55,7 +55,7 @@ app.controller("ReportTerminalCtrl", function ($scope,$http,$filter,$rootScope,d
             data: {
                 start_date: start_date
                 ,end_date: end_date
-                ,terminal_id: $scope.users.userId
+                ,terminal_id: $scope.users.user_id
             }
             ,headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
         }).then(function(response){
@@ -142,7 +142,7 @@ app.controller("ReportTerminalCtrl", function ($scope,$http,$filter,$rootScope,d
             url: api_url+"/barcodeReportFromTerminal",
             dataType:JSON,
             data: {
-                terminalId: $scope.users.userId
+                terminalId: $scope.users.user_id
                 ,startDate: start_date
                 ,endDate: end_date
             }

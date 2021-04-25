@@ -457,13 +457,13 @@ app.controller('PlayController', function($cookies,$scope,$rootScope,md5,$mdDial
                 // $rootScope.huiPrintDiv('receipt-div','',1);
                 // $scope.showAlert(this.ev,"Print done",'');
                 $scope.loginDetails.StockistToTerminal.current_balance = $scope.reportArray.current_balance;
+                localStorageService.remove('loginData');
+                localStorageService.set('loginData', $scope.loginDetails);
                 $scope.clearInputBox();
                 $scope.disableSubmitButton=false;
                 $scope.selectAdvanceDraw = {'drawId':''};
-                
             }
         });
-
     };
 
     
