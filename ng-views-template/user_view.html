@@ -179,8 +179,8 @@
     }
     
 </style>
-       
-    <div id="pagewrap"  ng-init="showReport=false" data-ng-show="loginDetails.data.user.user_type.type_id==0 || loginDetails.data.user.user_type.type_id==3"> 
+
+    <div id="pagewrap"  ng-init="showReport=false" data-ng-show="loginDetails.data.user.user_type.type_id==0 || loginDetails.data.user.user_type.type_id==3">
         <div class="cotainer" style="background-color:  rgb(208, 212, 182);" data-ng-init="displayJodi=true">
             <div class="d-flex " id="upper-div">
                 <div class="col-10">
@@ -227,7 +227,7 @@
                                         <input type="password" class="form-control" placeholder="Pin" ng-model="loginData.password" ng-click="onTextClick($event)">
                                         <div class="input-group-prepend">
                                           <button class="btn btn-success" type="button" ng-click="validateUser()">Login</button>
-                                           
+
                                         </div>
                                     </div>
                                     <div ng-show="loginDetails.data.user.id">
@@ -267,7 +267,7 @@
                                     <b style="font-weight: 900;">{{$index!=10?'All-B': ''}}</b><br>
                                     <input type="tel" ng-if="$index!=10" class="sm-div" ng-click="onTextClick($event)" ng-model="playInput[10][$index]" ng-keyup="verticallyHorizontallyPushValue(10,$index)" maxlength="3" >
 
-                                    
+
                                 </td>
                             </tr>
                         </table>
@@ -290,10 +290,10 @@
             <div style="height: 50px;"></div>
 
             <div class="container" id="receipt-div" ng-show="false">
-                
+
                 <div id="print-div" style="font-weight: 700;font-size: smaller;width: 500px;">
                     <h4 class="text-center">Rajshree</h4>
-                    
+
                     <div class="d-flex flex-column bd-highlight">
                         <div class="">Game Name: {{selectedGame==1? 'Jodi' : 'Single'}}</div>
                         <div class="">Terminal: {{users.userLoginid}}</div>
@@ -303,38 +303,38 @@
                         <div class="">Total point: {{totalPoint}}</div>
                     </div>
 
-                    <hr style="border-top: dotted 1px;" />                                
+                    <hr style="border-top: dotted 1px;" />
 
                     <div class="d-flex flex-wrap align-content-start" ng-if="inputDetails.length>0 && inputDetails[0].play_series_id==1">
                         <div class="" ng-repeat="x in inputDetails">
                             <u>{{x.row_num + '' + x.col_num + '-'}}</u>{{x.game_value}}&nbsp;
-                            
+
                         </div>
-                    </div>  
-                    
+                    </div>
+
                     <div class="d-flex flex-wrap align-content-start" ng-if="inputDetails.length>0 && inputDetails[0].play_series_id==2">
                             <h5 ng-if="inputDetails[0].val_one">Aandar</h5><br>
                         <div class="" ng-repeat="x in inputDetails">
                             <u>{{x.row_num + '-'}}</u>{{x.val_one}}&nbsp;
-                            
+
                         </div>
                         <br><br>
 
                         <h4 ng-if="inputDetails[0].val_two">Bahar</h4><br>
                         <div class="" ng-repeat="x in inputDetails">
                             <u>{{x.col_num + '-'}}</u>{{x.val_two}}&nbsp;
-                            
+
                         </div>
-                    </div>                        
-                    
-                    <hr style="border-top: dotted 1px;" />                       
+                    </div>
+
+                    <hr style="border-top: dotted 1px;" />
 
                     <div class="d-flex col-12">
                         <angular-barcode ng-model="reportArray.barcode" bc-options="barcodeOilBill" bc-class="barcode" bc-type="img"></angular-barcode>
                     </div>
-                    
+
                 </div>
-    
+
 
         </div>
         </div>

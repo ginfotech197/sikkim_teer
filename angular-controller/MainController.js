@@ -39,7 +39,6 @@ app.controller('MainController', function($cookies,$scope,$mdDialog,$timeout,$in
         $scope.loginDetails = $scope.defaultLoginDetails;
         localStorageService.set('loginData', null);
         $window.location.href = '#!/user';
-        
     };
 
     $scope.changeDateFormat=function(userDate){
@@ -282,9 +281,9 @@ app.controller('MainController', function($cookies,$scope,$mdDialog,$timeout,$in
         });
     };
 
-
-    $scope.showReport = false;
     $scope.logoutUserWithConfirmation = function(event) {
+        console.log(localStorageService.get('loginData').data.token.split('|')[0]);
+        // return;
 
         // localStorageService.remove('loginData');
         var confirm = $mdDialog.confirm()
@@ -302,8 +301,9 @@ app.controller('MainController', function($cookies,$scope,$mdDialog,$timeout,$in
                 url: api_url+"/logout",
                 dataType:JSON,
                 data: {
-                    uid: $scope.users.user_id,
-                    userCategoryId: $scope.users.user_type_id
+                    uid: $scope.users.id,
+                    userCategoryId: $scope.users.user_type_id,
+                    token_id: localStorageService.get('loginData').data.token
                 },
                 headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
             }).then(function(response){
