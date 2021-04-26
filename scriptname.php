@@ -1,6 +1,6 @@
 <?php
 
-$url = 'http://lucky7goastar.com/sikkim_teer_api/public/api/v1/generateNewResultAndDraw';
+$url = 'http://lucky7goastar.com/sikkim_teer_api/public/api/generateNewResultAndDraw';
 	$data = array();
  
 	// use key 'http' even if you send the request to https://...
