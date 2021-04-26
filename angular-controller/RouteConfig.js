@@ -47,6 +47,9 @@ app.config(function($routeProvider){
     }).when("/result",{
         templateUrl : "ng-views-template/result.html",
         controller: "ResultCtrl"
+    }).when("/previousResult",{
+        templateUrl : "ng-views-template/previous_result.html",
+        controller: "MainController"
     }).when("/message",{
         templateUrl : "ng-views-template/message.html",
         controller: "ResultCtrl"

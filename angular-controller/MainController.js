@@ -64,6 +64,19 @@ app.controller('MainController', function($cookies,$scope,$mdDialog,$timeout,$in
         });
     };
 
+    $scope.previousResult = {};
+    $scope.getResult = function(terminalId){
+        $http({
+            method: 'GET',
+            url: api_url+"/getPreviousResult",
+            dataType:JSON,
+            headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
+        }).then(function (response){
+            $scope.previousResult = response.data.data;
+        });
+    };
+    $scope.getResult();
+
     $scope.entrant_image_url=entrant_image_url;
     $http.defaults.headers.common['uuid']= "asdfasdfasdfasdfasdfass";
 
