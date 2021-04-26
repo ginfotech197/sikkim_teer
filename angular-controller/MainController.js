@@ -35,7 +35,8 @@ app.controller('MainController', function($cookies,$scope,$mdDialog,$timeout,$in
         $scope.users.user_name="";
         $scope.users.user_type_id=0;
         $scope.users.user_id=0;
-    
+        $scope.users.id=0;
+
         $scope.loginDetails = $scope.defaultLoginDetails;
         localStorageService.set('loginData', null);
         $window.location.href = '#!/user';
