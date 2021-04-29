@@ -45,7 +45,7 @@ app.controller("ResultCtrl", function ($scope,$http,$filter,$rootScope,dateFilte
         startDate = $scope.changeDateFormat(startDate);
         endDate = $scope.changeDateFormat(endDate);
 
-
+        $scope.previousResultByDate = alasql("select * from ? where game_date>=? and game_date<=?",[$scope.previousResult,startDate,endDate]);
 
 		// var dt=$scope.changeDateFormat(searchDate);
         // var request = $http({
@@ -66,9 +66,11 @@ app.controller("ResultCtrl", function ($scope,$http,$filter,$rootScope,dateFilte
     };
 
 
+    $scope.todayDate = new Date();
+    $scope.start_result_date = new Date($scope.todayDate.getFullYear(),$scope.todayDate.getMonth(),$scope.todayDate.getDate()-20);
+    $scope.end_result_date = $scope.todayDate;
 
-    $scope.todayDate = $scope.changeDateFormat(new Date());
-    $scope.getResultListByDate($scope.todayDate);
+    $scope.getResultListByDate($scope.start_result_date,$scope.end_result_date);
     $scope.message='';
     $scope.submitNewMessage=function(message){
         var request = $http({
