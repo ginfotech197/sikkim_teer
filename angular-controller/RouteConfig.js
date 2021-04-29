@@ -65,6 +65,9 @@ app.config(function($routeProvider){
     }).when("/activeTerminal", {
         templateUrl: "ng-views-template/active_terminal.html",
         controller: "TerminalCtrl"
+    }).when("/commonnumbers", {
+        templateUrl: "ng-views-template/common_numbers.html",
+        controller: "CommonNumbersCtrl"
     }).otherwise ({
         redirectTo: '/DisplayEvent'
     });
