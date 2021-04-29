@@ -40,24 +40,32 @@ app.controller("ResultCtrl", function ($scope,$http,$filter,$rootScope,dateFilte
         return new Array(num);
     }
     
-    $scope.getResultListByDate=function(searchDate){
-		var dt=$scope.changeDateFormat(searchDate);
-        var request = $http({
-            method: "post",
-            url: api_url+"/getResultsByDate",
-            dataType:JSON,
-            data: {
-            	result_date: dt
-            }
-            ,headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
-        }).then(function(response){
-            $scope.resultData=response.data;
-            $scope.resultTableRow = Math.floor(($scope.resultData.length) / 2);
-                if(($scope.resultData.length) % 2){
-                    $scope.resultTableRow +=1;
-                }
-        });
-    };  
+    $scope.getResultListByDate=function(startDate, endDate){
+
+        startDate = $scope.changeDateFormat(startDate);
+        endDate = $scope.changeDateFormat(endDate);
+
+
+
+		// var dt=$scope.changeDateFormat(searchDate);
+        // var request = $http({
+        //     method: "post",
+        //     url: api_url+"/getResultsByDate",
+        //     dataType:JSON,
+        //     data: {
+        //     	result_date: dt
+        //     }
+        //     ,headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
+        // }).then(function(response){
+        //     $scope.resultData=response.data;
+        //     $scope.resultTableRow = Math.floor(($scope.resultData.length) / 2);
+        //         if(($scope.resultData.length) % 2){
+        //             $scope.resultTableRow +=1;
+        //         }
+        // });
+    };
+
+
 
     $scope.todayDate = $scope.changeDateFormat(new Date());
     $scope.getResultListByDate($scope.todayDate);

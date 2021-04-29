@@ -29,8 +29,9 @@
 
                             <div class="card-header p-0">
                                 <div class="d-flex justify-content-center">
-                                    <div class=""><input type="date" class="form-control" ng-model="result_date" ng-change="changeDateFormat(start_date)"></div>                                            
-                                    <div class="ml-2"><input type="button" class="btn btn-info form-control" value="Show" ng-click="getResultListByDate(result_date)"></div>
+                                    <div class=""><input type="date" class="form-control" ng-model="start_result_date" ng-change="changeDateFormat(start_date)"></div>
+                                    <div class=""><input type="date" class="form-control" ng-model="end_result_date" ng-change="changeDateFormat(end_date)"></div>
+                                    <div class="ml-2"><input type="button" class="btn btn-info form-control" value="Show" ng-click="getResultListByDate(start_result_date,end_result_date)"></div>
                                 </div>
                             </div>
                             <div class="card-body">
@@ -71,13 +72,31 @@
                                 <div class="d-flex" ng-show="!isLoading">
                                     <div class="col-3"></div>
                                     <div id="tab" class="col-6">
-                                        <table>
-                                            <tr ng-repeat="r in getRow(resultTableRow) track by $index" ng-init="rowIndex = $index">
-                                                <td class="big">{{(resultData[rowIndex*2].end_time |limitTo:5)}}</td>
-                                                <td class="small">{{resultData[rowIndex*2].result_row!=null? (resultData[rowIndex*2].result_row +''+ resultData[rowIndex*2].result_col):' '}}</td>
-                                                <td class="big">{{(resultData[rowIndex*2+1].end_time |limitTo:5)}}</td>
-                                                <td class="small">{{resultData[rowIndex*2+1].result_row!=null? (resultData[rowIndex*2+1].result_row +''+ resultData[rowIndex*2+1].result_col) : ' '}}</td>
+<!--                                        <table>-->
+<!--                                            <tr ng-repeat="r in getRow(resultTableRow) track by $index" ng-init="rowIndex = $index">-->
+<!--                                                <td class="big">{{(resultData[rowIndex*2].end_time |limitTo:5)}}</td>-->
+<!--                                                <td class="small">{{resultData[rowIndex*2].result_row!=null? (resultData[rowIndex*2].result_row +''+ resultData[rowIndex*2].result_col):' '}}</td>-->
+<!--                                                <td class="big">{{(resultData[rowIndex*2+1].end_time |limitTo:5)}}</td>-->
+<!--                                                <td class="small">{{resultData[rowIndex*2+1].result_row!=null? (resultData[rowIndex*2+1].result_row +''+ resultData[rowIndex*2+1].result_col) : ' '}}</td>-->
+<!--                                            </tr>-->
+<!--                                        </table>-->
+                                        <table class="table table-bordered my-table-result mt-1">
+                                            <thead>
+                                            <tr>
+                                                <th>SL. No.</th>
+                                                <th>Date</th>
+                                                <th>FR</th>
+                                                <th>SR</th>
                                             </tr>
+                                            </thead>
+                                            <tbody>
+                                            <tr ng-repeat="x in previousResult">
+                                                <td>{{ $index+1}}</td>
+                                                <td>{{x.game_date}}</td>
+                                                <td>{{x.fr_value}}</td>
+                                                <td>{{x.sr_value}}</td>
+                                            </tr>
+                                            </tbody>
                                         </table>
                                     </div>
                                     <div class="col-3"></div>
