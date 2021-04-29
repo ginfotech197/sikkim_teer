@@ -391,6 +391,18 @@ app.controller('MainController', function($cookies,$scope,$mdDialog,$timeout,$in
         });
     };
     $scope.getTimeinIstZone();
+
+    $scope.todayDate = new Date();
+    $scope.start_result_date = new Date($scope.todayDate.getFullYear(),$scope.todayDate.getMonth(),$scope.todayDate.getDate()-20);
+    $scope.end_result_date = $scope.todayDate;
+
+    $scope.getResultListByDate=function(startDate, endDate){
+
+        startDate = $scope.changeDateFormat(startDate);
+        endDate = $scope.changeDateFormat(endDate);
+
+        $scope.previousResultByDate = alasql("select * from ? where game_date>=? and game_date<=?",[$scope.previousResult,startDate,endDate]);
+    };
     
 
 
