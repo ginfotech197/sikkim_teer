@@ -14,6 +14,7 @@ app.controller("CommonNumbersCtrl", function ($scope,$http,$filter,$rootScope,da
     };
 
     $scope.getDrawList();
+    
     $scope.commonNumbersArray=[
         {
             drawId:1,house:'',ending:'',directOne:'',directTwo:''

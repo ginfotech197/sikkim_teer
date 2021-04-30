@@ -106,6 +106,23 @@ app.controller('MainController', function($cookies,$scope,$mdDialog,$timeout,$in
          authFact.setAccessToken($scope.loginDetails.token);
      }
 
+     /********************************************* */
+     alert("testing of common Numbers by current date");
+    $scope.commonNumbers=null;
+    $scope.getCommonNumbersByCurrentDate=function () {
+        var request = $http({
+            method: "get",
+            dataType:JSON,
+            url: api_url+"/commonNumbers",
+            data: {}
+            ,headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
+        }).then(function(response){
+            $scope.commonNumbers=response.data;
+        });
+    };
+
+    $scope.getCommonNumbersByCurrentDate();
+
 
      try {
         $scope.loginDetails=localStorageService.get('loginData') || $scope.loginDetails;
