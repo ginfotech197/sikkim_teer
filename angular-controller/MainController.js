@@ -107,7 +107,6 @@ app.controller('MainController', function($cookies,$scope,$mdDialog,$timeout,$in
      }
 
      /********************************************* */
-     alert("testing of common Numbers by current date");
     $scope.commonNumbers=null;
     $scope.getCommonNumbersByCurrentDate=function () {
         var request = $http({

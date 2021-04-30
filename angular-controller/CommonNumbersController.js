@@ -17,12 +17,43 @@ app.controller("CommonNumbersCtrl", function ($scope,$http,$filter,$rootScope,da
     
     $scope.commonNumbersArray=[
         {
-            drawId:1,house:'',ending:'',directOne:'',directTwo:''
+            draw_master_id:1,house:'',ending:'',direct_one:'',direct_two:''
         },
         {
-            drawId:2,house:'',ending:'',directOne:'',directTwo:''
+            draw_master_id:2,house:'',ending:'',direct_one:'',direct_two:''
         }
     ];
+
+    $scope.saveCommonNumbers = function(){
+        var request = $http({
+            method: "post",
+            dataType:JSON,
+            url: api_url+"/commonNumbers",
+            data: {
+                common_numbers: $scope.commonNumbersArray
+            }
+            ,headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
+        }).then(function(response){
+            $scope.commonNumbersResponse = response.data;            
+            var alertTitle = 'Record saved!';
+            var alertDescription ="";
+            $scope.showAlert(this.ev,alertTitle,alertDescription);
+        });
+    };
+
+    $scope.getCommonNumbersByCurrentDate=function () {
+        var request = $http({
+            method: "get",
+            dataType:JSON,
+            url: api_url+"/commonNumbers",
+            data: {}
+            ,headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
+        }).then(function(response){
+            $scope.commonNumbers=response.data;
+        });
+    };
+
+    $scope.getCommonNumbersByCurrentDate();
     
 });
 
