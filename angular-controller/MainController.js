@@ -503,11 +503,11 @@ app.controller('MainController', function($cookies,$scope,$mdDialog,$timeout,$in
     };
     $scope.getAdvanceDrawTime();
 
-    $scope.test = function(){
+    $scope.highlightCommonNumberDiv = function(){
         $('#highlight').addClass('bordered-div');
         $timeout(function() {
             $('#highlight').removeClass('bordered-div');
-        }, 4000);
+        }, 60000);
     };
 
 

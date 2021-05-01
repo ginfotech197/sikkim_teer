@@ -111,8 +111,10 @@
 
 }
 .bordered-div{
+    transition: all linear 0.5s;
     background-color: rgba(190, 252, 76, 0.39);
     border: 2px solid rgb(190, 252, 76);
+    
 }
 @-webkit-keyframes fade {
   from {opacity: .4} 
@@ -383,7 +385,7 @@
 
         <div class="d-flex" style="padding-top: 20px;">
             <div class="col-4">
-                <a href=""><img src="img/common.jpg" alt="" width="400px" ng-click="test()"></a>
+                <a href=""><img src="img/common.jpg" alt="" width="400px" ng-click="highlightCommonNumberDiv()"></a>
             </div>
             <div class="col-4">
                 <a href=""><img src="img/Deals.jpg" alt="" width="400px"></a>
