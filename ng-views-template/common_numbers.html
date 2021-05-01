@@ -1,6 +1,7 @@
-<div class="container">
 
+<div class="container pb-5" data-ng-show="loginDetails.data.user.user_type.type_id==1">
 
+        <h3>Common Numbers</h3>
         <table class="table table-bordered">
             <thead>
             <tr>                    
@@ -14,13 +15,13 @@
             </thead>
             <tbody>
             <tr ng-repeat="x in commonNumbersArray">                    
-                <td>{{drawTimes[x.drawId-1].draw_name}}</td>
-                <td><input type="tel" class="form-control" ng-model="x.house"></td>
-                <td><input type="tel" class="form-control" ng-model="x.ending"></td>
+                <td>{{drawTimes[x.draw_master_id-1].draw_name}}</td>
+                <td><input numbers-only type="tel" maxlength="1" class="form-control" ng-model="x.house"></td>
+                <td><input numbers-only type="tel" maxlength="1" class="form-control" ng-model="x.ending"></td>
                 <td>
                     <div class="input-group">
-                        <input type="tel" class="form-control" ng-model="x.directOne">
-                        <input type="tel" class="form-control" ng-model="x.directTwo">
+                        <input numbers-only type="tel" maxlength="2" class="form-control" ng-model="x.direct_one">
+                        <input numbers-only type="tel" maxlength="2" class="form-control" ng-model="x.direct_two">
                     </div>
                 </td>
             </tr>
@@ -31,11 +32,11 @@
         <div class="d-flex">
             <div class="col-5"></div>
             <div class="col-2">
-                <button type="button" class="btn btn-primary">Submit</button>
+                <button type="button" class="btn btn-primary" ng-click="saveCommonNumbers()">Submit</button>
             </div>
             <div class="col-5"></div>
         </div>
-        <div class="d-flex">
+        <div class="d-flex" ng-show="false">
             <div class="col-6">
                 <pre>
                     {{commonNumbersArray | json}}                

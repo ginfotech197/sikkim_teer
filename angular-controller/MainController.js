@@ -107,7 +107,10 @@ app.controller('MainController', function($cookies,$scope,$mdDialog,$timeout,$in
      }
 
      /********************************************* */
+<<<<<<< HEAD
      
+=======
+>>>>>>> 9fcf2bc39913f24439d34ad57c154c44ca4f8fd1
     $scope.commonNumbers=null;
     $scope.getCommonNumbersByCurrentDate=function () {
         var request = $http({
@@ -117,7 +120,7 @@ app.controller('MainController', function($cookies,$scope,$mdDialog,$timeout,$in
             data: {}
             ,headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
         }).then(function(response){
-            $scope.commonNumbers=response.data;
+            $scope.commonNumbers=response.data.data;
         });
     };
 
@@ -413,12 +416,30 @@ app.controller('MainController', function($cookies,$scope,$mdDialog,$timeout,$in
     $scope.start_result_date = new Date($scope.todayDate.getFullYear(),$scope.todayDate.getMonth(),$scope.todayDate.getDate()-20);
     $scope.end_result_date = $scope.todayDate;
 
+    $scope.previousResultByDate = null;
+
     $scope.getResultListByDate=function(startDate, endDate){
 
         startDate = $scope.changeDateFormat(startDate);
         endDate = $scope.changeDateFormat(endDate);
 
-        $scope.previousResultByDate = alasql("select * from ? where game_date>=? and game_date<=?",[$scope.previousResult,startDate,endDate]);
+        // $scope.previousResultByDate = alasql("select * from ? where game_date>=? and game_date<=?",[$scope.previousResult,startDate,endDate]);
+        // console.log($scope.previousResultByDate);
+
+            var request = $http({
+                method: "post",
+                url: api_url+"/getPreviousResultByDate",
+                dataType:JSON,
+                data: {
+                    start_date: startDate,
+                    end_date: endDate
+                }
+                ,headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
+            }).then(function(response){
+                $scope.previousResultByDate = response.data.data;
+                console.log(response.data.data);
+            });
+
     };
     
 
@@ -518,4 +539,15 @@ app.controller('MainController', function($cookies,$scope,$mdDialog,$timeout,$in
   $scope.example2settings = {
       displayProp: 'id'
   };
+
+
+  $interval(function () {
+    // $scope.getNewDraw();
+
+    },5000);
+
+
+
+
+
 });

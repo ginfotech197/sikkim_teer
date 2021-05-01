@@ -259,7 +259,7 @@
                                 <td class="td" ng-repeat="c in getCol(coloumn) track by $index" ng-init="columnIndex = $index">
                                     <b style="font-weight: 900; font-size: large;">{{columnIndex==10 ? 'All-A' : rowIndex+''+columnIndex}}</b>
 
-                                    <br><input type="tel" class="sm-div" ng-model="playInput[rowIndex][$index]" ng-keyup="verticallyHorizontallyPushValue(rowIndex,$index)" ng-click="onTextClick($event)" maxlength="3" ></td>
+                                    <br><input numbers-only type="tel" class="sm-div" ng-model="playInput[rowIndex][$index]" ng-keyup="verticallyHorizontallyPushValue(rowIndex,$index)" ng-click="onTextClick($event)" maxlength="3" ></td>
                             </tr>
 
                             <tr class="last-td">
