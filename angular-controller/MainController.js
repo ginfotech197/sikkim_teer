@@ -107,7 +107,7 @@ app.controller('MainController', function($cookies,$scope,$mdDialog,$timeout,$in
      }
 
      /********************************************* */
-     alert("testing of common Numbers by current date");
+     
     $scope.commonNumbers=null;
     $scope.getCommonNumbersByCurrentDate=function () {
         var request = $http({
@@ -485,6 +485,12 @@ app.controller('MainController', function($cookies,$scope,$mdDialog,$timeout,$in
     };
     $scope.getAdvanceDrawTime();
 
+    $scope.test = function(){
+        $('#highlight').addClass('bordered-div');
+        $timeout(function() {
+            $('#highlight').removeClass('bordered-div');
+        }, 4000);
+    };
 
 
     $scope.name = 'World';

@@ -110,7 +110,10 @@
     transform: translate(-50%, -50%);
 
 }
-
+.bordered-div{
+    background-color: rgba(190, 252, 76, 0.39);
+    border: 2px solid rgb(190, 252, 76);
+}
 @-webkit-keyframes fade {
   from {opacity: .4} 
   to {opacity: 1}
@@ -244,47 +247,47 @@
                     <div class="slideshow-container">
                         <div class="mySlides fade">
                                 <div class="numbertext"></div>
-                                <a target="_blank" href=""><img src="img/teer1.jfif" alt="" width="250px" height="85px" ></a>
+                                <a target="_blank" href=""><img src="img/teer1.jfif" alt="" width="650px" height="200px" ></a>
                                 <div class="text caption"id="black"></div>
                         </div>
                         <div class="mySlides fade">
                                 <div class="numbertext"></div>
-                                <a target="_blank" href=""><img width="250px" height="85px" src="img/teer2.jfif" alt=""></a>
+                                <a target="_blank" href=""><img width="650px" height="200px" src="img/teer2.jfif" alt=""></a>
                                 <div class="text caption"></div>
                         </div>
                         <div class="mySlides fade">
                                 <div class="numbertext"></div>
-                                <a target="_blank" href=""><img width="250px" height="85px" src="img/teer3.jfif" alt=""></a>
+                                <a target="_blank" href=""><img width="650px" height="200px" src="img/teer3.jfif" alt=""></a>
                                 <div class="text caption"></div>
                         </div>
                         <div class="mySlides fade">
                                 <div class="numbertext"></div>
-                                <a target="_blank" href=""><img width="250px" height="85px" src="img/teer4.jfif" alt=""></a>
+                                <a target="_blank" href=""><img width="250px" height="200px" src="img/teer4.jfif" alt=""></a>
                                 <div class="text caption"></div>
                         </div>
                         <div class="mySlides fade">
                                 <div class="numbertext"></div>
-                                <a target="_blank" href=""><img width="250px" height="85px" src="img/gallery/1.1.jpg" alt=""></a>
+                                <a target="_blank" href=""><img width="650px" height="200px" src="img/gallery/1.1.jpg" alt=""></a>
                                 <div class="text caption"></div>
                         </div>
                         <div class="mySlides fade">
                                 <div class="numbertext"></div>
-                                <a target="_blank" href=""><img width="250px" height="85px" src="img/gallery/2.2.jpg" alt=""></a>
+                                <a target="_blank" href=""><img width="650px" height="200px" src="img/gallery/2.2.jpg" alt=""></a>
                                 <div class="text caption"></div>
                         </div>
                         <div class="mySlides fade">
                                 <div class="numbertext"></div>
-                                <a target="_blank" href=""><img width="250px" height="85px" src="img/gallery/3.jpg" alt=""></a>
+                                <a target="_blank" href=""><img width="650px" height="200px" src="img/gallery/3.jpg" alt=""></a>
                                 <div class="text caption"></div>
                         </div>
                         <div class="mySlides fade">
                                 <div class="numbertext"></div>
-                                <a target="_blank" href=""><img width="300px" height="85px" src="img/gallery/4.jpg" alt=""></a>
+                                <a target="_blank" href=""><img width="650px" height="200px" src="img/gallery/4.jpg" alt=""></a>
                                 <div class="text caption"></div>
                         </div>
                         <div class="mySlides fade">
                                 <div class="numbertext"></div>
-                                <a target="_blank" href=""><img width="250px" height="85px" src="img/gallery/5.jpg" alt=""></a>
+                                <a target="_blank" href=""><img width="650px" height="200px" src="img/gallery/5.jpg" alt=""></a>
                                 <div class="text caption"></div>
                         </div>
                     
@@ -347,12 +350,12 @@
         </div>
         <div class="d-flex">
             <div class="col-4"></div>
-            <div class="col-4" style="color: white;"><h4>COMMON NUMBERS</h4></div>
+            <div class="col-4" style="color: white; text-align: center;"><h4>COMMON NUMBERS</h4></div>
             <div class="col-4"></div>
         </div>
 
         <div style="padding-top: 10px;" class="container">
-            <div class="container" style="padding-top: 10px;">
+            <div id="highlight" class="container highlight" style="padding-top: 10px; width: 600px;">
                 <table class="table table-bordered" style="background-color: white;">
                     <thead>
                     <tr>                    
@@ -387,7 +390,7 @@
 
         <div class="d-flex" style="padding-top: 20px;">
             <div class="col-4">
-                <a href=""><img src="img/common.jpg" alt="" width="400px"></a>
+                <a href=""><img src="img/common.jpg" alt="" width="400px" ng-click="test()"></a>
             </div>
             <div class="col-4">
                 <a href=""><img src="img/Deals.jpg" alt="" width="400px"></a>
