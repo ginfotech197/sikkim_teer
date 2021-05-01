@@ -68,9 +68,9 @@ app.controller("TerminalCtrl", function ($scope,$http,$filter,$rootScope,dateFil
                 tempTerminal.terminal_id=$scope.terminalReport.terminal_id;
                 tempTerminal.stockist_id=$scope.terminal.stockist.id;
                 tempTerminal.stockist_name=$scope.terminal.stockist.stockist_name;
-                tempTerminal.people_name=$scope.terminal.people_name;
+                tempTerminal.user_name=$scope.terminal.user_name;
                 tempTerminal.user_id=$scope.terminal.user_id;
-                tempTerminal.user_password=$scope.terminal.user_password;
+                tempTerminal.pin=$scope.terminal.user_password;
                 $scope.terminalList.unshift(tempTerminal);
                 $scope.terminalForm.$setPristine();
             }

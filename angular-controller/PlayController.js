@@ -201,9 +201,9 @@ app.controller('PlayController', function($cookies,$scope,$rootScope,md5,$mdDial
             $scope.counter = response.data.next_draw_id;
         });
     };
-    // $scope.getNewDraw();
+    $scope.getNewDraw();
     $interval(function () {
-        // $scope.getNewDraw();  
+        $scope.getNewDraw();  
 
     },5000);
     $scope.$watch("counter", function() {

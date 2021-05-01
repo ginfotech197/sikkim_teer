@@ -116,7 +116,7 @@ app.controller('MainController', function($cookies,$scope,$mdDialog,$timeout,$in
             data: {}
             ,headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
         }).then(function(response){
-            $scope.commonNumbers=response.data;
+            $scope.commonNumbers=response.data.data;
         });
     };
 
@@ -511,4 +511,15 @@ app.controller('MainController', function($cookies,$scope,$mdDialog,$timeout,$in
   $scope.example2settings = {
       displayProp: 'id'
   };
+
+
+  $interval(function () {
+    $scope.getNewDraw();  
+
+    },5000);
+
+
+
+
+
 });
