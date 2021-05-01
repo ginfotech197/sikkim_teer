@@ -412,12 +412,30 @@ app.controller('MainController', function($cookies,$scope,$mdDialog,$timeout,$in
     $scope.start_result_date = new Date($scope.todayDate.getFullYear(),$scope.todayDate.getMonth(),$scope.todayDate.getDate()-20);
     $scope.end_result_date = $scope.todayDate;
 
+    $scope.previousResultByDate = null;
+
     $scope.getResultListByDate=function(startDate, endDate){
 
         startDate = $scope.changeDateFormat(startDate);
         endDate = $scope.changeDateFormat(endDate);
 
-        $scope.previousResultByDate = alasql("select * from ? where game_date>=? and game_date<=?",[$scope.previousResult,startDate,endDate]);
+        // $scope.previousResultByDate = alasql("select * from ? where game_date>=? and game_date<=?",[$scope.previousResult,startDate,endDate]);
+        // console.log($scope.previousResultByDate);
+
+            var request = $http({
+                method: "post",
+                url: api_url+"/getPreviousResultByDate",
+                dataType:JSON,
+                data: {
+                    start_date: startDate,
+                    end_date: endDate
+                }
+                ,headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
+            }).then(function(response){
+                $scope.previousResultByDate = response.data.data;
+                console.log(response.data.data);
+            });
+
     };
     
 
@@ -514,7 +532,7 @@ app.controller('MainController', function($cookies,$scope,$mdDialog,$timeout,$in
 
 
   $interval(function () {
-    $scope.getNewDraw();  
+    // $scope.getNewDraw();
 
     },5000);
 
