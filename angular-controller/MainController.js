@@ -107,10 +107,7 @@ app.controller('MainController', function($cookies,$scope,$mdDialog,$timeout,$in
      }
 
      /********************************************* */
-<<<<<<< HEAD
      
-=======
->>>>>>> 9fcf2bc39913f24439d34ad57c154c44ca4f8fd1
     $scope.commonNumbers=null;
     $scope.getCommonNumbersByCurrentDate=function () {
         var request = $http({
