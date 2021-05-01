@@ -363,26 +363,19 @@
                     </thead>
                     <tbody>
                     <tr>                    
-                        <td>55.30</td>
-                        <td>6</td>
-                        <td>8</td>
+                        <td>{{commonNumbers[0].direct_one || 'xx'}} , {{commonNumbers[0].direct_two || 'xx'}}</td>
+                        <td>{{commonNumbers[0].house || 'xx'}}</td>
+                        <td>{{commonNumbers[0].ending || 'xx'}}</td>
                     </tr>
                     <tr>
                         
-                        <td>74</td>
-                        <td>0</td>
-                        <td>2</td>
+                        <td>{{commonNumbers[1].direct_one || 'xx'}} , {{commonNumbers[1].direct_two || 'xx'}}</td>
+                        <td>{{commonNumbers[1].house || 'xx'}}</td>
+                        <td>{{commonNumbers[1].ending || 'xx'}}</td>
                     </tr>                  
                     </tbody>
                 </table>
             </div>
-        </div>
-        <div>
-            
-            <pre>
-              commonNumbers =  {{commonNumbers | json}}
-            </pre>
-            
         </div>
 
         <div class="d-flex" style="padding-top: 20px;">

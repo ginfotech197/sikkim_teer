@@ -49,7 +49,9 @@ app.controller("CommonNumbersCtrl", function ($scope,$http,$filter,$rootScope,da
             data: {}
             ,headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
         }).then(function(response){
-            $scope.commonNumbers=response.data;
+            if(response.data.data.length){
+                $scope.commonNumbersArray=response.data.data;
+            }
         });
     };
 
