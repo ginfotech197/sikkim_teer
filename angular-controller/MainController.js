@@ -39,7 +39,7 @@ app.controller('MainController', function($cookies,$scope,$mdDialog,$timeout,$in
 
         $scope.loginDetails = $scope.defaultLoginDetails;
         localStorageService.set('loginData', null);
-        $window.location.href = '#!/user';
+        $window.location.href = '#!/usercounter';
     };
 
     $scope.changeDateFormat=function(userDate){
@@ -131,7 +131,7 @@ app.controller('MainController', function($cookies,$scope,$mdDialog,$timeout,$in
             $scope.setUserData($scope.loginDetails);
         }
         // if($scope.loginDetails.isLoggedIn && $scope.loginDetails.person.person_category_id == 3){
-        //     $window.location.href = base_url + '#!/user';
+        //     $window.location.href = base_url + '#!/usercounter';
         //     $scope.getActiveTerminalBalance($scope.loginDetails.person.id);
         // }
         // else if($scope.loginDetails.isLoggedIn && $scope.loginDetails.person.person_category_id == 4){
@@ -273,7 +273,7 @@ app.controller('MainController', function($cookies,$scope,$mdDialog,$timeout,$in
             if($scope.loginDetails.data.user.user_type.type_id === 1) {
                 $window.location.href = base_url + '#!/admin';
             }else if($scope.loginDetails.data.user.user_type.type_id === 3){
-                $window.location.href = base_url + '#!/user';
+                $window.location.href = base_url + '#!/usercounter';
             }else if($scope.loginDetails.data.user.user_type.type_id === 4) {
                 $window.location.href = base_url + '#!/stockistPanel';
             }
