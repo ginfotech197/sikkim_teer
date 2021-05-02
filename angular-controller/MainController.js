@@ -438,6 +438,12 @@ app.controller('MainController', function($cookies,$scope,$mdDialog,$timeout,$in
             });
 
     };
+
+    $scope.todayDate = new Date();
+    $scope.previous_result_start_result_date = new Date($scope.todayDate.getFullYear(),$scope.todayDate.getMonth(),$scope.todayDate.getDate()-30);
+    $scope.previous_result_end_result_date = $scope.todayDate;
+
+    $scope.getResultListByDate($scope.previous_result_start_result_date, $scope.previous_result_end_result_date);
     
 
 
