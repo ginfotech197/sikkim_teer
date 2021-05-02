@@ -12,7 +12,6 @@
     <table class="table table-bordered my-table-result mt-1">
         <thead>
             <tr>
-                <th>SL. No.</th>
                 <th>Date</th>
                 <th>FR</th>
                 <th>SR</th>
@@ -20,7 +19,6 @@
         </thead>
         <tbody>
         <tr ng-repeat="x in previousResultByDate">
-            <td>{{ $index+1}}</td>
             <td>{{x.game_date}}</td>
             <td>{{x.fr_value}}</td>
             <td>{{x.sr_value}}</td>

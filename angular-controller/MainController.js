@@ -314,7 +314,7 @@ app.controller('MainController', function($cookies,$scope,$mdDialog,$timeout,$in
     };
 
     $scope.logoutUserWithConfirmation = function(event) {
-        console.log(localStorageService.get('loginData').data.token.split('|')[0]);
+        // console.log(localStorageService.get('loginData').data.token.split('|')[0]);
         // return;
 
         // localStorageService.remove('loginData');
@@ -435,7 +435,7 @@ app.controller('MainController', function($cookies,$scope,$mdDialog,$timeout,$in
                 ,headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
             }).then(function(response){
                 $scope.previousResultByDate = response.data.data;
-                console.log(response.data.data);
+                
             });
 
     };
