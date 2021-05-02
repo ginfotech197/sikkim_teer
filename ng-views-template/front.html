@@ -202,18 +202,17 @@
         <div class="row d-flex bg-light mb-1 mt-1">
             <div class="col-1"></div>
             <div class="col-10 text-center">
-                <button type="button" class="btn btn-primary" ng-click="showPreviousResults()">Previous Result&nbsp;</button>
+                <button type="button" class="btn btn-primary" ng-click="showResult=true">Previous Result&nbsp;</button>
                 <button type="button" class="btn btn-warning" ng-click="showResult=false" ng-show="showResult">&nbsp;Hide</button>
                 <a href="#!previousResult" target="_blank" class="btn pull-right" role="button">Show more</a>
             </div>
             <div class="col-10"></div>
         </div>
-        {{showResult}}
 
         <div class="row d-flex bg-maroon text-center" ng-show="showResult">
 
             <div class="col-1 bg-gray-2"></div>
-            <div class="col-10 text-center table-responsive bg-gray-2" data-ng-controller="PlayController">
+            <div class="col-10 text-center table-responsive bg-gray-2">
                 <table class="table table-bordered my-table-result mt-1">
                     <thead>
                     <tr>
@@ -222,67 +221,16 @@
                         <th>SR</th>
                     </tr>
                     </thead>
-                    <!-- <tbody ng-repeat="x in previousRecordsList">
+                    <tbody ng-repeat="x in previousRecordsList">
                     <tr>
-                        <td>{{x.record_time}}</td>
-                        <td>{{x.fr_value!=null ? x.fr_value<10? '0'+x.fr_value : x.fr_value : 'XX'}}</td>
-                        <td>{{x.sr_value!=null? x.sr_value<10? '0'+x.sr_value : x.sr_value : 'XX'}}</td>
+                        <td> {{x.game_date}}</td>
+                        <td>{{x.fr!=null ? x.fr < 10? '0' + x.fr_ : x.fr : 'XX' }} </td>
+                        <td>{{x.sr!=null? x.sr < 10? '0' + x.sr : x.sr : 'XX' }} </td>
                     </tr>
-                    </tbody> -->
-                    <tbody>
-                        <tr>
-                            <td>01/05/21</td>
-                            <td>18</td>
-                            <td>56</td>
-                        </tr>
-                        <tr>
-                            <td>30/04/21</td>
-                            <td>46</td>
-                            <td>03</td>
-                        </tr>
-                        <tr>
-                            <td>29/04/21</td>
-                            <td>73</td>
-                            <td>58</td>
-                        </tr>
-                        <tr>
-                            <td>28/04/21</td>
-                            <td>01</td>
-                            <td>96</td>
-                        </tr>
-                        <tr>
-                            <td>27/04/21</td>
-                            <td>38</td>
-                            <td>77</td>
-                        </tr>
-                        <tr>
-                            <td>26/04/21</td>
-                            <td>27</td>
-                            <td>69</td>
-                        </tr>
-                        <tr>
-                            <td>25/04/21</td>
-                            <td>54</td>
-                            <td>83</td>
-                        </tr>
-                        <tr>
-                            <td>24/04/21</td>
-                            <td>17</td>
-                            <td>90</td>
-                        </tr>
-                        <tr>
-                            <td>23/04/21</td>
-                            <td>82</td>
-                            <td>00</td>
-                        </tr>
-                        <tr>
-                            <td>22/04/21</td>
-                            <td>68</td>
-                            <td>37</td>
-                        </tr>
-                        
                     </tbody>
+                    
                 </table>
+                
             </div>
             <div class="col-1 bg-gray-2"></div>
 
