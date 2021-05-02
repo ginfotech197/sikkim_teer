@@ -2,6 +2,7 @@ app.controller('MainController', function($cookies,$scope,$mdDialog,$timeout,$in
 
     //for showing developer area, creating a developer mode object
     $scope.title="Sikkim teer";
+    $scope.showResult=false;
     $scope.developerMode={};
     $scope.developerMode.isEnabled=true;
     $scope.developerMode.isDeveloperDivShowable=$scope.developerMode.isEnabled;
@@ -544,7 +545,18 @@ app.controller('MainController', function($cookies,$scope,$mdDialog,$timeout,$in
     },5000);
 
 
+    $scope.showPreviousResults=function(){
 
+    	$scope.showResult=true;
+		var request = $http({
+            method: "post",
+            url: site_url+"/base/get_previous_result",
+            data: {}
+            ,headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
+        }).then(function(response){
+            $scope.previousRecordsList=response.data.records;
+        });
+	};
 
 
 });
