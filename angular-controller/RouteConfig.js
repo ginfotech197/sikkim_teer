@@ -4,7 +4,7 @@ app.config(function($routeProvider){
     when("/",{
         templateUrl : "ng-views-template/front.html",
         controller: "MainController"
-    }).when("/user",{
+    }).when("/usercounter",{
         templateUrl : "ng-views-template/user_view.html",
         controller: "PlayController"
     }).when("/admin",{
