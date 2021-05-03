@@ -5,8 +5,8 @@
                 font-size:4vw;
             } 
         </style>
-        <a href="#!" data-ng-if="users.person_category_id==0"><h1>Please Login</h1></a>
-        <div class="d-flex col-12" data-ng-if="users.person_category_id!=0">
+        <a href="#!" data-ng-show="loginDetails.data.user.user_type.type_id==0"><h1>Please Login</h1></a>
+        <div class="d-flex col-12" data-ng-show="loginDetails.data.user.user_type.type_id==1">
             <div class="col-12">
                 <!-- Nav tabs -->
                 <ul class="nav nav-tabs nav-justified indigo" role="tablist">
