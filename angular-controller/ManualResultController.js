@@ -73,8 +73,8 @@ app.controller("ManualResultCtrl", function ($scope,$http,$filter,$rootScope,dat
             ,headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
         }).then(function(response){
             $scope.editableResult=response.data;
-            $scope.manualData.aandar = parseInt($scope.editableResult.result / 10);    
-            $scope.manualData.bahar = $scope.editableResult.result % 10;
+            // $scope.manualData.aandar = parseInt($scope.editableResult.result / 10);
+            $scope.manualData.bahar = $scope.editableResult.result;
         });
     };
 
@@ -141,13 +141,13 @@ app.controller("ManualResultCtrl", function ($scope,$http,$filter,$rootScope,dat
         if(isNaN(master.draw_master_id)){
             alert("Invalid draw time");return;
         }
-        if(typeof manualResult.aandar === 'undefined' || manualResult.aandar==""){
-            master.aandar = -1;
-        }else if(manualResult.aandar>=0){
-            master.aandar = parseInt(manualResult.aandar);
-        }else{
-            master.aandar = -1;
-        }
+        // if(typeof manualResult.aandar === 'undefined' || manualResult.aandar==""){
+        //     master.aandar = -1;
+        // }else if(manualResult.aandar>=0){
+        //     master.aandar = parseInt(manualResult.aandar);
+        // }else{
+        //     master.aandar = -1;
+        // }
 
 
         if(typeof manualResult.bahar === 'undefined' || manualResult.bahar==""){
@@ -158,7 +158,7 @@ app.controller("ManualResultCtrl", function ($scope,$http,$filter,$rootScope,dat
             master.bahar = -1;
         }
      
-        if( master.aandar== -1 || master.bahar== -1){
+        if(master.bahar== -1){
             alert('input not valid');
             return;
         }
