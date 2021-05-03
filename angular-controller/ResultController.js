@@ -40,35 +40,41 @@ app.controller("ResultCtrl", function ($scope,$http,$filter,$rootScope,dateFilte
         return new Array(num);
     }
     
-    $scope.getResultListByDate=function(startDate, endDate){
-
-        startDate = $scope.changeDateFormat(startDate);
-        endDate = $scope.changeDateFormat(endDate);
-
-        $scope.previousResultByDate = alasql("select * from ? where game_date>=? and game_date<=?",[$scope.previousResult,startDate,endDate]);
-
-		// var dt=$scope.changeDateFormat(searchDate);
-        // var request = $http({
-        //     method: "post",
-        //     url: api_url+"/getResultsByDate",
-        //     dataType:JSON,
-        //     data: {
-        //     	result_date: dt
-        //     }
-        //     ,headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
-        // }).then(function(response){
-        //     $scope.resultData=response.data;
-        //     $scope.resultTableRow = Math.floor(($scope.resultData.length) / 2);
-        //         if(($scope.resultData.length) % 2){
-        //             $scope.resultTableRow +=1;
-        //         }
-        // });
-    };
-
+    // $scope.getResultListByDate=function(startDate, endDate){
+    //
+    //     startDate = $scope.changeDateFormat(startDate);
+    //     endDate = $scope.changeDateFormat(endDate);
+    //
+    //     $scope.previousResultByDate = alasql("select * from ? where game_date>=? and game_date<=?",[$scope.previousResult,startDate,endDate]);
+    //
+	// 	// var dt=$scope.changeDateFormat(searchDate);
+    //     // var request = $http({
+    //     //     method: "post",
+    //     //     url: api_url+"/getResultsByDate",
+    //     //     dataType:JSON,
+    //     //     data: {
+    //     //     	result_date: dt
+    //     //     }
+    //     //     ,headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
+    //     // }).then(function(response){
+    //     //     $scope.resultData=response.data;
+    //     //     $scope.resultTableRow = Math.floor(($scope.resultData.length) / 2);
+    //     //         if(($scope.resultData.length) % 2){
+    //     //             $scope.resultTableRow +=1;
+    //     //         }
+    //     // });
+    // };
 
     $scope.todayDate = new Date();
-    $scope.start_result_date = new Date($scope.todayDate.getFullYear(),$scope.todayDate.getMonth(),$scope.todayDate.getDate()-20);
+    $scope.start_result_date = new Date($scope.todayDate.getFullYear(),$scope.todayDate.getMonth(),$scope.todayDate.getDate()-30);
     $scope.end_result_date = $scope.todayDate;
+
+    $scope.getResultListByDate($scope.start_result_date, $scope.end_result_date);
+
+
+    // $scope.todayDate = new Date();
+    // $scope.start_result_date = new Date($scope.todayDate.getFullYear(),$scope.todayDate.getMonth(),$scope.todayDate.getDate()-20);
+    // $scope.end_result_date = $scope.todayDate;
 
     $scope.getResultListByDate($scope.start_result_date,$scope.end_result_date);
     $scope.message='';
