@@ -190,6 +190,7 @@ app.controller("ManualResultCtrl", function ($scope,$http,$filter,$rootScope,dat
       [28, 48, 40, 19, 86, 27, 90]
     ];
 
+    $scope.gameName = null;
     $scope.getInputTotalDrawAndGameWise=function(drawId){
         var request = $http({
             method: "post",
@@ -200,6 +201,11 @@ app.controller("ManualResultCtrl", function ($scope,$http,$filter,$rootScope,dat
               }
             ,headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
           }).then(function(response){
+              if(drawId === 1){
+                  $scope.gameName = 'F/R';
+              }else{
+                  $scope.gameName = 'S/R';
+              }
               $scope.inputTotalRecord=response.data;
             //   var aandar = $scope.inputTotalRecord.singleInput[0];
             //   var bahar = $scope.inputTotalRecord.singleInput[1];
