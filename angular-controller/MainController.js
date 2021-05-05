@@ -2,7 +2,7 @@ app.controller('MainController', function($cookies,$scope,$mdDialog,$timeout,$in
 
     //for showing developer area, creating a developer mode object
     $scope.title="Sikkim teer";
-    $scope.showResult=false;
+    $scope.showReport=false;
     $scope.developerMode={};
     $scope.developerMode.isEnabled=true;
     $scope.developerMode.isDeveloperDivShowable=$scope.developerMode.isEnabled;
@@ -339,6 +339,7 @@ app.controller('MainController', function($cookies,$scope,$mdDialog,$timeout,$in
                 },
                 headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
             }).then(function(response){
+                $scope.showReport=false;
                 $scope.unsetUserData();                
                 authFact.unsetAccessToken();
                 localStorageService.remove('loginData');
@@ -415,6 +416,7 @@ app.controller('MainController', function($cookies,$scope,$mdDialog,$timeout,$in
     $scope.end_result_date = $scope.todayDate;
 
     $scope.previousResultByDate = null;
+    $scope.showReport = false;
 
     $scope.getResultListByDate=function(startDate, endDate){
 

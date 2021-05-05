@@ -278,7 +278,6 @@ app.controller('PlayController', function($cookies,$scope,$rootScope,md5,$mdDial
 
             $scope.totalBoxSum=sum;
             $scope.totalTicketBuy=$scope.totalBoxSum * $scope.ticketPrice;
-            console.log('selected game 1');
 
         }else if($scope.selectedGame==2){
             // single
