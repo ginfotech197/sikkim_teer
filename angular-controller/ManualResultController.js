@@ -201,11 +201,11 @@ app.controller("ManualResultCtrl", function ($scope,$http,$filter,$rootScope,dat
             ,headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
           }).then(function(response){
               $scope.inputTotalRecord=response.data;
-              var aandar = $scope.inputTotalRecord.singleInput[0];
-              var bahar = $scope.inputTotalRecord.singleInput[1];
-              $scope.data = [[aandar.zero,aandar.one,aandar.two,aandar.three,aandar.four,aandar.five,aandar.six,aandar.seven,aandar.eight,aandar.nine],
-              [bahar.zero,bahar.one,bahar.two,bahar.three,bahar.four,bahar.five,bahar.six,bahar.seven,bahar.eight,bahar.nine]
-            ];
+            //   var aandar = $scope.inputTotalRecord.singleInput[0];
+            //   var bahar = $scope.inputTotalRecord.singleInput[1];
+            //   $scope.data = [[aandar.zero,aandar.one,aandar.two,aandar.three,aandar.four,aandar.five,aandar.six,aandar.seven,aandar.eight,aandar.nine],
+            //   [bahar.zero,bahar.one,bahar.two,bahar.three,bahar.four,bahar.five,bahar.six,bahar.seven,bahar.eight,bahar.nine]
+            // ];
             
           });
     };    
