@@ -96,14 +96,14 @@
                                                 <th class="text-left">Prize</th>
                                                 <th class="text-left">Claimed</th>
                                                 <th class="text-left">Particulars</th>
-                                                <th class="text-left" style=" padding-left: 50px;"><button style="height: 25px;">Cancel</button></th>
+                                                <!-- <th class="text-left" style=" padding-left: 50px;"><button style="height: 25px;">Cancel</button></th> -->
                                             </tr>
                                         </thead>
 
                                         <tbody>
                                             <tr ng-repeat="x in barcodeWiseReport | filter : select_barcode" >
                                                 <td class="text-left">{{ $index+1}}</td>
-                                                <td>{{x.user_id}}</td>
+                                                <td>{{x.terminal_user_id}}</td>
                                                 <td>{{x.draw_time +' '+ x.meridiem}}</td>
                                                 <td>{{x.ticket_taken_time}}</td>
                                                 <td class="text-left pl-0">{{x.barcode}}</td>
