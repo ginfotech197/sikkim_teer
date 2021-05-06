@@ -121,7 +121,8 @@ app.controller("ManualResultCtrl", function ($scope,$http,$filter,$rootScope,dat
             $scope.manualResultReport=response.data;
             if($scope.manualResultReport.success==1){
                 $scope.manualData={}; 
-                alert("Result added manually");
+                // alert("Result added manually");
+                alert($scope.manualResultReport.message);
                 var index = $scope.digitDrawTime.findIndex(x=>x.id===master.draw_master_id);
                 $scope.digitDrawTime.splice(index,1);
                 
