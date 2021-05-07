@@ -1,6 +1,27 @@
 
         <style type="text/css">
 
+
+            .awesome{
+                        font-size: 50px;
+                        /* text-align: center; */
+                    /* height:90vh; */
+                    /* line-height: 90vh; */
+                        color:  #f73f3f;
+                        /* background: #d52e3f; */
+                        font-family: 'Niconne', cursive;
+                        font-weight: 70;
+                    text-shadow: 5px 5px 0px #2bebcb 
+                                /* 10px 10px 0px #efa032 */
+                                /* 15px 15px 0px #46b59b */
+                                /* 20px 20px 0px #017e7f,  */
+                                /* 25px 25px 0px #052939  */
+                                /* 30px 30px 0px #c11a2b,  */
+                                /* 35px 35px 0px #c11a2b,  */
+                                /* 40px 40px 0px #c11a2b,  */
+                                /* 45px 45px 0px #c11a2b; */;
+                }
+
             @function color($key: "blue") {
             @return map-get($colors, $key);
             }
@@ -176,13 +197,13 @@
                     </thead>
                     <tbody>
                     <tr class="table-success">
-                        <td colspan="2" style="font-size: larger;">F/R({{(todayResult[0].end_time | limitTo:5) + ' ' + todayResult[0].meridiem}})</td>
-                        <td colspan="2" style="font-size: larger;">S/R({{(todayResult[1].end_time | limitTo:5) + ' ' + todayResult[1].meridiem}})</td>
+                        <td class="awesome" colspan="2" style="font-size: larger;">F/R({{(todayResult[0].end_time | limitTo:5) + ' ' + todayResult[0].meridiem}})</td>
+                        <td class="awesome" colspan="2" style="font-size: larger;">S/R({{(todayResult[1].end_time | limitTo:5) + ' ' + todayResult[1].meridiem}})</td>
                     </tr>
                     <tr>
-                        <td colspan="2">{{todayResult[0].result_row!=null ? todayResult[0].result_row + '' + todayResult[0].result_col : 'XX'}}</td>
+                        <td class="awesome" colspan="2">{{todayResult[0].result_row!=null ? todayResult[0].result_row + '' + todayResult[0].result_col : 'XX'}}</td>
 
-                        <td> {{todayResult[1].result_row!=null ? todayResult[1].result_row + '' + todayResult[1].result_col : 'XX'}}</td>
+                        <td class="awesome" colspan="2"> {{todayResult[1].result_row!=null ? todayResult[1].result_row + '' + todayResult[1].result_col : 'XX'}}</td>
 
                     </tr>
 
