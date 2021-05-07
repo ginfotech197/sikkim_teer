@@ -97,9 +97,9 @@
 
                                                     <tr ng-repeat="x in saleReport" ng-style="{{$index==(saleReport.length-1) && grandTotalStyle}}">
                                                         <td class="p-0">
-                                                            {{x.user_id}}
+                                                            {{x.terminal_user_id}}
                                                         </td>
-                                                        <td class="p-0 text-center"> {{(x.user_id) =="Grand Total"? '' : x.agent_name}}</td>
+                                                        <td class="p-0 text-center"> {{(x.terminal_user_id) =="Grand Total"? '' : x.agent_name}}</td>
                                                         <td class="p-0  text-right">{{x.amount | number:2}}</td>
                                                         <td class="p-0  text-right">{{x.commision | number:2}}</td>
                                                         <td class="p-0  text-right">{{x.prize_value| number:2}}</td>
