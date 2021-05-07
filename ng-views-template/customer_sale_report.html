@@ -8,8 +8,8 @@
                 cursor: pointer;
             }
         </style>
-        <a href="#!" data-ng-if="users.person_category_id==0"><h1>Please Login</h1></a>
-        <div class="d-flex col-12" data-ng-if="users.person_category_id!=0">
+        <a href="#!" data-ng-if="loginDetails.data.user.user_type.type_id==0"><h1>Please Login</h1></a>
+        <div class="d-flex col-12" data-ng-if="loginDetails.data.user.user_type.type_id!=0">
             <div class="col-12">
                 <!-- Nav tabs -->
                 <ul class="nav nav-tabs nav-justified " role="tablist">
