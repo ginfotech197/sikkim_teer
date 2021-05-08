@@ -196,9 +196,9 @@
                     </tr>
                     </thead>
                     <tbody>
-                    <tr class="table-success">
-                        <td class="awesome" colspan="2" style="font-size: larger;">F/R({{(todayResult[0].end_time | limitTo:5) + ' ' + todayResult[0].meridiem}})</td>
-                        <td class="awesome" colspan="2" style="font-size: larger;">S/R({{(todayResult[1].end_time | limitTo:5) + ' ' + todayResult[1].meridiem}})</td>
+                    <tr style="background-color:#baf17f">
+                        <td class="awesome" colspan="2">F/R({{(todayResult[0].end_time | limitTo:5) + ' ' + todayResult[0].meridiem}})</td>
+                        <td class="awesome" colspan="2">S/R({{(todayResult[1].end_time | limitTo:5) + ' ' + todayResult[1].meridiem}})</td>
                     </tr>
                     <tr>
                         <td class="awesome" colspan="2">{{todayResult[0].result_row!=null ? todayResult[0].result_row + '' + todayResult[0].result_col : 'XX'}}</td>
