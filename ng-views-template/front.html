@@ -4,22 +4,11 @@
 
             .awesome{
                         font-size: 50px;
-                        /* text-align: center; */
-                    /* height:90vh; */
-                    /* line-height: 90vh; */
-                        color:  #f73f3f;
-                        /* background: #d52e3f; */
-                        font-family: 'Niconne', cursive;
-                        font-weight: 70;
-                    text-shadow: 5px 5px 0px #000000 
-                                /* 10px 10px 0px #efa032 */
-                                /* 15px 15px 0px #46b59b */
-                                /* 20px 20px 0px #017e7f,  */
-                                /* 25px 25px 0px #052939  */
-                                /* 30px 30px 0px #c11a2b,  */
-                                /* 35px 35px 0px #c11a2b,  */
-                                /* 40px 40px 0px #c11a2b,  */
-                                /* 45px 45px 0px #c11a2b; */;
+                        text-shadow: 2px 2px 1px rgb(1, 153, 255);                        
+                        color:  rgb(255, 79, 25);                       
+                        /* font-weight: bold; */
+                        font-weight: 700;
+                    
                 }
 
             @function color($key: "blue") {
@@ -197,13 +186,13 @@
                     </thead>
                     <tbody>
                     <tr style="background-color:#baf17f">
-                        <td class="awesome" colspan="2">F/R({{(todayResult[0].end_time | limitTo:5) + ' ' + todayResult[0].meridiem}})</td>
-                        <td class="awesome" colspan="2">S/R({{(todayResult[1].end_time | limitTo:5) + ' ' + todayResult[1].meridiem}})</td>
+                        <td class="awesome" colspan="2" >F/R({{(todayResult[0].end_time | limitTo:5) + ' ' + todayResult[0].meridiem}})</td>
+                        <td class="awesome" colspan="2" >S/R({{(todayResult[1].end_time | limitTo:5) + ' ' + todayResult[1].meridiem}})</td>
                     </tr>
                     <tr>
                         <td class="awesome" colspan="2">{{todayResult[0].result_row!=null ? todayResult[0].result_row + '' + todayResult[0].result_col : 'XX'}}</td>
 
-                        <td class="awesome" colspan="2"> {{todayResult[1].result_row!=null ? todayResult[1].result_row + '' + todayResult[1].result_col : 'XX'}}</td>
+                        <td class="awesome" colspan="2" > {{todayResult[1].result_row!=null ? todayResult[1].result_row + '' + todayResult[1].result_col : 'XX'}}</td>
 
                     </tr>
 
@@ -237,7 +226,7 @@
                 <table class="table table-bordered my-table-result mt-1">
                     <thead>
                     <tr>
-                        <th>Date</th>
+                        <th >Date</th>
                         <th>FR</th>
                         <th>SR</th>
                     </tr>
