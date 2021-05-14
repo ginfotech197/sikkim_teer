@@ -98,35 +98,68 @@ app.controller("BarcodeReportCtrl", function ($scope,$http,$filter,$rootScope,da
             // get terminal report order by barcode
     $scope.showbarcodeReport=[];
     $scope.getAllBarcodeDetailsByDate=function (start_date,select_terminal,select_draw_time) {
-        $scope.isLoading2=true;
-        var start_date=$scope.changeDateFormat(start_date);
-        $scope.x=select_draw_time;
-        var request = $http({
-            method: "post",
-            dataType:JSON,
-            url: api_url+"/getAllBarcodeReportByDate",
-            data: {
-                start_date: start_date
-            }
-            ,headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
-        }).then(function(response){
-            $scope.barcodeWiseReport=response.data; 
-            $scope.isLoading2=false;            
-            if(select_draw_time>0){
-                $scope.x=parseInt($scope.x);
-                $scope.barcodeWiseReport=alasql("SELECT *  from ? where draw_master_id=?",[$scope.barcodeWiseReport,$scope.x]);
-            }
-            if(select_terminal!=0){
-                $scope.barcodeWiseReport=alasql("SELECT *  from ? where user_id=?",[$scope.barcodeWiseReport,select_terminal]);
-            }
-            // checking for data
-            if($scope.barcodeWiseReport.length==0){
-                $scope.alertMsg2=true;
-            }else{
-                $scope.alertMsg2=false;
-            }
 
-        });
+        $scope.isLoading2=true;
+        console.log($scope.users);
+        if($scope.users.user_type_id === 1) {
+            var start_date = $scope.changeDateFormat(start_date);
+            $scope.x = select_draw_time;
+            var request = $http({
+                method: "post",
+                dataType: JSON,
+                url: api_url + "/getAllBarcodeReportByDate",
+                data: {
+                    start_date: start_date
+                }
+                , headers: {'Content-Type': 'application/x-www-form-urlencoded'}
+            }).then(function (response) {
+                $scope.barcodeWiseReport = response.data;
+                $scope.isLoading2 = false;
+                if (select_draw_time > 0) {
+                    $scope.x = parseInt($scope.x);
+                    $scope.barcodeWiseReport = alasql("SELECT *  from ? where draw_master_id=?", [$scope.barcodeWiseReport, $scope.x]);
+                }
+                if (select_terminal != 0) {
+                    $scope.barcodeWiseReport = alasql("SELECT *  from ? where user_id=?", [$scope.barcodeWiseReport, select_terminal]);
+                }
+                // checking for data
+                if ($scope.barcodeWiseReport.length == 0) {
+                    $scope.alertMsg2 = true;
+                } else {
+                    $scope.alertMsg2 = false;
+                }
+
+            });
+        }else if ($scope.users.user_type_id === 4) {
+            var start_date = $scope.changeDateFormat(start_date);
+            var request = $http({
+                method: "post",
+                dataType:JSON,
+                url: api_url+"/getAllBarcodeReportByDateStockiest",
+                data: {
+                    start_date: start_date,
+                    stockiest_id:$scope.users.id
+                }
+                ,headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
+            }).then(function(response){
+                $scope.barcodeWiseReport=response.data;
+                $scope.isLoading2=false;
+                if(select_draw_time>0){
+                    $scope.x=parseInt($scope.x);
+                    $scope.barcodeWiseReport=alasql("SELECT *  from ? where draw_master_id=?",[$scope.barcodeWiseReport,$scope.x]);
+                }
+                if(select_terminal!=0){
+                    $scope.barcodeWiseReport=alasql("SELECT *  from ? where user_id=?",[$scope.barcodeWiseReport,select_terminal]);
+                }
+                // checking for data
+                if($scope.barcodeWiseReport.length==0){
+                    $scope.alertMsg2=true;
+                }else{
+                    $scope.alertMsg2=false;
+                }
+
+            });
+        }
 
     };
 
