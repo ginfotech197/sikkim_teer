@@ -28,9 +28,9 @@ app.controller("TerminalCtrl", function ($scope,$http,$filter,$rootScope,dateFil
         ,headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
     }).then(function(response){
         $scope.terminalList=response.data;
-        var stockistId=$scope.users.userId;
-        var personCatTd=$scope.users.person_category_id;
-        if(personCatTd==4){
+        var stockistId=$scope.users.id;
+        var personCatTd=$scope.users.user_type_id;
+        if(personCatTd===4){
             $scope.terminalList=alasql("SELECT *  from ? where stockist_id=?",[$scope.terminalList,stockistId]);
         }
     });
