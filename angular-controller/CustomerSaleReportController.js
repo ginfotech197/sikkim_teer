@@ -63,7 +63,6 @@ app.controller("CustomerSaleReportCtrl", function ($scope,$http,$filter,$rootSco
             ,headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
         }).then(function(response){
             $scope.saleReport=response.data;
-            console.log($scope.saleReport);
             var stockistId=$scope.users.user_id;
             var personCatTd=$scope.users.user_type_id;
             if(personCatTd===4){
@@ -82,7 +81,6 @@ app.controller("CustomerSaleReportCtrl", function ($scope,$http,$filter,$rootSco
                 }
             }
 
-           
             if(select_terminal!==0){
                 $scope.saleReport=alasql("SELECT *  from ? where user_id=?",[$scope.saleReport,select_terminal]);
             }
