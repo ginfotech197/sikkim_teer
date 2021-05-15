@@ -63,9 +63,10 @@ app.controller("CustomerSaleReportCtrl", function ($scope,$http,$filter,$rootSco
             ,headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
         }).then(function(response){
             $scope.saleReport=response.data;
-            var stockistId=$scope.users.userLoginid;
-            var personCatTd=$scope.users.person_category_id;
-            if(personCatTd==4){
+            console.log($scope.saleReport);
+            var stockistId=$scope.users.user_id;
+            var personCatTd=$scope.users.user_type_id;
+            if(personCatTd===4){
                 $scope.saleReport=alasql("SELECT *  from ? where stockist_user_id=?",[$scope.saleReport,stockistId]);
                 // var result=alasql('SELECT sum(amount) as total_amount,sum(commision) as total_commision,sum(prize_value) as total_prize_value,sum(net_payable) as total_net_payable  from ? ',[$scope.saleReport]);
                 // var lastIndex = $scope.saleReport.length - 1;
@@ -76,18 +77,18 @@ app.controller("CustomerSaleReportCtrl", function ($scope,$http,$filter,$rootSco
                 // $scope.saleReport[lastIndex].net_payable = parseInt(result[0].total_net_payable);
 
             }else{
-                if(select_stockist!=0){
+                if(select_stockist!==0){
                     $scope.saleReport=alasql("SELECT *  from ? where stockist_user_id=?",[$scope.saleReport,select_stockist]);
                 }
             }
 
            
-            if(select_terminal!=0){
+            if(select_terminal!==0){
                 $scope.saleReport=alasql("SELECT *  from ? where user_id=?",[$scope.saleReport,select_terminal]);
             }
             $scope.isLoading=false;
             
-            if($scope.saleReport.length==0){
+            if($scope.saleReport.length===0){
                 $scope.alertMsg=true;
             }else{
                 $scope.alertMsg=false;
@@ -160,12 +161,12 @@ app.controller("CustomerSaleReportCtrl", function ($scope,$http,$filter,$rootSco
             ,headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
         }).then(function(response){
             $scope.terminalList=response.data;
-            var stockistId=$scope.users.userId;
-            var personCatTd=$scope.users.person_category_id;
-            if(personCatTd==4){
+            var stockistId=$scope.users.id;
+            var personCatTd=$scope.users.user_type_id;
+            if(personCatTd===4){
                 $scope.terminalList=alasql("SELECT *  from ? where stockist_id=?",[$scope.terminalList,stockistId]);
             }else{ 
-                if(stId!=0){
+                if(stId!==0){
                     $scope.terminalList=alasql("SELECT *  from ? where stockist_id=?",[$scope.terminalList,stId]);
                 }
             }
