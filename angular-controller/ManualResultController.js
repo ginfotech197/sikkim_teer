@@ -14,7 +14,7 @@ app.controller("ManualResultCtrl", function ($scope,$http,$filter,$rootScope,dat
         "font-size" : "15px",
         "padding" : "5px"
     };
-
+    $scope.disableSubmitButton= false;
 
     $scope.x = false;   /*  This variable set for editable manual form  */
 
@@ -85,8 +85,11 @@ app.controller("ManualResultCtrl", function ($scope,$http,$filter,$rootScope,dat
 
 
     $scope.submitManualResult=function(manualResult){
+        $scope.disableSubmitButton= true;
         var master={};
-        master.draw_master_id=parseInt(manualResult.time.id);
+        if(manualResult && manualResult.time){
+            master.draw_master_id=parseInt(manualResult.time.id);
+        }       
         if(typeof manualResult.aandar === 'undefined' || manualResult.aandar==""){
             master.aandar = -1;
         }else if(manualResult.aandar>=0){
@@ -94,6 +97,7 @@ app.controller("ManualResultCtrl", function ($scope,$http,$filter,$rootScope,dat
         }else{
             master.aandar = -1;
         }
+        
 
 
         // if(typeof manualResult.bahar === 'undefined' || manualResult.bahar==""){
@@ -106,6 +110,7 @@ app.controller("ManualResultCtrl", function ($scope,$http,$filter,$rootScope,dat
      
         if(master.aandar== -1){
             alert('input not valid');
+            $scope.disableSubmitButton= false;
             return;
         }
        
@@ -120,9 +125,9 @@ app.controller("ManualResultCtrl", function ($scope,$http,$filter,$rootScope,dat
         }).then(function(response){
             $scope.manualResultReport=response.data;
             if($scope.manualResultReport.success==1){
-                $scope.manualData={}; 
-                // alert("Result added manually");
+                $scope.manualData={};                 
                 alert($scope.manualResultReport.message);
+                $scope.disableSubmitButton= false;
                 var index = $scope.digitDrawTime.findIndex(x=>x.id===master.draw_master_id);
                 $scope.digitDrawTime.splice(index,1);
                 
