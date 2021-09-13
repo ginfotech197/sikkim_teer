@@ -20,8 +20,10 @@
         <tbody>
         <tr ng-repeat="x in previousResultByDate">
             <td>{{x.game_date}}</td>
-            <td>{{("00"+x.fr_value).slice(-2)}}</td>
-            <td>{{("00"+x.sr_value).slice(-2)}}</td>
+            <td>{{("00"+x.fr).slice(-2)}}</td>
+<!--            <td>{{("00"+x.fr_value).slice(-2)}}</td>-->
+<!--            <td>{{("00"+x.sr_value).slice(-2)}}</td>-->
+            <td>{{("00"+x.sr).slice(-2)}}</td>
         </tr>
         </tbody>
     </table>

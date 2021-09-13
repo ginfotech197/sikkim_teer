@@ -94,8 +94,8 @@
                                             <tr ng-repeat="x in previousResultByDate">
                                                 <td>{{ $index+1}}</td>
                                                 <td>{{x.game_date}}</td>
-                                                <td>{{x.fr_value}}</td>
-                                                <td>{{x.sr_value}}</td>
+                                                <td>{{("00"+x.fr).slice(-2)}}</td>
+                                                <td>{{("00"+x.sr).slice(-2)}}</td>
                                             </tr>
                                             </tbody>
                                         </table>
